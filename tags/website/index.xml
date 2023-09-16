@@ -1,0 +1,27 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Website - Tag - Alan Cortez</title>
+        <link>http://example.org/tags/website/</link>
+        <description>Website - Tag - Alan Cortez</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 22 Jun 2023 01:12:32 -0300</lastBuildDate><atom:link href="http://example.org/tags/website/" rel="self" type="application/rss+xml" /><item>
+    <title>Inventory Management Website</title>
+    <link>http://example.org/posts/inventorymanager/</link>
+    <pubDate>Thu, 22 Jun 2023 01:12:32 -0300</pubDate>
+    <author>Alan Cortez</author>
+    <guid>http://example.org/posts/inventorymanager/</guid>
+    <description><![CDATA[Inventory and product management website. This project was developed for the &ldquo;Codo a Codo - Django&rdquo; course together with Omar. It was made with Django Framework and PostgreSQL. Check out the GitHub repository and the website.
+The website allows the stock management of a warehouse. There are 3 levels of users:
+ Employee (Level 1, mostly read permissions). Supervisor (Level 2, read and write permissions). Administrator (Level 3, read and write permissions and access to Django&rsquo;s admin panel).]]></description>
+</item>
+<item>
+    <title>Age Of Carpincho Website.</title>
+    <link>http://example.org/posts/ageofcarpincho/</link>
+    <pubDate>Wed, 16 Feb 2022 00:56:54 -0300</pubDate>
+    <author>Alan Cortez</author>
+    <guid>http://example.org/posts/ageofcarpincho/</guid>
+    <description><![CDATA[Age of Carpincho. A site made with Angular framework that shows Plotly graphs of Age Of Empires II data. Check out the GitHub repository and the website.
+The project was originally just a static web page which can be viewed here and this is the GitHub repository for that site. After learning a bit of Angular in a course I decided to take the site to the next level.
+Site:]]></description>
+</item>
+</channel>
+</rss>
