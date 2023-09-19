@@ -11,7 +11,7 @@
     <pubDate>Thu, 22 Jun 2023 01:12:32 -0300</pubDate>
     <author>Alan Cortez</author>
     <guid>http://example.org/posts/inventorymanager/</guid>
-    <description><![CDATA[Inventory and product management website. This project was developed for the &ldquo;Codo a Codo - Django&rdquo; course together with Omar. It was made with Django Framework and PostgreSQL. Check out the GitHub repository and the website.
+    <description><![CDATA[Inventory and product management website. This project was developed for the &ldquo;Codo a Codo - Django&rdquo; course together with Omar Scarazzato. It was made with Django Framework and PostgreSQL. Check out the GitHub repository and the website.
 The website allows the stock management of a warehouse. There are 3 levels of users:
  Employee (Level 1, mostly read permissions). Supervisor (Level 2, read and write permissions). Administrator (Level 3, read and write permissions and access to Django&rsquo;s admin panel).]]></description>
 </item>
@@ -36,7 +36,7 @@ One of my first Python scripts. It uses the Binance API to retrieve price inform
 Output:]]></description>
 </item>
 <item>
-    <title>Age Of Empires II R Script (2).</title>
+    <title>Age of Empires II: R Script: Most used civilizations.</title>
     <link>http://example.org/posts/aoemostusedciv/</link>
     <pubDate>Fri, 20 Aug 2021 00:45:06 -0300</pubDate>
     <author>Alan Cortez</author>
@@ -45,7 +45,7 @@ Output:]]></description>
 R script to get the last 10 matches (using aoe2.net API) and output a Plotly pie chart of the civs used.]]></description>
 </item>
 <item>
-    <title>Age Of Empires II R Script.</title>
+    <title>Age of Empires II: R Script: Compare players&#39; ratings.</title>
     <link>http://example.org/posts/aoeeloplot/</link>
     <pubDate>Mon, 19 Jul 2021 00:24:52 -0300</pubDate>
     <author>Alan Cortez</author>
