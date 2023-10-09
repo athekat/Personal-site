@@ -4,7 +4,7 @@
         <link>http://example.org/tags/r/</link>
         <description>R - Tag - Alan Cortez</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 20 Aug 2021 00:45:06 -0300</lastBuildDate><atom:link href="http://example.org/tags/r/" rel="self" type="application/rss+xml" /><item>
-    <title>Age Of Empires II R Script (2).</title>
+    <title>Age of Empires II: R Script: Most used civilizations.</title>
     <link>http://example.org/posts/aoemostusedciv/</link>
     <pubDate>Fri, 20 Aug 2021 00:45:06 -0300</pubDate>
     <author>Alan Cortez</author>
@@ -13,7 +13,7 @@
 R script to get the last 10 matches (using aoe2.net API) and output a Plotly pie chart of the civs used.]]></description>
 </item>
 <item>
-    <title>Age Of Empires II R Script.</title>
+    <title>Age of Empires II: R Script: Compare players&#39; ratings.</title>
     <link>http://example.org/posts/aoeeloplot/</link>
     <pubDate>Mon, 19 Jul 2021 00:24:52 -0300</pubDate>
     <author>Alan Cortez</author>
