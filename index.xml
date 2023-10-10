@@ -3,15 +3,34 @@
         <title>Alan Cortez</title>
         <link>http://example.org/</link>
         <description>Personal page</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 22 Jun 2023 01:12:32 -0300</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 02 Oct 2023 01:12:32 -0300</lastBuildDate>
             <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Tribute to PureVolume</title>
+    <link>http://example.org/posts/sujetopurevolume/</link>
+    <pubDate>Mon, 02 Oct 2023 01:12:32 -0300</pubDate>
+    <author>Alan Cortez</author>
+    <guid>http://example.org/posts/sujetopurevolume/</guid>
+    <description><![CDATA[Tribute to PureVolume  Check out the GitHub repository and the website.
+ PureVolume was a website for the discovery and promotion of new music and emerging artists. The mission was to give artists a new promotion tool. The site shut down on June 30, 2018. Luckily it was archived by Wayback Machine.
+This is a profile page of a band. For the music player is used this one by Zakari Abdessamad.]]></description>
+</item>
+<item>
+    <title>This site!</title>
+    <link>http://example.org/posts/thissite/</link>
+    <pubDate>Sun, 01 Oct 2023 01:12:32 -0300</pubDate>
+    <author>Alan Cortez</author>
+    <guid>http://example.org/posts/thissite/</guid>
+    <description><![CDATA[Personal site A blog-like site to upload projects and stuff I&rsquo;ve been working on. Made with Hugo Framework, using Loveit theme and some personal tweaks and changes.]]></description>
+</item>
+<item>
     <title>Inventory Management Website</title>
     <link>http://example.org/posts/inventorymanager/</link>
     <pubDate>Thu, 22 Jun 2023 01:12:32 -0300</pubDate>
     <author>Alan Cortez</author>
     <guid>http://example.org/posts/inventorymanager/</guid>
-    <description><![CDATA[Inventory and product management website. This project was developed for the &ldquo;Codo a Codo - Django&rdquo; course together with Omar Scarazzato. It was made with Django Framework and PostgreSQL. Check out the GitHub repository and the website.
+    <description><![CDATA[Inventory and product management website.  Check out the GitHub repository and the website.
+ This project was developed for the &ldquo;Codo a Codo - Django&rdquo; course together with Omar Scarazzato. It was made with Django Framework and PostgreSQL.
 The website allows the stock management of a warehouse. There are 3 levels of users:
  Employee (Level 1, mostly read permissions). Supervisor (Level 2, read and write permissions). Administrator (Level 3, read and write permissions and access to Django&rsquo;s admin panel).]]></description>
 </item>
@@ -21,9 +40,9 @@ The website allows the stock management of a warehouse. There are 3 levels of us
     <pubDate>Wed, 16 Feb 2022 00:56:54 -0300</pubDate>
     <author>Alan Cortez</author>
     <guid>http://example.org/posts/ageofcarpincho/</guid>
-    <description><![CDATA[Age of Carpincho. A site made with Angular framework that shows Plotly graphs of Age Of Empires II data. Check out the GitHub repository and the website.
-The project was originally just a static web page which can be viewed here and this is the GitHub repository for that site. After learning a bit of Angular in a course I decided to take the site to the next level.
-Site:]]></description>
+    <description><![CDATA[Age of Carpincho.  Check out the GitHub repository and the website.
+ A site made with Angular framework that shows Plotly graphs of Age Of Empires II data.
+The project was originally just a static web page which can be viewed here and this is the GitHub repository for that site. After learning a bit of Angular in a course I decided to take the site to the next level.]]></description>
 </item>
 <item>
     <title>Binance P2P Python Script.</title>
@@ -31,8 +50,8 @@ Site:]]></description>
     <pubDate>Tue, 07 Dec 2021 23:03:29 -0300</pubDate>
     <author>Alan Cortez</author>
     <guid>http://example.org/posts/binancep2p/</guid>
-    <description><![CDATA[Python script to find arbitrage opportunities in Binance using P2P and Spot Market. Check out the GitHub repository.
-One of my first Python scripts. It uses the Binance API to retrieve price information for BTC, ETH and USDT in both Spot and P2P markets.
+    <description><![CDATA[Python script to find arbitrage opportunities in Binance using P2P and Spot Market.  Check out the GitHub repository.
+ One of my first Python scripts. It uses the Binance API to retrieve price information for BTC, ETH and USDT in both Spot and P2P markets.
 Output:]]></description>
 </item>
 <item>
@@ -41,8 +60,8 @@ Output:]]></description>
     <pubDate>Fri, 20 Aug 2021 00:45:06 -0300</pubDate>
     <author>Alan Cortez</author>
     <guid>http://example.org/posts/aoemostusedciv/</guid>
-    <description><![CDATA[AoE 2 - Most Used Civilization. Check out the GitHub repository.
-R script to get the last 10 matches (using aoe2.net API) and output a Plotly pie chart of the civs used.]]></description>
+    <description><![CDATA[AoE 2 - Most Used Civilization.  Check out the GitHub repository.
+ R script to get the last 10 matches (using aoe2.net API) and output a Plotly pie chart of the civs used.]]></description>
 </item>
 <item>
     <title>Age of Empires II: R Script: Compare players&#39; ratings.</title>
@@ -50,8 +69,8 @@ R script to get the last 10 matches (using aoe2.net API) and output a Plotly pie
     <pubDate>Mon, 19 Jul 2021 00:24:52 -0300</pubDate>
     <author>Alan Cortez</author>
     <guid>http://example.org/posts/aoeeloplot/</guid>
-    <description><![CDATA[AoE 2 - Compare User ELO Ratings. Check out the GitHub repository.
-R script that outputs a Plotly graph comparing player&rsquo;s elo rating across time, using aoe2.net API.
+    <description><![CDATA[AoE 2 - Compare User ELO Ratings.  Check out the GitHub repository.
+ R script that outputs a Plotly graph comparing player&rsquo;s elo rating across time, using aoe2.net API.
 INPUT:
 OUTPUT:]]></description>
 </item>

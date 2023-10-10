@@ -2,13 +2,20 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>http://example.org/</loc><lastmod>2023-06-22T01:12:32-03:00</lastmod></url><url>
+            <loc>http://example.org/</loc><lastmod>2023-10-02T01:12:32-03:00</lastmod></url><url>
+            <loc>http://example.org/tags/css/</loc><lastmod>2023-10-02T01:12:32-03:00</lastmod></url><url>
+            <loc>http://example.org/tags/html/</loc><lastmod>2023-10-02T01:12:32-03:00</lastmod></url><url>
+            <loc>http://example.org/posts/</loc><lastmod>2023-10-02T01:12:32-03:00</lastmod></url><url>
+            <loc>http://example.org/tags/purevolume/</loc><lastmod>2023-10-02T01:12:32-03:00</lastmod></url><url>
+            <loc>http://example.org/tags/</loc><lastmod>2023-10-02T01:12:32-03:00</lastmod></url><url>
+            <loc>http://example.org/posts/sujetopurevolume/</loc><lastmod>2023-10-02T01:12:32-03:00</lastmod></url><url>
+            <loc>http://example.org/tags/blog/</loc><lastmod>2023-10-01T01:12:32-03:00</lastmod></url><url>
+            <loc>http://example.org/tags/hugo/</loc><lastmod>2023-10-01T01:12:32-03:00</lastmod></url><url>
+            <loc>http://example.org/posts/thissite/</loc><lastmod>2023-10-01T01:12:32-03:00</lastmod></url><url>
             <loc>http://example.org/tags/django/</loc><lastmod>2023-06-22T01:12:32-03:00</lastmod></url><url>
             <loc>http://example.org/posts/inventorymanager/</loc><lastmod>2023-06-22T01:12:32-03:00</lastmod></url><url>
             <loc>http://example.org/tags/postgresql/</loc><lastmod>2023-06-22T01:12:32-03:00</lastmod></url><url>
-            <loc>http://example.org/posts/</loc><lastmod>2023-06-22T01:12:32-03:00</lastmod></url><url>
             <loc>http://example.org/tags/python/</loc><lastmod>2023-06-22T01:12:32-03:00</lastmod></url><url>
-            <loc>http://example.org/tags/</loc><lastmod>2023-06-22T01:12:32-03:00</lastmod></url><url>
             <loc>http://example.org/tags/website/</loc><lastmod>2023-06-22T01:12:32-03:00</lastmod></url><url>
             <loc>http://example.org/posts/ageofcarpincho/</loc><lastmod>2022-02-16T00:56:54-03:00</lastmod></url><url>
             <loc>http://example.org/tags/age-of-empires-ii/</loc><lastmod>2022-02-16T00:56:54-03:00</lastmod></url><url>
