@@ -3,7 +3,47 @@
         <title>Tags - Tag - Alan Cortez</title>
         <link>http://example.org/tags/</link>
         <description>Tags - Tag - Alan Cortez</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 22 Jun 2023 01:12:32 -0300</lastBuildDate><atom:link href="http://example.org/tags/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 02 Oct 2023 01:12:32 -0300</lastBuildDate><atom:link href="http://example.org/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>CSS</title>
+    <link>http://example.org/tags/css/</link>
+    <pubDate>Mon, 02 Oct 2023 01:12:32 -0300</pubDate>
+    <author>Alan Cortez</author>
+    <guid>http://example.org/tags/css/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>HTML</title>
+    <link>http://example.org/tags/html/</link>
+    <pubDate>Mon, 02 Oct 2023 01:12:32 -0300</pubDate>
+    <author>Alan Cortez</author>
+    <guid>http://example.org/tags/html/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Purevolume</title>
+    <link>http://example.org/tags/purevolume/</link>
+    <pubDate>Mon, 02 Oct 2023 01:12:32 -0300</pubDate>
+    <author>Alan Cortez</author>
+    <guid>http://example.org/tags/purevolume/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Blog</title>
+    <link>http://example.org/tags/blog/</link>
+    <pubDate>Sun, 01 Oct 2023 01:12:32 -0300</pubDate>
+    <author>Alan Cortez</author>
+    <guid>http://example.org/tags/blog/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Hugo</title>
+    <link>http://example.org/tags/hugo/</link>
+    <pubDate>Sun, 01 Oct 2023 01:12:32 -0300</pubDate>
+    <author>Alan Cortez</author>
+    <guid>http://example.org/tags/hugo/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>Django</title>
     <link>http://example.org/tags/django/</link>
     <pubDate>Thu, 22 Jun 2023 01:12:32 -0300</pubDate>
@@ -41,38 +81,6 @@
     <pubDate>Wed, 16 Feb 2022 00:56:54 -0300</pubDate>
     <author>Alan Cortez</author>
     <guid>http://example.org/tags/age-of-empires-ii/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Angular</title>
-    <link>http://example.org/tags/angular/</link>
-    <pubDate>Wed, 16 Feb 2022 00:56:54 -0300</pubDate>
-    <author>Alan Cortez</author>
-    <guid>http://example.org/tags/angular/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>cryptocurrencies</title>
-    <link>http://example.org/tags/cryptocurrencies/</link>
-    <pubDate>Tue, 07 Dec 2021 23:03:29 -0300</pubDate>
-    <author>Alan Cortez</author>
-    <guid>http://example.org/tags/cryptocurrencies/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>scripts</title>
-    <link>http://example.org/tags/scripts/</link>
-    <pubDate>Tue, 07 Dec 2021 23:03:29 -0300</pubDate>
-    <author>Alan Cortez</author>
-    <guid>http://example.org/tags/scripts/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>R</title>
-    <link>http://example.org/tags/r/</link>
-    <pubDate>Fri, 20 Aug 2021 00:45:06 -0300</pubDate>
-    <author>Alan Cortez</author>
-    <guid>http://example.org/tags/r/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

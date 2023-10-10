@@ -9,7 +9,8 @@
     <pubDate>Thu, 22 Jun 2023 01:12:32 -0300</pubDate>
     <author>Alan Cortez</author>
     <guid>http://example.org/posts/inventorymanager/</guid>
-    <description><![CDATA[Inventory and product management website. This project was developed for the &ldquo;Codo a Codo - Django&rdquo; course together with Omar Scarazzato. It was made with Django Framework and PostgreSQL. Check out the GitHub repository and the website.
+    <description><![CDATA[Inventory and product management website.  Check out the GitHub repository and the website.
+ This project was developed for the &ldquo;Codo a Codo - Django&rdquo; course together with Omar Scarazzato. It was made with Django Framework and PostgreSQL.
 The website allows the stock management of a warehouse. There are 3 levels of users:
  Employee (Level 1, mostly read permissions). Supervisor (Level 2, read and write permissions). Administrator (Level 3, read and write permissions and access to Django&rsquo;s admin panel).]]></description>
 </item>

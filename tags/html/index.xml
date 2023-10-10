@@ -1,0 +1,25 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>HTML - Tag - Alan Cortez</title>
+        <link>http://example.org/tags/html/</link>
+        <description>HTML - Tag - Alan Cortez</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 02 Oct 2023 01:12:32 -0300</lastBuildDate><atom:link href="http://example.org/tags/html/" rel="self" type="application/rss+xml" /><item>
+    <title>Tribute to PureVolume</title>
+    <link>http://example.org/posts/sujetopurevolume/</link>
+    <pubDate>Mon, 02 Oct 2023 01:12:32 -0300</pubDate>
+    <author>Alan Cortez</author>
+    <guid>http://example.org/posts/sujetopurevolume/</guid>
+    <description><![CDATA[Tribute to PureVolume  Check out the GitHub repository and the website.
+ PureVolume was a website for the discovery and promotion of new music and emerging artists. The mission was to give artists a new promotion tool. The site shut down on June 30, 2018. Luckily it was archived by Wayback Machine.
+This is a profile page of a band. For the music player is used this one by Zakari Abdessamad.]]></description>
+</item>
+<item>
+    <title>This site!</title>
+    <link>http://example.org/posts/thissite/</link>
+    <pubDate>Sun, 01 Oct 2023 01:12:32 -0300</pubDate>
+    <author>Alan Cortez</author>
+    <guid>http://example.org/posts/thissite/</guid>
+    <description><![CDATA[Personal site A blog-like site to upload projects and stuff I&rsquo;ve been working on. Made with Hugo Framework, using Loveit theme and some personal tweaks and changes.]]></description>
+</item>
+</channel>
+</rss>
