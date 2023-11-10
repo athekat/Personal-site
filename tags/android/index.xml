@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Android - Tag - Alan Cortez</title>
+        <link>http://example.org/tags/android/</link>
+        <description>Android - Tag - Alan Cortez</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 22 Jun 2022 01:12:32 -0300</lastBuildDate><atom:link href="http://example.org/tags/android/" rel="self" type="application/rss+xml" /><item>
+    <title>Flashing Samsung Galaxy S7 Edge SM-G935FD</title>
+    <link>http://example.org/posts/flashinggalaxy/</link>
+    <pubDate>Wed, 22 Jun 2022 01:12:32 -0300</pubDate>
+    <author>Alan Cortez</author>
+    <guid>http://example.org/posts/flashinggalaxy/</guid>
+    <description><![CDATA[Flashing Samsung Galaxy S7 Edge SM-G935FD Requirements:  Samsung USB Drivers Odin3 V3.13 TWRP Files for SD Card  Magisk No-verity-opt-encrypt RMM-State-Bypass Samsung Anti Root Removal    Procedure  Install drivers on computer. On phone:  Enable Developer Options Enable USB Debugging OEM Unlock   Open Odin  Untick Auto Reboot AP &ndash;&gt; Select TWRP Start phone in Download Mode (Vol Down + Menu + Power Button) Start   Restart phone in Recovery Mode (Vol up + Menu + Power Button)  Wipe &ndash;&gt; Wipe Data   Copy Files from SD Card Folder to Phone From TWRP Install in this order:  No-verity-opt-encrypt RMM-State-Bypass Magisk Samsung Anti Root Removal   Reboot &ndash;&gt; System &ndash;&gt; Don&rsquo;t install Update Magisk from official site.]]></description>
+</item>
+</channel>
+</rss>
