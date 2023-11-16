@@ -1,17 +1,23 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>Purevolume - Tag - Alan Cortez</title>
-        <link>http://example.org/tags/purevolume/</link>
-        <description>Purevolume - Tag - Alan Cortez</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 02 Oct 2023 01:12:32 -0300</lastBuildDate><atom:link href="http://example.org/tags/purevolume/" rel="self" type="application/rss+xml" /><item>
-    <title>Tribute to PureVolume</title>
-    <link>http://example.org/posts/sujetopurevolume/</link>
-    <pubDate>Mon, 02 Oct 2023 01:12:32 -0300</pubDate>
-    <author>Alan Cortez</author>
-    <guid>http://example.org/posts/sujetopurevolume/</guid>
-    <description><![CDATA[Tribute to PureVolume  Check out the GitHub repository and the website.
- PureVolume was a website for the discovery and promotion of new music and emerging artists. The mission was to give artists a new promotion tool. The site shut down on June 30, 2018. Luckily it was archived by Wayback Machine.
-This is a profile page of a band. For the music player is used this one by Zakari Abdessamad.]]></description>
-</item>
-</channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Purevolume on Website of Jane Doe</title>
+    <link>https://example.com/tags/purevolume/</link>
+    <description>Recent content in Purevolume on Website of Jane Doe</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 02 Oct 2023 01:12:32 -0300</lastBuildDate><atom:link href="https://example.com/tags/purevolume/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PureVolume clone profile.</title>
+      <link>https://example.com/post/sujetopurevolume/</link>
+      <pubDate>Mon, 02 Oct 2023 01:12:32 -0300</pubDate>
+      
+      <guid>https://example.com/post/sujetopurevolume/</guid>
+      
+        <description>Check out the GitHub repository and the website.
+ PureVolume was a website for the discovery and promotion of new music and emerging artists.</description>
+      
+    </item>
+    
+  </channel>
 </rss>
