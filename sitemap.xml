@@ -3,7 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://example.com/</loc>
-    <lastmod>2023-11-15T01:12:32-03:00</lastmod>
+    <lastmod>2023-11-16T00:24:52-03:00</lastmod>
+  </url><url>
+    <loc>https://example.com/tags/ctf/</loc>
+    <lastmod>2023-11-16T00:24:52-03:00</lastmod>
+  </url><url>
+    <loc>https://example.com/post/</loc>
+    <lastmod>2023-11-16T00:24:52-03:00</lastmod>
+  </url><url>
+    <loc>https://example.com/tags/</loc>
+    <lastmod>2023-11-16T00:24:52-03:00</lastmod>
+  </url><url>
+    <loc>https://example.com/tags/tryhackme/</loc>
+    <lastmod>2023-11-16T00:24:52-03:00</lastmod>
+  </url><url>
+    <loc>https://example.com/tags/walkthrough/</loc>
+    <lastmod>2023-11-16T00:24:52-03:00</lastmod>
+  </url><url>
+    <loc>https://example.com/post/simplectf/</loc>
+    <lastmod>2023-11-16T00:24:52-03:00</lastmod>
   </url><url>
     <loc>https://example.com/tags/cc/</loc>
     <lastmod>2023-11-15T01:12:32-03:00</lastmod>
@@ -18,12 +36,6 @@
     <lastmod>2023-11-15T01:12:32-03:00</lastmod>
   </url><url>
     <loc>https://example.com/post/isc2cc/</loc>
-    <lastmod>2023-11-15T01:12:32-03:00</lastmod>
-  </url><url>
-    <loc>https://example.com/post/</loc>
-    <lastmod>2023-11-15T01:12:32-03:00</lastmod>
-  </url><url>
-    <loc>https://example.com/tags/</loc>
     <lastmod>2023-11-15T01:12:32-03:00</lastmod>
   </url><url>
     <loc>https://example.com/tags/css/</loc>
