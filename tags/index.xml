@@ -6,11 +6,11 @@
     <description>Recent content in Tags on Website of Jane Doe</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 16 Nov 2023 00:24:52 -0300</lastBuildDate><atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Nov 2023 00:24:52 -0300</lastBuildDate><atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ctf</title>
       <link>https://example.com/tags/ctf/</link>
-      <pubDate>Thu, 16 Nov 2023 00:24:52 -0300</pubDate>
+      <pubDate>Mon, 20 Nov 2023 00:24:52 -0300</pubDate>
       
       <guid>https://example.com/tags/ctf/</guid>
       
@@ -21,7 +21,7 @@
     <item>
       <title>TryHackMe</title>
       <link>https://example.com/tags/tryhackme/</link>
-      <pubDate>Thu, 16 Nov 2023 00:24:52 -0300</pubDate>
+      <pubDate>Mon, 20 Nov 2023 00:24:52 -0300</pubDate>
       
       <guid>https://example.com/tags/tryhackme/</guid>
       
@@ -32,7 +32,7 @@
     <item>
       <title>Walkthrough</title>
       <link>https://example.com/tags/walkthrough/</link>
-      <pubDate>Thu, 16 Nov 2023 00:24:52 -0300</pubDate>
+      <pubDate>Mon, 20 Nov 2023 00:24:52 -0300</pubDate>
       
       <guid>https://example.com/tags/walkthrough/</guid>
       
