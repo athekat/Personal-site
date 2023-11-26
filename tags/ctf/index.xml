@@ -25,7 +25,20 @@
       
       <guid>https://example.com/post/simplectf/</guid>
       
-        <description>Beginner level ctf. As usual, first step is to run nmap to find open ports.</description>
+        <description>Beginner level ctf.  Link to the room
+ As usual, the first step is to run nmap to find open ports.</description>
+      
+    </item>
+    
+    <item>
+      <title>Walkthrough: Basic Pentesting - TryHackMe.</title>
+      <link>https://example.com/post/basicpentesting/</link>
+      <pubDate>Sun, 12 Nov 2023 00:24:52 -0300</pubDate>
+      
+      <guid>https://example.com/post/basicpentesting/</guid>
+      
+        <description>Link to the room
+ In this set of tasks we&amp;rsquo;ll be using:</description>
       
     </item>
     
