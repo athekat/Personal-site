@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Website of Jane Doe</title>
-    <link>https://example.com/</link>
-    <description>Recent content on Website of Jane Doe</description>
+    <title>Alan Cortez</title>
+    <link>https://alan.com.ar/</link>
+    <description>Recent content on Alan Cortez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 20 Nov 2023 00:24:52 -0300</lastBuildDate><atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Nov 2023 00:24:52 -0300</lastBuildDate><atom:link href="https://alan.com.ar/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Walkthrough: Pickle Rick CTF - TryHackMe.</title>
-      <link>https://example.com/post/picklerickctf/</link>
+      <link>https://alan.com.ar/post/picklerickctf/</link>
       <pubDate>Mon, 20 Nov 2023 00:24:52 -0300</pubDate>
       
-      <guid>https://example.com/post/picklerickctf/</guid>
+      <guid>https://alan.com.ar/post/picklerickctf/</guid>
       
         <description>A Rick and Morty CTF. Help turn Rick back into a human!</description>
       
@@ -20,10 +20,10 @@
     
     <item>
       <title>Walkthrough: Simple CTF - TryHackMe.</title>
-      <link>https://example.com/post/simplectf/</link>
+      <link>https://alan.com.ar/post/simplectf/</link>
       <pubDate>Thu, 16 Nov 2023 00:24:52 -0300</pubDate>
       
-      <guid>https://example.com/post/simplectf/</guid>
+      <guid>https://alan.com.ar/post/simplectf/</guid>
       
         <description>Beginner level ctf.  Link to the room
  As usual, the first step is to run nmap to find open ports.</description>
@@ -32,10 +32,10 @@
     
     <item>
       <title>ISC2 Certified in Cybersecurity (CC).</title>
-      <link>https://example.com/post/isc2cc/</link>
+      <link>https://alan.com.ar/post/isc2cc/</link>
       <pubDate>Wed, 15 Nov 2023 01:12:32 -0300</pubDate>
       
-      <guid>https://example.com/post/isc2cc/</guid>
+      <guid>https://alan.com.ar/post/isc2cc/</guid>
       
         <description>ISC2 Certified in Cybersecurity is a foundational cybersecurity certification designed to help recipients build a pathway to a rewarding career in cybersecurity.</description>
       
@@ -43,10 +43,10 @@
     
     <item>
       <title>Walkthrough: Basic Pentesting - TryHackMe.</title>
-      <link>https://example.com/post/basicpentesting/</link>
+      <link>https://alan.com.ar/post/basicpentesting/</link>
       <pubDate>Sun, 12 Nov 2023 00:24:52 -0300</pubDate>
       
-      <guid>https://example.com/post/basicpentesting/</guid>
+      <guid>https://alan.com.ar/post/basicpentesting/</guid>
       
         <description>Link to the room
  In this set of tasks we&amp;rsquo;ll be using:</description>
@@ -55,10 +55,10 @@
     
     <item>
       <title>PureVolume clone profile.</title>
-      <link>https://example.com/post/sujetopurevolume/</link>
+      <link>https://alan.com.ar/post/sujetopurevolume/</link>
       <pubDate>Mon, 02 Oct 2023 01:12:32 -0300</pubDate>
       
-      <guid>https://example.com/post/sujetopurevolume/</guid>
+      <guid>https://alan.com.ar/post/sujetopurevolume/</guid>
       
         <description>Check out the GitHub repository and the website.
  PureVolume was a website for the discovery and promotion of new music and emerging artists.</description>
@@ -67,10 +67,10 @@
     
     <item>
       <title>This site.</title>
-      <link>https://example.com/post/thissite/</link>
+      <link>https://alan.com.ar/post/thissite/</link>
       <pubDate>Sun, 01 Oct 2023 01:12:32 -0300</pubDate>
       
-      <guid>https://example.com/post/thissite/</guid>
+      <guid>https://alan.com.ar/post/thissite/</guid>
       
         <description>A blog-like site to upload projects and stuff I&amp;rsquo;ve been working on.</description>
       
@@ -78,10 +78,10 @@
     
     <item>
       <title>Inventory Management Website.</title>
-      <link>https://example.com/post/inventorymanager/</link>
+      <link>https://alan.com.ar/post/inventorymanager/</link>
       <pubDate>Thu, 22 Jun 2023 01:12:32 -0300</pubDate>
       
-      <guid>https://example.com/post/inventorymanager/</guid>
+      <guid>https://alan.com.ar/post/inventorymanager/</guid>
       
         <description>Check out the GitHub repository and the website.
  This project was developed for the &amp;ldquo;Codo a Codo - Django&amp;rdquo; course together with Omar Scarazzato.</description>
@@ -90,10 +90,10 @@
     
     <item>
       <title>Age Of Carpincho Website.</title>
-      <link>https://example.com/post/ageofcarpincho/</link>
+      <link>https://alan.com.ar/post/ageofcarpincho/</link>
       <pubDate>Wed, 16 Feb 2022 00:56:54 -0300</pubDate>
       
-      <guid>https://example.com/post/ageofcarpincho/</guid>
+      <guid>https://alan.com.ar/post/ageofcarpincho/</guid>
       
         <description>Check out the GitHub repository and the website.
  A site made with Angular framework that shows Plotly graphs of Age Of Empires II data.</description>
@@ -102,10 +102,10 @@
     
     <item>
       <title>Binance P2P Python Script.</title>
-      <link>https://example.com/post/binancep2p/</link>
+      <link>https://alan.com.ar/post/binancep2p/</link>
       <pubDate>Tue, 07 Dec 2021 23:03:29 -0300</pubDate>
       
-      <guid>https://example.com/post/binancep2p/</guid>
+      <guid>https://alan.com.ar/post/binancep2p/</guid>
       
         <description>Check out the GitHub repository.
  One of my first Python scripts.</description>
@@ -114,10 +114,10 @@
     
     <item>
       <title>Age of Empires II: R Script: Most used civilizations.</title>
-      <link>https://example.com/post/aoemostusedciv/</link>
+      <link>https://alan.com.ar/post/aoemostusedciv/</link>
       <pubDate>Fri, 20 Aug 2021 00:45:06 -0300</pubDate>
       
-      <guid>https://example.com/post/aoemostusedciv/</guid>
+      <guid>https://alan.com.ar/post/aoemostusedciv/</guid>
       
         <description>Check out the GitHub repository.
  R script to get the last 10 matches (using aoe2.</description>
@@ -126,10 +126,10 @@
     
     <item>
       <title>Age of Empires II: R Script: Compare players&#39; ratings.</title>
-      <link>https://example.com/post/aoeeloplot/</link>
+      <link>https://alan.com.ar/post/aoeeloplot/</link>
       <pubDate>Mon, 19 Jul 2021 00:24:52 -0300</pubDate>
       
-      <guid>https://example.com/post/aoeeloplot/</guid>
+      <guid>https://alan.com.ar/post/aoeeloplot/</guid>
       
         <description>Check out the GitHub repository.
  R script that outputs a Plotly graph comparing player&amp;rsquo;s elo rating across time, using aoe2.</description>
@@ -138,10 +138,10 @@
     
     <item>
       <title></title>
-      <link>https://example.com/imprint/</link>
+      <link>https://alan.com.ar/imprint/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/imprint/</guid>
+      <guid>https://alan.com.ar/imprint/</guid>
       
         <description>Legal Disclosure Information in accordance with the applicable law
 Jane Doe</description>

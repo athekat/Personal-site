@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>scripts on Website of Jane Doe</title>
-    <link>https://example.com/tags/scripts/</link>
-    <description>Recent content in scripts on Website of Jane Doe</description>
+    <title>scripts on Alan Cortez</title>
+    <link>https://alan.com.ar/tags/scripts/</link>
+    <description>Recent content in scripts on Alan Cortez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 07 Dec 2021 23:03:29 -0300</lastBuildDate><atom:link href="https://example.com/tags/scripts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 Dec 2021 23:03:29 -0300</lastBuildDate><atom:link href="https://alan.com.ar/tags/scripts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Binance P2P Python Script.</title>
-      <link>https://example.com/post/binancep2p/</link>
+      <link>https://alan.com.ar/post/binancep2p/</link>
       <pubDate>Tue, 07 Dec 2021 23:03:29 -0300</pubDate>
       
-      <guid>https://example.com/post/binancep2p/</guid>
+      <guid>https://alan.com.ar/post/binancep2p/</guid>
       
         <description>Check out the GitHub repository.
  One of my first Python scripts.</description>
@@ -21,10 +21,10 @@
     
     <item>
       <title>Age of Empires II: R Script: Most used civilizations.</title>
-      <link>https://example.com/post/aoemostusedciv/</link>
+      <link>https://alan.com.ar/post/aoemostusedciv/</link>
       <pubDate>Fri, 20 Aug 2021 00:45:06 -0300</pubDate>
       
-      <guid>https://example.com/post/aoemostusedciv/</guid>
+      <guid>https://alan.com.ar/post/aoemostusedciv/</guid>
       
         <description>Check out the GitHub repository.
  R script to get the last 10 matches (using aoe2.</description>
@@ -33,10 +33,10 @@
     
     <item>
       <title>Age of Empires II: R Script: Compare players&#39; ratings.</title>
-      <link>https://example.com/post/aoeeloplot/</link>
+      <link>https://alan.com.ar/post/aoeeloplot/</link>
       <pubDate>Mon, 19 Jul 2021 00:24:52 -0300</pubDate>
       
-      <guid>https://example.com/post/aoeeloplot/</guid>
+      <guid>https://alan.com.ar/post/aoeeloplot/</guid>
       
         <description>Check out the GitHub repository.
  R script that outputs a Plotly graph comparing player&amp;rsquo;s elo rating across time, using aoe2.</description>

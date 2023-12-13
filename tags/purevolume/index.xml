@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Purevolume on Website of Jane Doe</title>
-    <link>https://example.com/tags/purevolume/</link>
-    <description>Recent content in Purevolume on Website of Jane Doe</description>
+    <title>Purevolume on Alan Cortez</title>
+    <link>https://alan.com.ar/tags/purevolume/</link>
+    <description>Recent content in Purevolume on Alan Cortez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 02 Oct 2023 01:12:32 -0300</lastBuildDate><atom:link href="https://example.com/tags/purevolume/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Oct 2023 01:12:32 -0300</lastBuildDate><atom:link href="https://alan.com.ar/tags/purevolume/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PureVolume clone profile.</title>
-      <link>https://example.com/post/sujetopurevolume/</link>
+      <link>https://alan.com.ar/post/sujetopurevolume/</link>
       <pubDate>Mon, 02 Oct 2023 01:12:32 -0300</pubDate>
       
-      <guid>https://example.com/post/sujetopurevolume/</guid>
+      <guid>https://alan.com.ar/post/sujetopurevolume/</guid>
       
         <description>Check out the GitHub repository and the website.
  PureVolume was a website for the discovery and promotion of new music and emerging artists.</description>

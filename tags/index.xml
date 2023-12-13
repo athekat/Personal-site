@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Website of Jane Doe</title>
-    <link>https://example.com/tags/</link>
-    <description>Recent content in Tags on Website of Jane Doe</description>
+    <title>Tags on Alan Cortez</title>
+    <link>https://alan.com.ar/tags/</link>
+    <description>Recent content in Tags on Alan Cortez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 20 Nov 2023 00:24:52 -0300</lastBuildDate><atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Nov 2023 00:24:52 -0300</lastBuildDate><atom:link href="https://alan.com.ar/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ctf</title>
-      <link>https://example.com/tags/ctf/</link>
+      <link>https://alan.com.ar/tags/ctf/</link>
       <pubDate>Mon, 20 Nov 2023 00:24:52 -0300</pubDate>
       
-      <guid>https://example.com/tags/ctf/</guid>
+      <guid>https://alan.com.ar/tags/ctf/</guid>
       
         <description></description>
       
@@ -20,10 +20,10 @@
     
     <item>
       <title>TryHackMe</title>
-      <link>https://example.com/tags/tryhackme/</link>
+      <link>https://alan.com.ar/tags/tryhackme/</link>
       <pubDate>Mon, 20 Nov 2023 00:24:52 -0300</pubDate>
       
-      <guid>https://example.com/tags/tryhackme/</guid>
+      <guid>https://alan.com.ar/tags/tryhackme/</guid>
       
         <description></description>
       
@@ -31,10 +31,10 @@
     
     <item>
       <title>Walkthrough</title>
-      <link>https://example.com/tags/walkthrough/</link>
+      <link>https://alan.com.ar/tags/walkthrough/</link>
       <pubDate>Mon, 20 Nov 2023 00:24:52 -0300</pubDate>
       
-      <guid>https://example.com/tags/walkthrough/</guid>
+      <guid>https://alan.com.ar/tags/walkthrough/</guid>
       
         <description></description>
       
@@ -42,10 +42,10 @@
     
     <item>
       <title>CC</title>
-      <link>https://example.com/tags/cc/</link>
+      <link>https://alan.com.ar/tags/cc/</link>
       <pubDate>Wed, 15 Nov 2023 01:12:32 -0300</pubDate>
       
-      <guid>https://example.com/tags/cc/</guid>
+      <guid>https://alan.com.ar/tags/cc/</guid>
       
         <description></description>
       
@@ -53,10 +53,10 @@
     
     <item>
       <title>Certification</title>
-      <link>https://example.com/tags/certification/</link>
+      <link>https://alan.com.ar/tags/certification/</link>
       <pubDate>Wed, 15 Nov 2023 01:12:32 -0300</pubDate>
       
-      <guid>https://example.com/tags/certification/</guid>
+      <guid>https://alan.com.ar/tags/certification/</guid>
       
         <description></description>
       
@@ -64,10 +64,10 @@
     
     <item>
       <title>Cybersecurity</title>
-      <link>https://example.com/tags/cybersecurity/</link>
+      <link>https://alan.com.ar/tags/cybersecurity/</link>
       <pubDate>Wed, 15 Nov 2023 01:12:32 -0300</pubDate>
       
-      <guid>https://example.com/tags/cybersecurity/</guid>
+      <guid>https://alan.com.ar/tags/cybersecurity/</guid>
       
         <description></description>
       
@@ -75,10 +75,10 @@
     
     <item>
       <title>ISC2</title>
-      <link>https://example.com/tags/isc2/</link>
+      <link>https://alan.com.ar/tags/isc2/</link>
       <pubDate>Wed, 15 Nov 2023 01:12:32 -0300</pubDate>
       
-      <guid>https://example.com/tags/isc2/</guid>
+      <guid>https://alan.com.ar/tags/isc2/</guid>
       
         <description></description>
       
@@ -86,10 +86,10 @@
     
     <item>
       <title>CSS</title>
-      <link>https://example.com/tags/css/</link>
+      <link>https://alan.com.ar/tags/css/</link>
       <pubDate>Mon, 02 Oct 2023 01:12:32 -0300</pubDate>
       
-      <guid>https://example.com/tags/css/</guid>
+      <guid>https://alan.com.ar/tags/css/</guid>
       
         <description></description>
       
@@ -97,10 +97,10 @@
     
     <item>
       <title>HTML</title>
-      <link>https://example.com/tags/html/</link>
+      <link>https://alan.com.ar/tags/html/</link>
       <pubDate>Mon, 02 Oct 2023 01:12:32 -0300</pubDate>
       
-      <guid>https://example.com/tags/html/</guid>
+      <guid>https://alan.com.ar/tags/html/</guid>
       
         <description></description>
       
@@ -108,10 +108,10 @@
     
     <item>
       <title>Purevolume</title>
-      <link>https://example.com/tags/purevolume/</link>
+      <link>https://alan.com.ar/tags/purevolume/</link>
       <pubDate>Mon, 02 Oct 2023 01:12:32 -0300</pubDate>
       
-      <guid>https://example.com/tags/purevolume/</guid>
+      <guid>https://alan.com.ar/tags/purevolume/</guid>
       
         <description></description>
       
@@ -119,10 +119,10 @@
     
     <item>
       <title>Blog</title>
-      <link>https://example.com/tags/blog/</link>
+      <link>https://alan.com.ar/tags/blog/</link>
       <pubDate>Sun, 01 Oct 2023 01:12:32 -0300</pubDate>
       
-      <guid>https://example.com/tags/blog/</guid>
+      <guid>https://alan.com.ar/tags/blog/</guid>
       
         <description></description>
       
@@ -130,10 +130,10 @@
     
     <item>
       <title>Hugo</title>
-      <link>https://example.com/tags/hugo/</link>
+      <link>https://alan.com.ar/tags/hugo/</link>
       <pubDate>Sun, 01 Oct 2023 01:12:32 -0300</pubDate>
       
-      <guid>https://example.com/tags/hugo/</guid>
+      <guid>https://alan.com.ar/tags/hugo/</guid>
       
         <description></description>
       
@@ -141,10 +141,10 @@
     
     <item>
       <title>Django</title>
-      <link>https://example.com/tags/django/</link>
+      <link>https://alan.com.ar/tags/django/</link>
       <pubDate>Thu, 22 Jun 2023 01:12:32 -0300</pubDate>
       
-      <guid>https://example.com/tags/django/</guid>
+      <guid>https://alan.com.ar/tags/django/</guid>
       
         <description></description>
       
@@ -152,10 +152,10 @@
     
     <item>
       <title>PostgreSQL</title>
-      <link>https://example.com/tags/postgresql/</link>
+      <link>https://alan.com.ar/tags/postgresql/</link>
       <pubDate>Thu, 22 Jun 2023 01:12:32 -0300</pubDate>
       
-      <guid>https://example.com/tags/postgresql/</guid>
+      <guid>https://alan.com.ar/tags/postgresql/</guid>
       
         <description></description>
       
@@ -163,10 +163,10 @@
     
     <item>
       <title>python</title>
-      <link>https://example.com/tags/python/</link>
+      <link>https://alan.com.ar/tags/python/</link>
       <pubDate>Thu, 22 Jun 2023 01:12:32 -0300</pubDate>
       
-      <guid>https://example.com/tags/python/</guid>
+      <guid>https://alan.com.ar/tags/python/</guid>
       
         <description></description>
       
@@ -174,10 +174,10 @@
     
     <item>
       <title>Website</title>
-      <link>https://example.com/tags/website/</link>
+      <link>https://alan.com.ar/tags/website/</link>
       <pubDate>Thu, 22 Jun 2023 01:12:32 -0300</pubDate>
       
-      <guid>https://example.com/tags/website/</guid>
+      <guid>https://alan.com.ar/tags/website/</guid>
       
         <description></description>
       
@@ -185,10 +185,10 @@
     
     <item>
       <title>Age Of Empires II</title>
-      <link>https://example.com/tags/age-of-empires-ii/</link>
+      <link>https://alan.com.ar/tags/age-of-empires-ii/</link>
       <pubDate>Wed, 16 Feb 2022 00:56:54 -0300</pubDate>
       
-      <guid>https://example.com/tags/age-of-empires-ii/</guid>
+      <guid>https://alan.com.ar/tags/age-of-empires-ii/</guid>
       
         <description></description>
       
@@ -196,10 +196,10 @@
     
     <item>
       <title>Angular</title>
-      <link>https://example.com/tags/angular/</link>
+      <link>https://alan.com.ar/tags/angular/</link>
       <pubDate>Wed, 16 Feb 2022 00:56:54 -0300</pubDate>
       
-      <guid>https://example.com/tags/angular/</guid>
+      <guid>https://alan.com.ar/tags/angular/</guid>
       
         <description></description>
       
@@ -207,10 +207,10 @@
     
     <item>
       <title>cryptocurrencies</title>
-      <link>https://example.com/tags/cryptocurrencies/</link>
+      <link>https://alan.com.ar/tags/cryptocurrencies/</link>
       <pubDate>Tue, 07 Dec 2021 23:03:29 -0300</pubDate>
       
-      <guid>https://example.com/tags/cryptocurrencies/</guid>
+      <guid>https://alan.com.ar/tags/cryptocurrencies/</guid>
       
         <description></description>
       
@@ -218,10 +218,10 @@
     
     <item>
       <title>scripts</title>
-      <link>https://example.com/tags/scripts/</link>
+      <link>https://alan.com.ar/tags/scripts/</link>
       <pubDate>Tue, 07 Dec 2021 23:03:29 -0300</pubDate>
       
-      <guid>https://example.com/tags/scripts/</guid>
+      <guid>https://alan.com.ar/tags/scripts/</guid>
       
         <description></description>
       
@@ -229,10 +229,10 @@
     
     <item>
       <title>R</title>
-      <link>https://example.com/tags/r/</link>
+      <link>https://alan.com.ar/tags/r/</link>
       <pubDate>Fri, 20 Aug 2021 00:45:06 -0300</pubDate>
       
-      <guid>https://example.com/tags/r/</guid>
+      <guid>https://alan.com.ar/tags/r/</guid>
       
         <description></description>
       

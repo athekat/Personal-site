@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>CSS on Website of Jane Doe</title>
-    <link>https://example.com/tags/css/</link>
-    <description>Recent content in CSS on Website of Jane Doe</description>
+    <title>CSS on Alan Cortez</title>
+    <link>https://alan.com.ar/tags/css/</link>
+    <description>Recent content in CSS on Alan Cortez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 02 Oct 2023 01:12:32 -0300</lastBuildDate><atom:link href="https://example.com/tags/css/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Oct 2023 01:12:32 -0300</lastBuildDate><atom:link href="https://alan.com.ar/tags/css/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PureVolume clone profile.</title>
-      <link>https://example.com/post/sujetopurevolume/</link>
+      <link>https://alan.com.ar/post/sujetopurevolume/</link>
       <pubDate>Mon, 02 Oct 2023 01:12:32 -0300</pubDate>
       
-      <guid>https://example.com/post/sujetopurevolume/</guid>
+      <guid>https://alan.com.ar/post/sujetopurevolume/</guid>
       
         <description>Check out the GitHub repository and the website.
  PureVolume was a website for the discovery and promotion of new music and emerging artists.</description>
@@ -21,10 +21,10 @@
     
     <item>
       <title>This site.</title>
-      <link>https://example.com/post/thissite/</link>
+      <link>https://alan.com.ar/post/thissite/</link>
       <pubDate>Sun, 01 Oct 2023 01:12:32 -0300</pubDate>
       
-      <guid>https://example.com/post/thissite/</guid>
+      <guid>https://alan.com.ar/post/thissite/</guid>
       
         <description>A blog-like site to upload projects and stuff I&amp;rsquo;ve been working on.</description>
       

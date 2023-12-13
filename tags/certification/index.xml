@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Certification on Website of Jane Doe</title>
-    <link>https://example.com/tags/certification/</link>
-    <description>Recent content in Certification on Website of Jane Doe</description>
+    <title>Certification on Alan Cortez</title>
+    <link>https://alan.com.ar/tags/certification/</link>
+    <description>Recent content in Certification on Alan Cortez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 15 Nov 2023 01:12:32 -0300</lastBuildDate><atom:link href="https://example.com/tags/certification/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 15 Nov 2023 01:12:32 -0300</lastBuildDate><atom:link href="https://alan.com.ar/tags/certification/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ISC2 Certified in Cybersecurity (CC).</title>
-      <link>https://example.com/post/isc2cc/</link>
+      <link>https://alan.com.ar/post/isc2cc/</link>
       <pubDate>Wed, 15 Nov 2023 01:12:32 -0300</pubDate>
       
-      <guid>https://example.com/post/isc2cc/</guid>
+      <guid>https://alan.com.ar/post/isc2cc/</guid>
       
         <description>ISC2 Certified in Cybersecurity is a foundational cybersecurity certification designed to help recipients build a pathway to a rewarding career in cybersecurity.</description>
       

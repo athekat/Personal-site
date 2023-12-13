@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Walkthrough on Website of Jane Doe</title>
-    <link>https://example.com/tags/walkthrough/</link>
-    <description>Recent content in Walkthrough on Website of Jane Doe</description>
+    <title>Walkthrough on Alan Cortez</title>
+    <link>https://alan.com.ar/tags/walkthrough/</link>
+    <description>Recent content in Walkthrough on Alan Cortez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 20 Nov 2023 00:24:52 -0300</lastBuildDate><atom:link href="https://example.com/tags/walkthrough/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Nov 2023 00:24:52 -0300</lastBuildDate><atom:link href="https://alan.com.ar/tags/walkthrough/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Walkthrough: Pickle Rick CTF - TryHackMe.</title>
-      <link>https://example.com/post/picklerickctf/</link>
+      <link>https://alan.com.ar/post/picklerickctf/</link>
       <pubDate>Mon, 20 Nov 2023 00:24:52 -0300</pubDate>
       
-      <guid>https://example.com/post/picklerickctf/</guid>
+      <guid>https://alan.com.ar/post/picklerickctf/</guid>
       
         <description>A Rick and Morty CTF. Help turn Rick back into a human!</description>
       
@@ -20,10 +20,10 @@
     
     <item>
       <title>Walkthrough: Simple CTF - TryHackMe.</title>
-      <link>https://example.com/post/simplectf/</link>
+      <link>https://alan.com.ar/post/simplectf/</link>
       <pubDate>Thu, 16 Nov 2023 00:24:52 -0300</pubDate>
       
-      <guid>https://example.com/post/simplectf/</guid>
+      <guid>https://alan.com.ar/post/simplectf/</guid>
       
         <description>Beginner level ctf.  Link to the room
  As usual, the first step is to run nmap to find open ports.</description>
@@ -32,10 +32,10 @@
     
     <item>
       <title>Walkthrough: Basic Pentesting - TryHackMe.</title>
-      <link>https://example.com/post/basicpentesting/</link>
+      <link>https://alan.com.ar/post/basicpentesting/</link>
       <pubDate>Sun, 12 Nov 2023 00:24:52 -0300</pubDate>
       
-      <guid>https://example.com/post/basicpentesting/</guid>
+      <guid>https://alan.com.ar/post/basicpentesting/</guid>
       
         <description>Link to the room
  In this set of tasks we&amp;rsquo;ll be using:</description>
