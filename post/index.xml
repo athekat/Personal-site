@@ -6,7 +6,19 @@
     <description>Recent content in Posts on Alan Cortez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 20 Nov 2023 00:24:52 -0300</lastBuildDate><atom:link href="https://alan.com.ar/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 23 Jan 2024 18:56:54 -0300</lastBuildDate><atom:link href="https://alan.com.ar/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AoE - Most Recent Match.</title>
+      <link>https://alan.com.ar/post/aoemostrecentmatch/</link>
+      <pubDate>Tue, 23 Jan 2024 18:56:54 -0300</pubDate>
+      
+      <guid>https://alan.com.ar/post/aoemostrecentmatch/</guid>
+      
+        <description>Check out the GitHub repository.
+ A Python script that uses LibreMatch API to output information about a player&amp;rsquo;s most recent match in Age Of Empires II DE.</description>
+      
+    </item>
+    
     <item>
       <title>Walkthrough: Pickle Rick CTF - TryHackMe.</title>
       <link>https://alan.com.ar/post/picklerickctf/</link>

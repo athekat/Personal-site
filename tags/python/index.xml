@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>python on Alan Cortez</title>
+    <title>Python on Alan Cortez</title>
     <link>https://alan.com.ar/tags/python/</link>
-    <description>Recent content in python on Alan Cortez</description>
+    <description>Recent content in Python on Alan Cortez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 22 Jun 2023 01:12:32 -0300</lastBuildDate><atom:link href="https://alan.com.ar/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 23 Jan 2024 18:56:54 -0300</lastBuildDate><atom:link href="https://alan.com.ar/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AoE - Most Recent Match.</title>
+      <link>https://alan.com.ar/post/aoemostrecentmatch/</link>
+      <pubDate>Tue, 23 Jan 2024 18:56:54 -0300</pubDate>
+      
+      <guid>https://alan.com.ar/post/aoemostrecentmatch/</guid>
+      
+        <description>Check out the GitHub repository.
+ A Python script that uses LibreMatch API to output information about a player&amp;rsquo;s most recent match in Age Of Empires II DE.</description>
+      
+    </item>
+    
     <item>
       <title>Inventory Management Website.</title>
       <link>https://alan.com.ar/post/inventorymanager/</link>
