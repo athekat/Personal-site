@@ -6,9 +6,21 @@
     <description>Recent content in Posts on Alan Cortez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 23 Jan 2024 18:56:54 -0300</lastBuildDate><atom:link href="https://alan.com.ar/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 07 Feb 2024 00:45:06 -0800</lastBuildDate><atom:link href="https://alan.com.ar/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>AoE - Most Recent Match.</title>
+      <title>Age of Empires II - Most used civilizations (Python Script).</title>
+      <link>https://alan.com.ar/post/aoemostusedciv-python/</link>
+      <pubDate>Wed, 07 Feb 2024 00:45:06 -0800</pubDate>
+      
+      <guid>https://alan.com.ar/post/aoemostusedciv-python/</guid>
+      
+        <description>Check out the GitHub repository.
+ A Python script that uses LibreMatch API to output a Plotly pie chart of the civs used.</description>
+      
+    </item>
+    
+    <item>
+      <title>Age of Empires II - Most Recent Match (Python Script).</title>
       <link>https://alan.com.ar/post/aoemostrecentmatch/</link>
       <pubDate>Tue, 23 Jan 2024 18:56:54 -0300</pubDate>
       
@@ -101,6 +113,28 @@
     </item>
     
     <item>
+      <title>Flashing Samsung Galaxy S7 Edge SM-G935FD</title>
+      <link>https://alan.com.ar/post/flashinggalaxy/</link>
+      <pubDate>Wed, 22 Jun 2022 01:12:32 -0300</pubDate>
+      
+      <guid>https://alan.com.ar/post/flashinggalaxy/</guid>
+      
+        <description>Requirements:  Samsung USB Drivers Odin3 V3.13 TWRP Files for SD Card  Magisk No-verity-opt-encrypt RMM-State-Bypass Samsung Anti Root Removal    Procedure  Install drivers on computer.</description>
+      
+    </item>
+    
+    <item>
+      <title>PS2 Tools</title>
+      <link>https://alan.com.ar/post/ps2tools/</link>
+      <pubDate>Wed, 22 Jun 2022 01:12:32 -0300</pubDate>
+      
+      <guid>https://alan.com.ar/post/ps2tools/</guid>
+      
+        <description>Requirements:   Memory Card with FreeMcBoot installed. Usb drive.   Tools:  PS2 Retroarch Emulators for Sega, Gameboy, Famicom, etc.</description>
+      
+    </item>
+    
+    <item>
       <title>Age Of Carpincho Website.</title>
       <link>https://alan.com.ar/post/ageofcarpincho/</link>
       <pubDate>Wed, 16 Feb 2022 00:56:54 -0300</pubDate>
@@ -125,7 +159,7 @@
     </item>
     
     <item>
-      <title>Age of Empires II: R Script: Most used civilizations.</title>
+      <title>Age of Empires II - Most used civilizations (R Script).</title>
       <link>https://alan.com.ar/post/aoemostusedciv/</link>
       <pubDate>Fri, 20 Aug 2021 00:45:06 -0300</pubDate>
       
@@ -137,7 +171,7 @@
     </item>
     
     <item>
-      <title>Age of Empires II: R Script: Compare players&#39; ratings.</title>
+      <title>Age of Empires II - Compare players&#39; ratings (R Script)</title>
       <link>https://alan.com.ar/post/aoeeloplot/</link>
       <pubDate>Mon, 19 Jul 2021 00:24:52 -0300</pubDate>
       

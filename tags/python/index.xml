@@ -6,9 +6,21 @@
     <description>Recent content in Python on Alan Cortez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 23 Jan 2024 18:56:54 -0300</lastBuildDate><atom:link href="https://alan.com.ar/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 07 Feb 2024 00:45:06 -0800</lastBuildDate><atom:link href="https://alan.com.ar/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>AoE - Most Recent Match.</title>
+      <title>Age of Empires II - Most used civilizations (Python Script).</title>
+      <link>https://alan.com.ar/post/aoemostusedciv-python/</link>
+      <pubDate>Wed, 07 Feb 2024 00:45:06 -0800</pubDate>
+      
+      <guid>https://alan.com.ar/post/aoemostusedciv-python/</guid>
+      
+        <description>Check out the GitHub repository.
+ A Python script that uses LibreMatch API to output a Plotly pie chart of the civs used.</description>
+      
+    </item>
+    
+    <item>
+      <title>Age of Empires II - Most Recent Match (Python Script).</title>
       <link>https://alan.com.ar/post/aoemostrecentmatch/</link>
       <pubDate>Tue, 23 Jan 2024 18:56:54 -0300</pubDate>
       
