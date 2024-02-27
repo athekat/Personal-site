@@ -6,7 +6,19 @@
     <description>Recent content in scripts on Alan Cortez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 07 Feb 2024 00:45:06 -0800</lastBuildDate><atom:link href="https://alan.com.ar/tags/scripts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 Feb 2024 00:56:54 -0300</lastBuildDate><atom:link href="https://alan.com.ar/tags/scripts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ePubLibre data charts.</title>
+      <link>https://alan.com.ar/post/epldatasite/</link>
+      <pubDate>Mon, 26 Feb 2024 00:56:54 -0300</pubDate>
+      
+      <guid>https://alan.com.ar/post/epldatasite/</guid>
+      
+        <description>Check out the GitHub repository and the website.
+ A webpage that shows Plotly graphs of ePubLibre data.</description>
+      
+    </item>
+    
     <item>
       <title>Age of Empires II - Most used civilizations (Python Script).</title>
       <link>https://alan.com.ar/post/aoemostusedciv-python/</link>
