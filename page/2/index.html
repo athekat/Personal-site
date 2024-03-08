@@ -161,7 +161,22 @@
       />
       
         <h1 class="sidebar__introduction-title">
-          <a href="/">Alan Cortez</a>
+          <a href="/">
+            <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+            
+            <div class="typewriter"></div>
+            
+
+            <a href="/"><script> 
+            const typeit = new TypeIt(".typewriter", {
+              cursorChar: "_"  ,
+              speed: 25});
+            
+            typeit.type("> ALAN CORTEZ");
+
+            typeit.go();
+            </script></a>
+          </a>
         </h1>
       
       <div class="sidebar__introduction-description">
