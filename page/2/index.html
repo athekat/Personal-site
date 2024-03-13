@@ -147,7 +147,9 @@
         
           class="wrapper__sidebar"
         
-      ><div
+      ><script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+
+<div
   class="sidebar
     animated fadeInDown
   "
@@ -161,13 +163,11 @@
       />
       
         <h1 class="sidebar__introduction-title">
-          <a href="/">
-            <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
             
-            <div class="typewriter"></div>
+            <a href="/" class="typewriter"></a>
             
 
-            <a href="/"><script> 
+            <script> 
             const typeit = new TypeIt(".typewriter", {
               cursorChar: "_"  ,
               speed: 25});
@@ -175,8 +175,7 @@
             typeit.type("> ALAN CORTEZ");
 
             typeit.go();
-            </script></a>
-          </a>
+            </script>
         </h1>
       
       <div class="sidebar__introduction-description">
@@ -353,6 +352,40 @@ Remember that you can also specify a section header for the posts below by confi
   
 
   
+  
+    <div
+      class="post 
+        animated fadeInDown
+      "
+    >
+      
+      <div class="post__content">
+        <h3><a href="/post/thissite/">THIS SITE.</a></h3>
+        
+          <p>A blog-like site to upload projects and stuff I’ve been working on.</p>
+        
+        <a href="/post/thissite/">Read more</a></div>
+
+      
+      <div class="post__footer">
+        <em class="fas fa-calendar-day"></em>
+        <span class="post__footer-date"
+          >
+            
+              1/10/2023
+            
+
+          </span
+        >
+        
+
+        
+          <span><a class="tag" href="/tags/html/">HTML</a><a class="tag" href="/tags/css/">CSS</a><a class="tag" href="/tags/hugo/">Hugo</a><a class="tag" href="/tags/blog/">Blog</a></span>
+
+
+        
+      </div>
+    </div>
   
     <div
       class="post 

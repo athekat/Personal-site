@@ -239,7 +239,9 @@
         
           class="wrapper__sidebar"
         
-      ><div
+      ><script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+
+<div
   class="sidebar
     animated fadeInDown
   "
@@ -253,8 +255,19 @@
       />
       
         <div class="sidebar__introduction-title">
-          <a href="/">Alan Cortez</a>
-        </div>
+          <a href="/" class="typewriter"></a>
+          
+
+          <script> 
+          const typeit2 = new TypeIt(".typewriter", {
+            cursorChar: "_"  ,
+            speed: 25});
+          
+          typeit2.type("> ALAN CORTEZ");
+
+          typeit2.go();
+          </script>
+      </div>
       
       <div class="sidebar__introduction-description">
         <p>Cyber security enthusiast. Constantly looking for ways to improve my skills and knowledge. I am a fast learner and always ready to take on new challenges. I am currently deepening my knowledge in Python language.</p>
@@ -486,7 +499,7 @@ Here is a hint for you: <a href="https://developer.algorand.org/docs/sdks/javasc
 <ol start="2">
 <li><strong>How did you fix the bug?</strong></li>
 </ol>
-<p>Following the documentation, I added the code to sign the transaction:</p>
+<p>Following the <a href="https://developer.algorand.org/docs/sdks/javascript/">documentation</a>, I added the code to sign the transaction:</p>
 <pre><code>const signedTxn = txn.signTxn(sender.sk);
 </code></pre>
 <p><img src="https://ipfs.algonode.xyz/ipfs/bafkreiazf53xittevlukgz7yocdaz6opdjxiimbepu3d7oskots2dlulha?optimizer=image&amp;width=600" alt="asd"></p>

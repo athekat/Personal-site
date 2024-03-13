@@ -138,7 +138,9 @@
         
           class="wrapper__sidebar"
         
-      ><div
+      ><script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+
+<div
   class="sidebar
     animated fadeInDown
   "
@@ -152,8 +154,19 @@
       />
       
         <div class="sidebar__introduction-title">
-          <a href="/">Alan Cortez</a>
-        </div>
+          <a href="/" class="typewriter"></a>
+          
+
+          <script> 
+          const typeit2 = new TypeIt(".typewriter", {
+            cursorChar: "_"  ,
+            speed: 25});
+          
+          typeit2.type("> ALAN CORTEZ");
+
+          typeit2.go();
+          </script>
+      </div>
       
       <div class="sidebar__introduction-description">
         <p>Cyber security enthusiast. Constantly looking for ways to improve my skills and knowledge. I am a fast learner and always ready to take on new challenges. I am currently deepening my knowledge in Python language.</p>
@@ -300,6 +313,20 @@
   >
     
       <div class="archive__heading">2024</div>
+      
+        <ul class="archive__list">
+          <li class="archive__list-item">
+            <a class="archive__list-title" href="/post/algochallenge02/" title="Algorand Challenge #02: Fix the bug.">Algorand Challenge #02: Fix the bug.</a>
+            <div class="archive__list-date">
+              
+                
+                  12/3/2024
+                
+
+              
+            </div>
+          </li>
+        </ul>
       
         <ul class="archive__list">
           <li class="archive__list-item">
