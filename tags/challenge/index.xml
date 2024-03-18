@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Challenge on Alan Cortez</title>
+    <link>https://alan.com.ar/tags/challenge/</link>
+    <description>Recent content in Challenge on Alan Cortez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 12 Mar 2024 00:56:54 -0300</lastBuildDate><atom:link href="https://alan.com.ar/tags/challenge/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Algorand Challenge #02: Fix the bug.</title>
+      <link>https://alan.com.ar/post/algochallenge02/</link>
+      <pubDate>Tue, 12 Mar 2024 00:56:54 -0300</pubDate>
+      
+      <guid>https://alan.com.ar/post/algochallenge02/</guid>
+      
+        <description>Check out the GitHub repository.
+ 🚩 Challenge 2: Why Isn&amp;rsquo;t the Code Running?</description>
+      
+    </item>
+    
+    <item>
+      <title>Algorand Challenge #01: Fix the bug.</title>
+      <link>https://alan.com.ar/post/algochallenge01/</link>
+      <pubDate>Wed, 06 Mar 2024 00:56:54 -0300</pubDate>
+      
+      <guid>https://alan.com.ar/post/algochallenge01/</guid>
+      
+        <description>Check out the GitHub repository.
+ 🚩 Challenge 1: I Can&amp;rsquo;t Send My Transaction!</description>
+      
+    </item>
+    
+    <item>
+      <title>Walkthrough: Pickle Rick CTF - TryHackMe.</title>
+      <link>https://alan.com.ar/post/picklerickctf/</link>
+      <pubDate>Mon, 20 Nov 2023 00:24:52 -0300</pubDate>
+      
+      <guid>https://alan.com.ar/post/picklerickctf/</guid>
+      
+        <description>A Rick and Morty CTF. Help turn Rick back into a human!</description>
+      
+    </item>
+    
+    <item>
+      <title>Walkthrough: Simple CTF - TryHackMe.</title>
+      <link>https://alan.com.ar/post/simplectf/</link>
+      <pubDate>Thu, 16 Nov 2023 00:24:52 -0300</pubDate>
+      
+      <guid>https://alan.com.ar/post/simplectf/</guid>
+      
+        <description>Beginner level ctf.  Link to the room
+ As usual, the first step is to run nmap to find open ports.</description>
+      
+    </item>
+    
+    <item>
+      <title>Walkthrough: Basic Pentesting - TryHackMe.</title>
+      <link>https://alan.com.ar/post/basicpentesting/</link>
+      <pubDate>Sun, 12 Nov 2023 00:24:52 -0300</pubDate>
+      
+      <guid>https://alan.com.ar/post/basicpentesting/</guid>
+      
+        <description>Link to the room
+ In this set of tasks we&amp;rsquo;ll be using:</description>
+      
+    </item>
+    
+  </channel>
+</rss>
