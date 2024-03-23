@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html
+  dir="ltr"
+  lang="en"
+  data-theme=""
+  
+    class="html theme--light"
+  
+><head>
+  <title>
+    
+      
+        Algorand Challenge #03: Fix the bug. |
+      Alan Cortez
+
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.92.2" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="author" content="Alan Cortez" />
+  <meta
+    name="description"
+    content="Cyber security enthusiast. Constantly looking for ways to improve my skills and knowledge. I am a fast learner and always ready to take on new challenges. I am currently deepening my knowledge in Python language."
+  />
+  
+  
+    
+    
+    <link
+      rel="stylesheet"
+      href="/scss/main.min.747b1be7f0a140a692e05d4152c5351b56d36c4ed59e03d2ff29e50d85266c71.css"
+      integrity="sha256-dHsb5/ChQKaS4F1BUsU1G1bTbE7VngPS/ynlDYUmbHE="
+      crossorigin="anonymous"
+      type="text/css"
+    />
+  
+
+  
+  <link
+    rel="stylesheet"
+    href="/css/markupHighlight.min.73ccfdf28df555e11009c13c20ced067af3cb021504cba43644c705930428b00.css"
+    integrity="sha256-c8z98o31VeEQCcE8IM7QZ688sCFQTLpDZExwWTBCiwA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/fontawesome.min.7d272de35b410fb165377550cdf9c4d3a80fbbcc961e111914e4d5c0eaf5729f.css"
+    integrity="sha256-fSct41tBD7FlN3VQzfnE06gPu8yWHhEZFOTVwOr1cp8="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/solid.min.55d8333481b07a08e07cf6f37319753a2b47e99f4c395394c5747b48b495aa9b.css"
+    integrity="sha256-VdgzNIGwegjgfPbzcxl1OitH6Z9MOVOUxXR7SLSVqps="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/regular.min.a7448d02590b43449364b6b5922ed9af5410abb4de4238412a830316dedb850b.css"
+    integrity="sha256-p0SNAlkLQ0STZLa1ki7Zr1QQq7TeQjhBKoMDFt7bhQs="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/brands.min.9ed75a5d670c953fe4df935937674b4646f92674367e9e66eb995bb04e821647.css"
+    integrity="sha256-ntdaXWcMlT/k35NZN2dLRkb5JnQ2fp5m65lbsE6CFkc="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link rel="shortcut icon" href="/favicons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+
+  <link rel="canonical" href="https://alan.com.ar/post/algochallenge03/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/anatole-header.min.46e6a54097480084f8f52c20ca1aa7425b4fad17029a887fd4017b12e311a72d.js"
+    integrity="sha256-RualQJdIAIT49SwgyhqnQltPrRcCmoh/1AF7EuMRpy0="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/anatole-theme-switcher.min.4c31f3cf7e8e609c897dba88aecac0e8db1ebb4e5c841d3f9ffb01d463973678.js"
+      integrity="sha256-TDHzz36OYJyJfbqIrsrA6Nseu05chB0/n/sB1GOXNng="
+      crossorigin="anonymous"
+    ></script>
+  
+
+  
+
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://alan.com.ar/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Algorand Challenge #03: Fix the bug."/>
+<meta name="twitter:description" content="Check out the GitHub repository.
+ 🚩 Challenge 3: My AppClient is Broken!"/>
+
+
+
+  
+  <meta property="og:title" content="Algorand Challenge #03: Fix the bug." />
+<meta property="og:description" content="Check out the GitHub repository.
+ 🚩 Challenge 3: My AppClient is Broken!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://alan.com.ar/post/algochallenge03/" /><meta property="og:image" content="https://alan.com.ar/images/site-feature-image.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-03-19T00:56:54-03:00" />
+<meta property="article:modified_time" content="2024-03-19T00:56:54-03:00" /><meta property="og:site_name" content="Alan Cortez" />
+
+
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "post",
+        "name": "Algorand Challenge #03: Fix the bug.",
+        "headline": "Algorand Challenge #03: Fix the bug.",
+        "alternativeHeadline": "",
+        "description": "
+      
+        Check out the GitHub repository.\n 🚩 Challenge 3: My AppClient is Broken!
+
+
+      
+
+
+    ",
+        "inLanguage": "en-us",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/alan.com.ar\/post\/algochallenge03\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Alan Cortez"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Alan Cortez"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Alan Cortez"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Alan Cortez"
+        },
+        "copyrightYear" : "2024",
+        "dateCreated": "2024-03-19T00:56:54.00Z",
+        "datePublished": "2024-03-19T00:56:54.00Z",
+        "dateModified": "2024-03-19T00:56:54.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Alan Cortez",
+            "url": "https://alan.com.ar",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/alan.com.ar\/favicons\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+        
+        "https://alan.com.ar/images/site-feature-image.png"
+
+
+      
+      ]
+
+    ,
+        "url" : "https:\/\/alan.com.ar\/post\/algochallenge03\/",
+        "wordCount" : "552",
+        "genre" : [ ],
+        "keywords" : [ 
+      
+      "Algorand"
+
+    
+      
+        ,
+
+      
+      "Algokit"
+
+    
+      
+        ,
+
+      
+      "Blockchain"
+
+    
+      
+        ,
+
+      
+      "Docker"
+
+    
+      
+        ,
+
+      
+      "Challenge"
+
+    ]
+    }
+  </script>
+
+
+</head>
+<body class="body">
+    <div class="wrapper">
+      <aside
+        
+          class="wrapper__sidebar"
+        
+      ><script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+
+<div
+  class="sidebar
+    animated fadeInDown
+  "
+>
+  <div class="sidebar__content">
+    <div class="sidebar__introduction">
+      <img
+        class="sidebar__introduction-profileimage"
+        src="/images/photo.jpeg"
+        alt="profile picture"
+      />
+      
+        <div class="sidebar__introduction-title">
+          <a href="/" class="typewriter"></a>
+          
+
+          <script> 
+          const typeit2 = new TypeIt(".typewriter", {
+            cursorChar: "_"  ,
+            speed: 25});
+          
+          typeit2.type("> ALAN CORTEZ");
+
+          typeit2.go();
+          </script>
+      </div>
+      
+      <div class="sidebar__introduction-description">
+        <p>Cyber security enthusiast. Constantly looking for ways to improve my skills and knowledge. I am a fast learner and always ready to take on new challenges. I am currently deepening my knowledge in Python language.</p>
+      </div>
+    </div>
+    <ul class="sidebar__list">
+      
+        <li class="sidebar__list-item">
+          <a
+            href="https://www.linkedin.com/in/alan-ian-cortez/"
+            target="_blank"
+            rel="noopener me"
+            aria-label="Linkedin"
+            title="Linkedin"
+          >
+            <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a
+            href="https://github.com/athekat/"
+            target="_blank"
+            rel="noopener me"
+            aria-label="GitHub"
+            title="GitHub"
+          >
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a
+            href="mailto:contactme@alan.com.ar"
+            target="_blank"
+            rel="noopener me"
+            aria-label="e-mail"
+            title="e-mail"
+          >
+            <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div><footer class="footer footer__sidebar">
+
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.fae9ac8895995fe91958b3954be11e96025824a04770726a3531e119ddd2d576.js"
+    integrity="sha256-&#43;umsiJWZX&#43;kZWLOVS&#43;EelgJYJKBHcHJqNTHhGd3S1XY="
+    crossorigin="anonymous"
+  ></script></div>
+</aside>
+      <main
+        
+          class="wrapper__main"
+        
+      >
+        <header class="header"><div
+  class="
+    animated fadeInDown
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+  </a>
+  <nav class="nav">
+    <ul class="nav__list" id="navMenu">
+      
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="/"
+              
+              title=""
+              >Home</a
+            >
+          </li>
+        
+
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="/post/"
+              
+              title=""
+              >Posts</a
+            >
+          </li>
+        
+
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="https://www.alan.com.ar/images/CV_ALAN_EN.pdf"
+              
+                target="_blank" rel="noopener noreferrer"
+              
+              title=""
+              >CV</a
+            >
+          </li>
+        
+
+      
+    </ul>
+    <ul class="nav__list nav__list--end">
+      
+      
+        <li class="nav__list-item">
+          <div class="themeswitch">
+            <a title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </div>
+        </li>
+      
+    </ul>
+  </nav>
+</div>
+</header>
+  <div
+    class="post 
+      animated fadeInDown
+    "
+  >
+    
+    <div class="post__content">
+      <h1>Algorand Challenge #03: Fix the Bug.</h1>
+      
+        <ul class="post__meta">
+          <li class="post__meta-item">
+            <em class="fas fa-calendar-day post__meta-icon"></em>
+            <span class="post__meta-text"
+              >
+                
+                  19/3/2024
+                
+
+              
+            </span>
+          </li>
+          <li class="post__meta-item">
+            <em class="fas fa-stopwatch post__meta-icon"></em>
+            <span class="post__meta-text">3-minute read</span>
+          </li>
+        </ul>
+      <blockquote>
+<p>Check out the <a href="https://github.com/algorand-coding-challenges/challenge-3/">GitHub repository</a>.</p>
+</blockquote>
+<h2 id="-challenge-3-my-appclient-is-broken-">🚩 Challenge 3: My AppClient is Broken! 😭</h2>
+<blockquote>
+<p>I want to instantiate an app client to deploy and interact with my smart contract but it&rsquo;s not working!!</p>
+</blockquote>
+<p>This project includes a simple <code>helloWorld</code> smart contract written with <a href="https://tealscript.netlify.app/">TEALScript</a> inside of <code>./contract/helloWorld.algo.ts</code> file. The smart contract is already compiled with artifacts generated inside of the <code>./contracts/artifacts</code> folder and the application typed client inside of <code>./contracts/clients/helloWorldClient.ts</code> file.</p>
+<blockquote>
+<p>Artifacts: autogenerated assets (TEAL contract code, ABI spec, source mapping) for your smart contract.
+Application Typed Client: autogenerated client used to easily deploy / interact with Algorand smart contract.</p>
+</blockquote>
+<p>The <code>index.ts</code> file in the root level is a script that deploys the <code>helloWorld</code> smart contract and calls the <code>helloWorld</code> method.</p>
+<p>However, if you try to run the <code>index.ts</code> file after going into the <code>challenge</code> directory, opening Docker Desktop, and then running:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">algokit bootstrap all
+algokit localnet start
+npm run start
+</code></pre></div><p>it will fail.</p>
+<p><strong>Find out what is wrong and fix the bug.</strong></p>
+<blockquote>
+<p>💬 Meet other hackers working on this challenge and get help in the <a href="https://discord.com/channels/491256308461207573/1065320801970180168">AlgoKit Discord Channel</a>!</p>
+</blockquote>
+<h2 id="checkpoint-1--prerequisites">Checkpoint 1: 🧰 Prerequisites</h2>
+<ol>
+<li><a href="https://github.com/algorandfoundation/algokit-cli/tree/main?tab=readme-ov-file#install">Install AlgoKit</a>.</li>
+<li>Install <a href="https://www.docker.com/products/docker-desktop/">Docker</a>. It is used to run a local Algorand network for development.</li>
+<li>Install <a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm">Node.JS / npm</a></li>
+</ol>
+<p><strong>Make sure to install these 3 prerequisites before continuing!</strong></p>
+<h2 id="checkpoint-2--set-up-your-development-environment">Checkpoint 2: 💻 Set up your development environment</h2>
+<ol>
+<li><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo">Fork this repository.</a></li>
+<li>Clone the repository</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> <span class="o">[</span>DIRECTORY_OF_YOUR_CHOICE<span class="o">]</span>
+git clone <span class="o">[</span>FORKED_REPO_URL<span class="o">]</span>
+</code></pre></div><ol start="3">
+<li>Open the cloned repository with the code editor of your choosing.</li>
+</ol>
+<p>Video walkthrough of forking and cloning this repository:</p>
+<p><a href="https://github.com/algorand-fix-the-bug-campaign/challenge-1/assets/52557585/acde8053-a8dd-4f53-8bad-45de1068bfda">https://github.com/algorand-fix-the-bug-campaign/challenge-1/assets/52557585/acde8053-a8dd-4f53-8bad-45de1068bfda</a></p>
+<p>Now you are ready to fix the bug!</p>
+<h2 id="checkpoint-3--fix-the-bug-">Checkpoint 3: 🐞 Fix the bug 🧐</h2>
+<ol>
+<li>Open Docker Desktop and launch Algorand localnet by running <code>algokit localnet start</code> in your terminal <a href="https://github.com/algorandfoundation/algokit-cli/blob/main/docs/features/localnet.md#creating--starting-the-localnet">For more info click me!</a>.</li>
+<li>Go to <code>./contracts/helloWorld.algo.ts</code> to read the <code>helloWorld</code> TEALScript smart contract and understand what it does.</li>
+<li>Go to <code>./index.ts</code> and read the comments on the file and fix the bug!</li>
+<li>After fixing the bug run the below command inside the <code>challenge</code> directory:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">npm run start
+</code></pre></div><p>If you see something like the image below, you have successfully fixed the bug! Congratulations 😆
+<img width="827" alt="image" src="https://github.com/algorand-coding-challenges/challenge-3/assets/52557585/662d86ea-4d8b-4a5f-95c1-b228cbbadd9b"></p>
+<p><strong>😰 Are you struggling?</strong>
+Here is a hint for you: <a href="https://developer.algorand.org/docs/get-details/algokit/features/generate/?from_query=algokit%20utils#1-typed-clients">https://developer.algorand.org/docs/get-details/algokit/features/generate/?from_query=algokit%20utils#1-typed-clients</a></p>
+<h2 id="checkpoint-4--submit-your-answer">Checkpoint 4: 💯 Submit your answer</h2>
+<ol>
+<li>After fixing the bug, push your code to your forked Github repo and <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork">make a PR to the original repo.</a></li>
+<li>Inside the PR include:
+<ol>
+<li>What was the problem?</li>
+<li>How did you solve the problem?</li>
+<li>A screenshot of your terminal that shows the console.log <img width="827" alt="image" src="https://github.com/algorand-coding-challenges/challenge-3/assets/52557585/69dae6bd-f7cd-431a-b29a-71af3d534c9b"></li>
+</ol>
+</li>
+</ol>
+<h2 id="checkpoint-5--claim-your-certificate-of-completion-nft-">Checkpoint 5: 🏆 Claim your certificate of completion NFT! 🎓</h2>
+<p>The Algorand Developer Relations team will review the submission and &ldquo;approve&rdquo; the PR by labeling it <code>Approved</code>. Once it&rsquo;s approved, we will share the magic link to claim your certificate of completion NFT in the comment of the PR!</p>
+<blockquote>
+<p>The certificate of completion NFT is a verifiable credential minted on the <a href="https://goplausible.com/">GoPlausible platform</a> that follows the W3C standard for certificates and OpenBadges standard for badges.</p>
+</blockquote>
+<p>🎉 Congratulations on completing the challenge Algodev! Now on to the next one 💪</p>
+<h2 id="solution">Solution:</h2>
+<ol>
+<li>
+<p><strong>What was the bug?</strong></p>
+<ol>
+<li>In the creator address it was missing the addr property.</li>
+<li>A wrong function was being returned in index.ts</li>
+</ol>
+</li>
+<li>
+<p><strong>How did you fix the bug?</strong></p>
+</li>
+</ol>
+<p>Following the documentation I fixed the bugs by setting the correct creatorAddress to &ldquo;deployer.addr&rdquo; and changing indexer to &ldquo;algod&rdquo;, which is the correct function.
+Also changed &ldquo;YOUR_NAME&rdquo; to my nickname.</p>
+<p><img src="https://ipfs.algonode.xyz/ipfs/bafkreicaefsujfwqvaobmlafc62n2lhkmx6xshhcb3u5bxvm74im3wnrze?optimizer=image&amp;width=600" alt="cert"></p>
+</div>
+    <div class="post__footer">
+      
+
+      
+        <span><a class="tag" href="/tags/algorand/">Algorand</a><a class="tag" href="/tags/algokit/">Algokit</a><a class="tag" href="/tags/blockchain/">Blockchain</a><a class="tag" href="/tags/docker/">Docker</a><a class="tag" href="/tags/challenge/">Challenge</a></span>
+
+
+      
+    </div>
+
+    
+  </div>
+
+      </main>
+    </div><footer class="footer footer__base">
+
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.fae9ac8895995fe91958b3954be11e96025824a04770726a3531e119ddd2d576.js"
+    integrity="sha256-&#43;umsiJWZX&#43;kZWLOVS&#43;EelgJYJKBHcHJqNTHhGd3S1XY="
+    crossorigin="anonymous"
+  ></script></body>
+</html>

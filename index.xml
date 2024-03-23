@@ -6,7 +6,19 @@
     <description>Recent content on Alan Cortez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 12 Mar 2024 00:56:54 -0300</lastBuildDate><atom:link href="https://alan.com.ar/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 Mar 2024 00:56:54 -0300</lastBuildDate><atom:link href="https://alan.com.ar/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Algorand Challenge #03: Fix the bug.</title>
+      <link>https://alan.com.ar/post/algochallenge03/</link>
+      <pubDate>Tue, 19 Mar 2024 00:56:54 -0300</pubDate>
+      
+      <guid>https://alan.com.ar/post/algochallenge03/</guid>
+      
+        <description>Check out the GitHub repository.
+ 🚩 Challenge 3: My AppClient is Broken!</description>
+      
+    </item>
+    
     <item>
       <title>Algorand Challenge #02: Fix the bug.</title>
       <link>https://alan.com.ar/post/algochallenge02/</link>
