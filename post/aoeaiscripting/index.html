@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html
+  dir="ltr"
+  lang="en"
+  data-theme=""
+  
+    class="html theme--light"
+  
+><head>
+  <title>
+    
+      
+        Age of Empires II - AI Scripting. |
+      Alan Cortez
+
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.92.2" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="author" content="Alan Cortez" />
+  <meta
+    name="description"
+    content="Cyber security enthusiast. Constantly looking for ways to improve my skills and knowledge. I am a fast learner and always ready to take on new challenges. I am currently deepening my knowledge in Python language."
+  />
+  
+  
+    
+    
+    <link
+      rel="stylesheet"
+      href="/scss/main.min.8b91b5dca9faa053e093b87af373896ff845af290a35d449170177d90bbd6d6c.css"
+      integrity="sha256-i5G13Kn6oFPgk7h683OJb/hFrykKNdRJFwF32Qu9bWw="
+      crossorigin="anonymous"
+      type="text/css"
+    />
+  
+
+  
+  <link
+    rel="stylesheet"
+    href="/css/markupHighlight.min.73ccfdf28df555e11009c13c20ced067af3cb021504cba43644c705930428b00.css"
+    integrity="sha256-c8z98o31VeEQCcE8IM7QZ688sCFQTLpDZExwWTBCiwA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/fontawesome.min.7d272de35b410fb165377550cdf9c4d3a80fbbcc961e111914e4d5c0eaf5729f.css"
+    integrity="sha256-fSct41tBD7FlN3VQzfnE06gPu8yWHhEZFOTVwOr1cp8="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/solid.min.55d8333481b07a08e07cf6f37319753a2b47e99f4c395394c5747b48b495aa9b.css"
+    integrity="sha256-VdgzNIGwegjgfPbzcxl1OitH6Z9MOVOUxXR7SLSVqps="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/regular.min.a7448d02590b43449364b6b5922ed9af5410abb4de4238412a830316dedb850b.css"
+    integrity="sha256-p0SNAlkLQ0STZLa1ki7Zr1QQq7TeQjhBKoMDFt7bhQs="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/brands.min.9ed75a5d670c953fe4df935937674b4646f92674367e9e66eb995bb04e821647.css"
+    integrity="sha256-ntdaXWcMlT/k35NZN2dLRkb5JnQ2fp5m65lbsE6CFkc="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link rel="shortcut icon" href="/favicons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+
+  <link rel="canonical" href="https://alan.com.ar/post/aoeaiscripting/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/anatole-header.min.46e6a54097480084f8f52c20ca1aa7425b4fad17029a887fd4017b12e311a72d.js"
+    integrity="sha256-RualQJdIAIT49SwgyhqnQltPrRcCmoh/1AF7EuMRpy0="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/anatole-theme-switcher.min.4c31f3cf7e8e609c897dba88aecac0e8db1ebb4e5c841d3f9ffb01d463973678.js"
+      integrity="sha256-TDHzz36OYJyJfbqIrsrA6Nseu05chB0/n/sB1GOXNng="
+      crossorigin="anonymous"
+    ></script>
+  
+
+  
+
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://alan.com.ar/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Age of Empires II - AI Scripting."/>
+<meta name="twitter:description" content="This is a brief introduction to AI scripting in Age Of Empires II."/>
+
+
+
+  
+  <meta property="og:title" content="Age of Empires II - AI Scripting." />
+<meta property="og:description" content="This is a brief introduction to AI scripting in Age Of Empires II." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://alan.com.ar/post/aoeaiscripting/" /><meta property="og:image" content="https://alan.com.ar/images/site-feature-image.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-04-01T00:24:52-03:00" />
+<meta property="article:modified_time" content="2024-04-01T00:24:52-03:00" /><meta property="og:site_name" content="Alan Cortez" />
+
+
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "post",
+        "name": "Age of Empires II - AI Scripting.",
+        "headline": "Age of Empires II - AI Scripting.",
+        "alternativeHeadline": "",
+        "description": "
+      
+        This is a brief introduction to AI scripting in Age Of Empires II.
+
+
+      
+
+
+    ",
+        "inLanguage": "en-us",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/alan.com.ar\/post\/aoeaiscripting\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Alan Cortez"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Alan Cortez"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Alan Cortez"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Alan Cortez"
+        },
+        "copyrightYear" : "2024",
+        "dateCreated": "2024-04-01T00:24:52.00Z",
+        "datePublished": "2024-04-01T00:24:52.00Z",
+        "dateModified": "2024-04-01T00:24:52.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Alan Cortez",
+            "url": "https://alan.com.ar",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/alan.com.ar\/favicons\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+        
+        "https://alan.com.ar/images/site-feature-image.png"
+
+
+      
+      ]
+
+    ,
+        "url" : "https:\/\/alan.com.ar\/post\/aoeaiscripting\/",
+        "wordCount" : "381",
+        "genre" : [ ],
+        "keywords" : [ 
+      
+      "AI"
+
+    
+      
+        ,
+
+      
+      "scripts"
+
+    
+      
+        ,
+
+      
+      "Age Of Empires II"
+
+    ]
+    }
+  </script>
+
+
+</head>
+<body class="body">
+    <div class="wrapper">
+      <aside
+        
+          class="wrapper__sidebar"
+        
+      ><script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+
+<div
+  class="sidebar
+    animated fadeInDown
+  "
+>
+  <div class="sidebar__content">
+    <div class="sidebar__introduction">
+      <img
+        class="sidebar__introduction-profileimage"
+        src="/images/photo.jpeg"
+        alt="profile picture"
+      />
+      
+        <div class="sidebar__introduction-title">
+          <a href="/" class="typewriter"></a>
+          
+
+          <script> 
+          const typeit2 = new TypeIt(".typewriter", {
+            cursorChar: "_"  ,
+            speed: 25});
+          
+          typeit2.type("> ALAN CORTEZ");
+
+          typeit2.go();
+          </script>
+      </div>
+      
+      <div class="sidebar__introduction-description">
+        <p>Cyber security enthusiast. Constantly looking for ways to improve my skills and knowledge. I am a fast learner and always ready to take on new challenges. I am currently deepening my knowledge in Python language.</p>
+      </div>
+    </div>
+    <ul class="sidebar__list">
+      
+        <li class="sidebar__list-item">
+          <a
+            href="https://www.linkedin.com/in/alan-ian-cortez/"
+            target="_blank"
+            rel="noopener me"
+            aria-label="Linkedin"
+            title="Linkedin"
+          >
+            <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a
+            href="https://github.com/athekat/"
+            target="_blank"
+            rel="noopener me"
+            aria-label="GitHub"
+            title="GitHub"
+          >
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a
+            href="mailto:contactme@alan.com.ar"
+            target="_blank"
+            rel="noopener me"
+            aria-label="e-mail"
+            title="e-mail"
+          >
+            <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div><footer class="footer footer__sidebar">
+
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.fae9ac8895995fe91958b3954be11e96025824a04770726a3531e119ddd2d576.js"
+    integrity="sha256-&#43;umsiJWZX&#43;kZWLOVS&#43;EelgJYJKBHcHJqNTHhGd3S1XY="
+    crossorigin="anonymous"
+  ></script></div>
+</aside>
+      <main
+        
+          class="wrapper__main"
+        
+      >
+        <header class="header"><div
+  class="
+    animated fadeInDown
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+  </a>
+  <nav class="nav">
+    <ul class="nav__list" id="navMenu">
+      
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="/"
+              
+              title=""
+              >Home</a
+            >
+          </li>
+        
+
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="/post/"
+              
+              title=""
+              >Posts</a
+            >
+          </li>
+        
+
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="https://www.alan.com.ar/images/CV_ALAN_EN.pdf"
+              
+                target="_blank" rel="noopener noreferrer"
+              
+              title=""
+              >CV</a
+            >
+          </li>
+        
+
+      
+    </ul>
+    <ul class="nav__list nav__list--end">
+      
+      
+        <li class="nav__list-item">
+          <div class="themeswitch">
+            <a title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </div>
+        </li>
+      
+    </ul>
+  </nav>
+</div>
+</header>
+  <div
+    class="post 
+      animated fadeInDown
+    "
+  >
+    
+    <div class="post__content">
+      <h1>Age of Empires II - AI Scripting.</h1>
+      
+        <ul class="post__meta">
+          <li class="post__meta-item">
+            <em class="fas fa-calendar-day post__meta-icon"></em>
+            <span class="post__meta-text"
+              >
+                
+                  1/4/2024
+                
+
+              
+            </span>
+          </li>
+          <li class="post__meta-item">
+            <em class="fas fa-stopwatch post__meta-icon"></em>
+            <span class="post__meta-text">2-minute read</span>
+          </li>
+        </ul>
+      <p>This is a brief introduction to AI scripting in Age Of Empires II. In the following resources you may find an in depth overview of the tools and relevant settings.</p>
+<p><strong>Resources:</strong></p>
+<ul>
+<li><a href="https://www.youtube.com/playlist?list=PL8UM8VqZhE0tRwdn-uvTUSvugUOArNc_j">interlepus YouTube Playlist (English)</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PL0EWYDbi48enyAJUlIynOpe7HxBHU2tt7">arandi YouTube Playlist (English)</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLcOYlGU7ZRqhsuMxaOwP4Ztl7Wfp-Ns_H">AI Game Junction YouTube Playlist (English)</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLl7E3Sjv1CvOQyCqS9ZZ3U5qToJkExo_2">Igor Hernández YouTube Playlist (Spanish)</a></li>
+<li><a href="https://userpatch.aiscripters.net">UserPatch AI Scripters</a></li>
+<li><a href="https://aok.heavengames.com/university/other/world-of-ai-scripting-chapter-1/">AoK Heaven Games - World of AI Scripting Chapter 1</a></li>
+<li><a href="https://archive.org/download/aoe-tce-manual-and-guide/CPSB.DOC">Microsoft&rsquo;s Computer Player Strategy Builder Guide Documentation</a></li>
+<li><a href="https://airef.github.io/index.html">AI Scripting Encyclopedia</a> by <a href="https://github.com/airef">airef</a></li>
+<li><a href="https://discord.gg/GK84FCrtWJ">AI Scripters Discord Link</a></li>
+</ul>
+<p><img src="/images/aoeaiscripting/resources.jpeg" alt="Resources"></p>
+<p><strong>.per and .ai files:</strong></p>
+<ul>
+<li>AIs files come in pairs: name.ai and name.per (name&rsquo;s must be identical).</li>
+<li>This files should be located:</li>
+</ul>
+<p>&ndash; AoE II DE: <code>C:\Program Files (x86)\Steam\steamapps\common\AoE2DE\resources\_common\ai\</code></p>
+<p>&ndash; Classic AoE II: <code>\Age Of Empires II\AOE II - The Conquerors\AI</code></p>
+<p><strong>Scripting Language Overview:</strong></p>
+<ul>
+<li>AoE II scripting language is based on CLIPS (C Language Integrated Production System).</li>
+<li>Defining rules involves <code>defrule</code> instruction with facts and actions.</li>
+<li>Facts trigger actions as long as they remain true unless disabled.</li>
+<li>Example:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">(defrule
+	(true)
+=&gt;
+	(chat-to-all &#34;Hi, let&#39;s play AoE II!&#34;)
+	(disable-self)	;Disable after executed once.
+)
+</code></pre></div><p><strong>Programming Levels:</strong></p>
+<ul>
+<li>There are five levels of AoE II programming:
+<ol>
+<li>Defrules, defconsts, timers&hellip;</li>
+<li>Random generator, conditional (file) loading, goals</li>
+<li>Strategic Numbers</li>
+<li>Userpatch commands</li>
+<li>Direct Unit Control</li>
+</ol>
+</li>
+</ul>
+<p><strong>Scouting the Map:</strong></p>
+<ul>
+<li>Level 3 programming involves strategic numbers (SN) for adjusting AI parameters.</li>
+<li>SN adjust AI behavior and can be changed throughout the game.</li>
+<li>Default values are important to understand AI behavior fully.</li>
+</ul>
+<p><strong>Setting Strategic Numbers:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">(defrule
+	(true)
+=&gt;
+	(set-strategic-number strategic-number number)
+	(disable-self)
+)
+</code></pre></div><p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">(defrule
+	(true)
+=&gt;
+	(set-strategic-number sn-cap-civilian-explorers 0)
+	(set-strategic-number sn-total-number-explorers 0)
+	(disable-self)
+)
+</code></pre></div><p><strong>Units and Buildings IDs:</strong></p>
+<ul>
+<li>IDs list: <a href="https://airef.github.io/tables/objects.html">Unit/Building ID list</a></li>
+<li>Define constants using <code>(defconst constant-name constant-value)</code>.</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">(defconst livestock-class 958)
+(unit-type-count livestock-class &gt; 0)
+</code></pre></div><p><strong>Conditionals:</strong></p>
+<ul>
+<li>Use <code>#load-if-defined</code> to check civilization.</li>
+<li>Example:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">#load-if-defined BRITON-CIV
+	(defconst text-my-civ &#34;I&#39;m Britons, will make Longbows&#34;)
+#else
+	(defconst text-my-civ &#34;I&#39;m not Britons, will not make Longbows&#34;)
+#end-if
+</code></pre></div><p><strong>Training Villagers:</strong></p>
+<ul>
+<li>Use fact-checkers like <code>can-train</code> to avoid bugs.</li>
+<li>Example:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">(defrule
+	(can-train villager)
+=&gt;
+	(train villager)
+)
+</code></pre></div><p><strong>Miscellaneous:</strong></p>
+<ul>
+<li>Use space with relative operators like <code>&gt;= 5</code>.</li>
+<li>Prefix types with TypeOp (only for level 4 and 5).</li>
+<li>Example:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">(defconst starting-vills-on-sheep 6)
+(defrule
+	(true)
+=&gt;
+	(chat-to-all &#34;I need %d villagers on sheep&#34; c: starting-vills-on-sheep)
+	(disable-self)
+)
+</code></pre></div><ul>
+<li>Building conditions:
+<ul>
+<li><code>can-build</code> checks if the building is available.</li>
+<li><code>sn-initial-exploration-required</code>: Change default from 2 to 0.</li>
+<li><code>(housing-headroom &lt; 4)</code>: Example condition for housing.</li>
+</ul>
+</li>
+</ul>
+</div>
+    <div class="post__footer">
+      
+
+      
+        <span><a class="tag" href="/tags/ai/">AI</a><a class="tag" href="/tags/scripts/">scripts</a><a class="tag" href="/tags/age-of-empires-ii/">Age Of Empires II</a></span>
+
+
+      
+    </div>
+
+    
+  </div>
+
+      </main>
+    </div><footer class="footer footer__base">
+
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.fae9ac8895995fe91958b3954be11e96025824a04770726a3531e119ddd2d576.js"
+    integrity="sha256-&#43;umsiJWZX&#43;kZWLOVS&#43;EelgJYJKBHcHJqNTHhGd3S1XY="
+    crossorigin="anonymous"
+  ></script></body>
+</html>

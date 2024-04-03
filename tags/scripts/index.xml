@@ -6,7 +6,18 @@
     <description>Recent content in scripts on Alan Cortez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 26 Feb 2024 00:56:54 -0300</lastBuildDate><atom:link href="https://alan.com.ar/tags/scripts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Apr 2024 00:24:52 -0300</lastBuildDate><atom:link href="https://alan.com.ar/tags/scripts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Age of Empires II - AI Scripting.</title>
+      <link>https://alan.com.ar/post/aoeaiscripting/</link>
+      <pubDate>Mon, 01 Apr 2024 00:24:52 -0300</pubDate>
+      
+      <guid>https://alan.com.ar/post/aoeaiscripting/</guid>
+      
+        <description>This is a brief introduction to AI scripting in Age Of Empires II.</description>
+      
+    </item>
+    
     <item>
       <title>ePubLibre data charts.</title>
       <link>https://alan.com.ar/post/epldatasite/</link>

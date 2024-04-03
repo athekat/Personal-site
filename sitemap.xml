@@ -3,7 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://alan.com.ar/</loc>
-    <lastmod>2024-03-27T00:56:54-03:00</lastmod>
+    <lastmod>2024-04-01T00:24:52-03:00</lastmod>
+  </url><url>
+    <loc>https://alan.com.ar/tags/age-of-empires-ii/</loc>
+    <lastmod>2024-04-01T00:24:52-03:00</lastmod>
+  </url><url>
+    <loc>https://alan.com.ar/post/aoeaiscripting/</loc>
+    <lastmod>2024-04-01T00:24:52-03:00</lastmod>
+  </url><url>
+    <loc>https://alan.com.ar/tags/ai/</loc>
+    <lastmod>2024-04-01T00:24:52-03:00</lastmod>
+  </url><url>
+    <loc>https://alan.com.ar/post/</loc>
+    <lastmod>2024-04-01T00:24:52-03:00</lastmod>
+  </url><url>
+    <loc>https://alan.com.ar/tags/scripts/</loc>
+    <lastmod>2024-04-01T00:24:52-03:00</lastmod>
+  </url><url>
+    <loc>https://alan.com.ar/tags/</loc>
+    <lastmod>2024-04-01T00:24:52-03:00</lastmod>
   </url><url>
     <loc>https://alan.com.ar/tags/algokit/</loc>
     <lastmod>2024-03-27T00:56:54-03:00</lastmod>
@@ -21,12 +39,6 @@
     <lastmod>2024-03-27T00:56:54-03:00</lastmod>
   </url><url>
     <loc>https://alan.com.ar/tags/docker/</loc>
-    <lastmod>2024-03-27T00:56:54-03:00</lastmod>
-  </url><url>
-    <loc>https://alan.com.ar/post/</loc>
-    <lastmod>2024-03-27T00:56:54-03:00</lastmod>
-  </url><url>
-    <loc>https://alan.com.ar/tags/</loc>
     <lastmod>2024-03-27T00:56:54-03:00</lastmod>
   </url><url>
     <loc>https://alan.com.ar/post/algochallenge03/</loc>
@@ -53,14 +65,8 @@
     <loc>https://alan.com.ar/tags/python/</loc>
     <lastmod>2024-02-26T00:56:54-03:00</lastmod>
   </url><url>
-    <loc>https://alan.com.ar/tags/scripts/</loc>
-    <lastmod>2024-02-26T00:56:54-03:00</lastmod>
-  </url><url>
     <loc>https://alan.com.ar/tags/website/</loc>
     <lastmod>2024-02-26T00:56:54-03:00</lastmod>
-  </url><url>
-    <loc>https://alan.com.ar/tags/age-of-empires-ii/</loc>
-    <lastmod>2024-02-07T00:45:06-08:00</lastmod>
   </url><url>
     <loc>https://alan.com.ar/post/aoemostusedciv-python/</loc>
     <lastmod>2024-02-07T00:45:06-08:00</lastmod>
