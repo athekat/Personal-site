@@ -6,7 +6,19 @@
     <description>Recent content in Posts on Alan Cortez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 09 Apr 2024 00:56:54 -0300</lastBuildDate><atom:link href="https://alan.com.ar/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Apr 2024 00:56:54 -0300</lastBuildDate><atom:link href="https://alan.com.ar/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Algorand Coding Challenge - Volume 2: 🐍 Python #03.</title>
+      <link>https://alan.com.ar/post/algochallengepython03/</link>
+      <pubDate>Tue, 16 Apr 2024 00:56:54 -0300</pubDate>
+      
+      <guid>https://alan.com.ar/post/algochallengepython03/</guid>
+      
+        <description>Check out the GitHub repository.
+ 🚩 Challenge 3: Algorand smart contract can send transactions!</description>
+      
+    </item>
+    
     <item>
       <title>Algorand Coding Challenge - Volume 2: 🐍 Python #02.</title>
       <link>https://alan.com.ar/post/algochallengepython02/</link>

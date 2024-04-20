@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html
+  dir="ltr"
+  lang="en"
+  data-theme=""
+  
+    class="html theme--light"
+  
+><head>
+  <title>
+    
+      
+        Algorand Coding Challenge - Volume 2: 🐍 Python #03. |
+      Alan Cortez
+
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.92.2" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="author" content="Alan Cortez" />
+  <meta
+    name="description"
+    content="Cyber security enthusiast. Constantly looking for ways to improve my skills and knowledge. I am a fast learner and always ready to take on new challenges. I am currently deepening my knowledge in Python language."
+  />
+  
+  
+    
+    
+    <link
+      rel="stylesheet"
+      href="/scss/main.min.8b91b5dca9faa053e093b87af373896ff845af290a35d449170177d90bbd6d6c.css"
+      integrity="sha256-i5G13Kn6oFPgk7h683OJb/hFrykKNdRJFwF32Qu9bWw="
+      crossorigin="anonymous"
+      type="text/css"
+    />
+  
+
+  
+  <link
+    rel="stylesheet"
+    href="/css/markupHighlight.min.73ccfdf28df555e11009c13c20ced067af3cb021504cba43644c705930428b00.css"
+    integrity="sha256-c8z98o31VeEQCcE8IM7QZ688sCFQTLpDZExwWTBCiwA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/fontawesome.min.7d272de35b410fb165377550cdf9c4d3a80fbbcc961e111914e4d5c0eaf5729f.css"
+    integrity="sha256-fSct41tBD7FlN3VQzfnE06gPu8yWHhEZFOTVwOr1cp8="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/solid.min.55d8333481b07a08e07cf6f37319753a2b47e99f4c395394c5747b48b495aa9b.css"
+    integrity="sha256-VdgzNIGwegjgfPbzcxl1OitH6Z9MOVOUxXR7SLSVqps="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/regular.min.a7448d02590b43449364b6b5922ed9af5410abb4de4238412a830316dedb850b.css"
+    integrity="sha256-p0SNAlkLQ0STZLa1ki7Zr1QQq7TeQjhBKoMDFt7bhQs="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/brands.min.9ed75a5d670c953fe4df935937674b4646f92674367e9e66eb995bb04e821647.css"
+    integrity="sha256-ntdaXWcMlT/k35NZN2dLRkb5JnQ2fp5m65lbsE6CFkc="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link rel="shortcut icon" href="/favicons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+
+  <link rel="canonical" href="https://alan.com.ar/post/algochallengepython03/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/anatole-header.min.46e6a54097480084f8f52c20ca1aa7425b4fad17029a887fd4017b12e311a72d.js"
+    integrity="sha256-RualQJdIAIT49SwgyhqnQltPrRcCmoh/1AF7EuMRpy0="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/anatole-theme-switcher.min.4c31f3cf7e8e609c897dba88aecac0e8db1ebb4e5c841d3f9ffb01d463973678.js"
+      integrity="sha256-TDHzz36OYJyJfbqIrsrA6Nseu05chB0/n/sB1GOXNng="
+      crossorigin="anonymous"
+    ></script>
+  
+
+  
+
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://alan.com.ar/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Algorand Coding Challenge - Volume 2: 🐍 Python #03."/>
+<meta name="twitter:description" content="Check out the GitHub repository.
+ 🚩 Challenge 3: Algorand smart contract can send transactions!"/>
+
+
+
+  
+  <meta property="og:title" content="Algorand Coding Challenge - Volume 2: 🐍 Python #03." />
+<meta property="og:description" content="Check out the GitHub repository.
+ 🚩 Challenge 3: Algorand smart contract can send transactions!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://alan.com.ar/post/algochallengepython03/" /><meta property="og:image" content="https://alan.com.ar/images/site-feature-image.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-04-16T00:56:54-03:00" />
+<meta property="article:modified_time" content="2024-04-16T00:56:54-03:00" /><meta property="og:site_name" content="Alan Cortez" />
+
+
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "post",
+        "name": "Algorand Coding Challenge - Volume 2: 🐍 Python #03.",
+        "headline": "Algorand Coding Challenge - Volume 2: 🐍 Python #03.",
+        "alternativeHeadline": "",
+        "description": "
+      
+        Check out the GitHub repository.\n 🚩 Challenge 3: Algorand smart contract can send transactions!
+
+
+      
+
+
+    ",
+        "inLanguage": "en-us",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/alan.com.ar\/post\/algochallengepython03\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Alan Cortez"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Alan Cortez"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Alan Cortez"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Alan Cortez"
+        },
+        "copyrightYear" : "2024",
+        "dateCreated": "2024-04-16T00:56:54.00Z",
+        "datePublished": "2024-04-16T00:56:54.00Z",
+        "dateModified": "2024-04-16T00:56:54.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Alan Cortez",
+            "url": "https://alan.com.ar",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/alan.com.ar\/favicons\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+        
+        "https://alan.com.ar/images/site-feature-image.png"
+
+
+      
+      ]
+
+    ,
+        "url" : "https:\/\/alan.com.ar\/post\/algochallengepython03\/",
+        "wordCount" : "1582",
+        "genre" : [ ],
+        "keywords" : [ 
+      
+      "Algorand"
+
+    
+      
+        ,
+
+      
+      "Python"
+
+    
+      
+        ,
+
+      
+      "Algokit"
+
+    
+      
+        ,
+
+      
+      "Blockchain"
+
+    
+      
+        ,
+
+      
+      "Docker"
+
+    
+      
+        ,
+
+      
+      "Challenge"
+
+    ]
+    }
+  </script>
+
+
+</head>
+<body class="body">
+    <div class="wrapper">
+      <aside
+        
+          class="wrapper__sidebar"
+        
+      ><script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+
+<div
+  class="sidebar
+    animated fadeInDown
+  "
+>
+  <div class="sidebar__content">
+    <div class="sidebar__introduction">
+      <img
+        class="sidebar__introduction-profileimage"
+        src="/images/photo.jpeg"
+        alt="profile picture"
+      />
+      
+        <div class="sidebar__introduction-title">
+          <a href="/" class="typewriter"></a>
+          
+
+          <script> 
+          const typeit2 = new TypeIt(".typewriter", {
+            cursorChar: "_"  ,
+            speed: 25});
+          
+          typeit2.type("> ALAN CORTEZ");
+
+          typeit2.go();
+          </script>
+      </div>
+      
+      <div class="sidebar__introduction-description">
+        <p>Cyber security enthusiast. Constantly looking for ways to improve my skills and knowledge. I am a fast learner and always ready to take on new challenges. I am currently deepening my knowledge in Python language.</p>
+      </div>
+    </div>
+    <ul class="sidebar__list">
+      
+        <li class="sidebar__list-item">
+          <a
+            href="https://www.linkedin.com/in/alan-ian-cortez/"
+            target="_blank"
+            rel="noopener me"
+            aria-label="Linkedin"
+            title="Linkedin"
+          >
+            <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a
+            href="https://github.com/athekat/"
+            target="_blank"
+            rel="noopener me"
+            aria-label="GitHub"
+            title="GitHub"
+          >
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a
+            href="mailto:contactme@alan.com.ar"
+            target="_blank"
+            rel="noopener me"
+            aria-label="e-mail"
+            title="e-mail"
+          >
+            <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div><footer class="footer footer__sidebar">
+
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.fae9ac8895995fe91958b3954be11e96025824a04770726a3531e119ddd2d576.js"
+    integrity="sha256-&#43;umsiJWZX&#43;kZWLOVS&#43;EelgJYJKBHcHJqNTHhGd3S1XY="
+    crossorigin="anonymous"
+  ></script></div>
+</aside>
+      <main
+        
+          class="wrapper__main"
+        
+      >
+        <header class="header"><div
+  class="
+    animated fadeInDown
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+  </a>
+  <nav class="nav">
+    <ul class="nav__list" id="navMenu">
+      
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="/"
+              
+              title=""
+              >Home</a
+            >
+          </li>
+        
+
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="/post/"
+              
+              title=""
+              >Posts</a
+            >
+          </li>
+        
+
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="https://www.alan.com.ar/images/CV_ALAN_EN.pdf"
+              
+                target="_blank" rel="noopener noreferrer"
+              
+              title=""
+              >CV</a
+            >
+          </li>
+        
+
+      
+    </ul>
+    <ul class="nav__list nav__list--end">
+      
+      
+        <li class="nav__list-item">
+          <div class="themeswitch">
+            <a title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </div>
+        </li>
+      
+    </ul>
+  </nav>
+</div>
+</header>
+  <div
+    class="post 
+      animated fadeInDown
+    "
+  >
+    
+    <div class="post__content">
+      <h1>Algorand Coding Challenge - Volume 2: 🐍 Python #03.</h1>
+      
+        <ul class="post__meta">
+          <li class="post__meta-item">
+            <em class="fas fa-calendar-day post__meta-icon"></em>
+            <span class="post__meta-text"
+              >
+                
+                  16/4/2024
+                
+
+              
+            </span>
+          </li>
+          <li class="post__meta-item">
+            <em class="fas fa-stopwatch post__meta-icon"></em>
+            <span class="post__meta-text">8-minute read</span>
+          </li>
+        </ul>
+      <blockquote>
+<p>Check out the <a href="https://github.com/algorand-coding-challenges/python-challenge-3">GitHub repository</a>.</p>
+</blockquote>
+<h2 id="-challenge-3-algorand-smart-contract-can-send-transactions-">🚩 Challenge 3: Algorand smart contract can send transactions!? 🤯</h2>
+<blockquote>
+<p>I want to deposit my Super RARE Oranges NFT into my ASA Vault contract but the contract is failing to opt-in to the asset! What is going on?</p>
+</blockquote>
+<p>Inside of <code>smart_contracts/asa_vault/contract.py</code> file, there is a simple ASA vault smart contract written in Algorand Python.</p>
+<p>It is a simple contract that has a <code>deposit_asa</code> function and a <code>withdraw_asa</code> function and the depositor&rsquo;s balance is recorded in the global state <code>asa_balance</code>. There is also an <code>opt_in_to_asset</code> method that opts the smart contract account into the asset that is being deposited.</p>
+<p>If you don&rsquo;t know what <code>opt-in</code> is it is a unique feature on Algorand that prevents someone from sending a token to an account that hasn&rsquo;t opted in to the token that is being sent. You can learn more about opt-ins <a href="https://developer.algorand.org/docs/get-details/algokit/utils/ts/capabilities/asset/?from_query=opt%20in#opt-inout">here</a></p>
+<p>The smart contract builds successfully but if you try deploying and testing the smart contract by opening Docker Desktop, and then running:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">algokit bootstrap all <span class="c1"># set up dev environment on your computer</span>
+algokit localnet start <span class="c1"># launch an Algorand local network for testing</span>
+algokit project run build <span class="c1"># Compile the smart contract and get low-level TEAL code.</span>
+algokit project deploy localnet <span class="c1"># Run the `smart_contracts/asa_vault/deploy_config.py` file to deploy and test the smart contract.</span>
+</code></pre></div><p>it will fail and show this error:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">algosdk.error.AlgodHTTPError: TransactionPool.Remember: transaction ESKVFLSCWNUNJJWMF34QBEQHTXGWFQNDTBYS3MBXZQNEIQOYLKXQ: receiver error: must optin, asset <span class="m">1442</span> missing from NIADJIGAJ2KYNX5HJ35I7RK66VVN6SE6NBUB46NJXAC4USYXJEYSXDH4JQ
+</code></pre></div><p><strong>Find out what is wrong and fix the bug.</strong></p>
+<blockquote>
+<p>💬 Meet other hackers working on this challenge and get help in the <a href="https://discord.com/channels/491256308461207573/1182612934455722075">Algorand Python Discord Channel</a>!</p>
+</blockquote>
+<h2 id="checkpoint-1--prerequisites">Checkpoint 1: 🧰 Prerequisites</h2>
+<ol>
+<li><a href="https://www.python.org/downloads/">Install Python 3.12 or higher</a></li>
+<li><a href="https://github.com/algorandfoundation/algokit-cli/tree/main?tab=readme-ov-file#install">Install AlgoKit</a>.</li>
+<li>Install <a href="https://www.docker.com/products/docker-desktop/">Docker</a>. It is used to run a local Algorand network for development.</li>
+</ol>
+<h2 id="checkpoint-2--set-up-your-development-environment">Checkpoint 2: 💻 Set up your development environment</h2>
+<ol>
+<li><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo">Fork this repository.</a></li>
+<li>Clone the repository</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> <span class="o">[</span>DIRECTORY_OF_YOUR_CHOICE<span class="o">]</span>
+git clone <span class="o">[</span>FORKED_REPO_URL<span class="o">]</span>
+</code></pre></div><p>Now you have 2 ways of opening your AlgoKit project.</p>
+<h3 id="with-vscode-workspaces">With VSCode Workspaces</h3>
+<ol>
+<li>Open the cloned repository with the code editor of your choosing.</li>
+<li>Open workspace mode by clicking <code>open workspace</code> inside of <code>python-challenge-3.code-workspace</code> file at the root level.</li>
+<li>Go inside of the <code>challenge</code> folder.</li>
+<li>To setup your dev environment using AlgoKit, run the below command:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">algokit project bootstrap all <span class="c1">#algokit bootstrap all is being deprecated. Use this command from now on.</span>
+</code></pre></div><p>This command will install all dependencies and also generate a <code>.env</code> file for you.
+5. Activate Python virtual environment by running:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">poetry shell
+</code></pre></div><p>venv will automatically be activated the next time you open the project.</p>
+<blockquote>
+<p>Please note, in addition to built-in support for <a href="https://code.visualstudio.com/docs/editor/workspaces">VSCode Workspaces</a>, the cli provides native support for monorepos called <code>algokit workspaces</code>. Refer to <a href="https://github.com/algorandfoundation/algokit-cli/blob/main/docs/features/project/run.md#workspace-vs-standalone-projects">documentation</a> for detailed guidelines for recommended project structures and ability to leverage custom command orchestration via <code>algokit project run</code>.</p>
+</blockquote>
+<h3 id="without-vscode-workspaces">Without VSCode Workspaces</h3>
+<p>All AlgoKit projects initialized with <code>--workspace</code> option has the following directory structure:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">├── projects
+│   ├── smart-contract
+│   └── frontend <span class="c1"># doesn&#39;t exist for this project</span>
+│   └── ...
+├── <span class="o">{</span>several config files...<span class="o">}</span>
+├── ...
+├── .algokit.toml <span class="c1"># workspace-typed algokit project config</span>
+├── <span class="o">{</span>project-name<span class="o">}</span>.code-workspace
+├── README.md
+</code></pre></div><p>So to access a single project under the <code>projects</code> folder, it is recommended to <code>cd</code> into the project you want to work with and then open your code editor (alternatively refer to VSCode Workspace file at the root). If you are reading this and didn&rsquo;t open the <code>challenge</code> folder directly, go do that now!! 😁</p>
+<ol>
+<li>cd into <code>projects/challenge</code> then open the code editor</li>
+<li>To setup your dev environment using AlgoKit, run the below command:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">algokit project bootstrap all <span class="c1">#algokit bootstrap all is being deprecated. Use this command from now on.</span>
+</code></pre></div><p>This command will install all dependencies and also generate a <code>.env</code> file for you.
+3. Activate the Python virtual environment by running below inside of <code>challenge</code> folder:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">poetry shell
+</code></pre></div><p>venv will automatically be activated the next time you open the project.</p>
+<p>Video walkthrough of forking and cloning this repository:</p>
+<p><a href="https://github.com/algorand-fix-the-bug-campaign/challenge-1/assets/52557585/acde8053-a8dd-4f53-8bad-45de1068bfda">https://github.com/algorand-fix-the-bug-campaign/challenge-1/assets/52557585/acde8053-a8dd-4f53-8bad-45de1068bfda</a></p>
+<p>Now you are ready to fix the bug!</p>
+<h2 id="checkpoint-3--fix-the-bug-">Checkpoint 3: 🐞 Fix the bug 🧐</h2>
+<ol>
+<li>Open Docker Desktop and launch Algorand localnet by running <code>algokit localnet start</code> in your terminal <a href="https://github.com/algorandfoundation/algokit-cli/blob/main/docs/features/localnet.md#creating--starting-the-localnet">For more info click me!</a>.</li>
+<li>Go to <code>smart_contracts/asa_vault/contract.py</code> and see the source code of the ASA vault smart contract.</li>
+<li>Compile the contract with <code>algokit project run build</code> and then try running the test script with <code>algokit project deploy localnet</code>. It will fail.</li>
+<li>Go to <code>smart_contracts/asa_vault/deploy_config.py</code> to understand the deployment/test script.</li>
+<li>Read the error, figure out what is wrong, and fix the bug! The bug is inside of the ASA Vault contract. There is nothing wrong with the deploy script inside of <code>smart_contracts/asa_vault/deploy_config.py</code></li>
+<li>After fixing the bug, build and run the deploy script again with the below command:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">algokit project run build
+algokit project deploy localnet
+</code></pre></div><p>OR if you are on VSCode, hit F5 or go to the <code>Run and Debug</code> tab and run the debug script.</p>
+<p>If you see something like this in the console, you successfully fixed the bug! 😆
+<img width="1217" alt="image" src="https://github.com/algorand-coding-challenges/python-challenge-3/assets/52557585/79b4a6a8-ce59-4e64-85bf-35bc82583869"></p>
+<p><strong>😰 Are you struggling?</strong></p>
+<ul>
+<li><a href="https://developer.algorand.org/docs/get-details/dapps/smart-contracts/apps/innertx/?from_query=inner%20t#template-modal-overlay">Inner Transaction Documentation</a></li>
+<li><a href="https://algorandfoundation.github.io/puya/api-algopy.itxn.html#algopy.itxn.AssetTransfer">Algorand Python Documentation</a></li>
+<li><a href="https://developer.algorand.org/docs/get-details/transactions/transactions/?from_query=zero%20asset%20transfer#asset-transfer-transaction:~:text=A%20zero%20amount%20transferred%20to%20self%20allocates%20that%20asset%20in%20the%20account%27s%20Asset%20map.">How to opt-in to an asset with assetTransfer txn</a></li>
+</ul>
+<h2 id="checkpoint-4--submit-your-answer">Checkpoint 4: 💯 Submit your answer</h2>
+<ol>
+<li>After fixing the bug, push your code to your forked Github repo and <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork">make a PR to the original repo.</a></li>
+<li>Inside the PR include:
+<ol>
+<li>What was the problem?</li>
+<li>How did you solve the problem?</li>
+<li>Screenshot of your terminal showing the result of running the deploy script.</li>
+</ol>
+</li>
+</ol>
+<h2 id="checkpoint-5--claim-your-certificate-of-completion-nft-">Checkpoint 5: 🏆 Claim your certificate of completion NFT! 🎓</h2>
+<p>The Algorand Developer Relations team will review the submission and &ldquo;approve&rdquo; the PR by labeling it <code>Approved</code>. Once it&rsquo;s approved, we will share the magic link to claim your certificate of completion NFT in the comment of the PR!</p>
+<blockquote>
+<p>The certificate of completion NFT is a verifiable credential minted on the <a href="https://goplausible.com/">GoPlausible platform</a> that follows the W3C standard for certificates and OpenBadges standard for badges.</p>
+</blockquote>
+<p>The certificate of completion NFT for Python challenges was designed by <a href="https://twitter.com/MaarsComics">Maars</a>, an artist &amp; a dev in web3. Definitely follow his work! It&rsquo;s awesome. 😆</p>
+<p>🎉 Congratulations on completing the challenge Algodev!</p>
+<h2 id="below-is-the-default-readme-of-the-python-algokit-template-read-to-learn-more-about-this-template">Below is the default readme of the Python AlgoKit Template. Read to learn more about this template.</h2>
+<p>This project has been generated using AlgoKit. See below for default getting started instructions.</p>
+<h1 id="setup">Setup</h1>
+<h3 id="pre-requisites">Pre-requisites</h3>
+<ul>
+<li><a href="https://www.python.org/downloads/">Python 3.12</a> or later</li>
+<li><a href="https://www.docker.com/">Docker</a> (only required for LocalNet)</li>
+</ul>
+<h3 id="initial-setup">Initial setup</h3>
+<ol>
+<li>Clone this repository locally</li>
+<li>Install pre-requisites:
+<ul>
+<li>Make sure to have <a href="https://www.docker.com/">Docker</a> installed and running on your machine.</li>
+<li>Install <code>AlgoKit</code> - <a href="https://github.com/algorandfoundation/algokit-cli#install">Link</a>: The recommended version is <code>1.7.3</code>. Ensure you can execute <code>algokit --version</code> and get <code>1.7.1</code> or later.</li>
+<li>Bootstrap your local environment; run <code>algokit bootstrap all</code> within this folder, which will:
+<ul>
+<li>Install <code>Poetry</code> - <a href="https://python-poetry.org/docs/#installation">Link</a>: The minimum required version is <code>^1.7</code>. Ensure you can execute <code>poetry -V</code> and get <code>1.2</code>+</li>
+<li>Run <code>poetry install</code> in the root directory, which will set up a <code>.venv</code> folder with a Python virtual environment and also install all Python dependencies</li>
+<li>Copy <code>.env.template</code> to <code>.env</code></li>
+</ul>
+</li>
+<li>Run <code>algokit localnet start</code> to start a local Algorand network in Docker. If you are using VS Code launch configurations provided by the template, this will be done automatically for you.</li>
+</ul>
+</li>
+<li>Open the project and start debugging / developing via:
+<ul>
+<li>VS Code
+<ol>
+<li>Open the repository root in VS Code</li>
+<li>Install recommended extensions</li>
+<li>Hit F5 (or whatever you have debug mapped to) and it should start running with breakpoint debugging.
+<blockquote>
+<p><strong>Note</strong>
+If using Windows: Before running for the first time you will need to select the Python Interpreter.</p>
+</blockquote>
+<ol>
+<li>Open the command palette (Ctrl/Cmd + Shift + P)</li>
+<li>Search for <code>Python: Select Interpreter</code></li>
+<li>Select <code>./.venv/Scripts/python.exe</code></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>JetBrains IDEs (please note, this setup is primarily optimized for PyCharm Community Edition)
+<ol>
+<li>Open the repository root in the IDE</li>
+<li>It should automatically detect it&rsquo;s a Poetry project and set up a Python interpreter and virtual environment.</li>
+<li>Hit Shift+F10|Ctrl+R (or whatever you have debug mapped to) and it should start running with breakpoint debugging. Please note, JetBrains IDEs on Windows have a known bug that in some cases may prevent executing shell scripts as pre-launch tasks, for workarounds refer to <a href="https://youtrack.jetbrains.com/issue/IDEA-277486/Shell-script-configuration-cannot-run-as-before-launch-task">JetBrains forums</a>.</li>
+</ol>
+</li>
+<li>Other
+<ol>
+<li>Open the repository root in your text editor of choice</li>
+<li>In a terminal run <code>poetry shell</code></li>
+<li>Run <code>python -m smart_contracts</code> through your debugger of choice</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="subsequently">Subsequently</h3>
+<ol>
+<li>If you update to the latest source code and there are new dependencies you will need to run <code>algokit bootstrap all</code> again</li>
+<li>Follow step 3 above</li>
+</ol>
+<blockquote>
+<p>For guidance on <code>smart_contracts</code> folder and adding new contracts to the project please see <a href="smart_contracts/README.md">README</a> on the respective folder.</p>
+</blockquote>
+<h1 id="tools">Tools</h1>
+<p>This project makes use of Algorand Python to build Algorand smart contracts. The following tools are in use:</p>
+<ul>
+<li><a href="https://www.algorand.com/">Algorand</a> - Layer 1 Blockchain; <a href="https://developer.algorand.org/">Developer portal</a>, <a href="https://developer.algorand.org/docs/get-started/basics/why_algorand/">Why Algorand?</a></li>
+<li><a href="https://github.com/algorandfoundation/algokit-cli">AlgoKit</a> - One-stop shop tool for developers building on the Algorand network; <a href="https://github.com/algorandfoundation/algokit-cli/blob/main/docs/algokit.md">docs</a>, <a href="https://github.com/algorandfoundation/algokit-cli/blob/main/docs/tutorials/intro.md">intro tutorial</a></li>
+<li><a href="https://github.com/algorandfoundation/puya">Algorand Python</a> - A semantically and syntactically compatible, typed Python language that works with standard Python tooling and allows you to express smart contracts (apps) and smart signatures (logic signatures) for deployment on the Algorand Virtual Machine (AVM); <a href="https://github.com/algorandfoundation/puya">docs</a>, <a href="https://github.com/algorandfoundation/puya/tree/main/examples">examples</a></li>
+<li><a href="https://github.com/algorandfoundation/algokit-utils-py">AlgoKit Utils</a> - A set of core Algorand utilities that make it easier to build solutions on Algorand.</li>
+<li><a href="https://python-poetry.org/">Poetry</a>: Python packaging and dependency management.
+It has also been configured to have a productive dev experience out of the box in <a href="https://code.visualstudio.com/">VS Code</a>, see the <a href="./.vscode">.vscode</a> folder.</li>
+</ul>
+<h2 id="solution">Solution:</h2>
+<ol>
+<li><strong>What was the bug?</strong></li>
+</ol>
+<p>The error stated that the asset wasn&rsquo;t opted in.</p>
+<ol start="2">
+<li><strong>How did you fix the bug?</strong></li>
+</ol>
+<p>According to the documentation, if a smart contract wishes to transfer an asset it holds or needs to opt into an asset this can be done with an asset transfer inner transaction. So I added the transaction to <code>opt_in_to_asset.</code></p>
+<p><img src="https://ipfs.algonode.xyz/ipfs/bafybeierejy4fcjygtcjhms4quhzabnjst5las4wreb7e5jvpxpu7se6gi?optimizer=image&amp;width=600" alt="cert"></p>
+</div>
+    <div class="post__footer">
+      
+
+      
+        <span><a class="tag" href="/tags/algorand/">Algorand</a><a class="tag" href="/tags/python/">Python</a><a class="tag" href="/tags/algokit/">Algokit</a><a class="tag" href="/tags/blockchain/">Blockchain</a><a class="tag" href="/tags/docker/">Docker</a><a class="tag" href="/tags/challenge/">Challenge</a></span>
+
+
+      
+    </div>
+
+    
+  </div>
+
+      </main>
+    </div><footer class="footer footer__base">
+
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.fae9ac8895995fe91958b3954be11e96025824a04770726a3531e119ddd2d576.js"
+    integrity="sha256-&#43;umsiJWZX&#43;kZWLOVS&#43;EelgJYJKBHcHJqNTHhGd3S1XY="
+    crossorigin="anonymous"
+  ></script></body>
+</html>
