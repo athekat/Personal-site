@@ -3,33 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://alan.com.ar/</loc>
-    <lastmod>2024-04-16T00:56:54-03:00</lastmod>
+    <lastmod>2024-04-23T00:56:54-03:00</lastmod>
   </url><url>
     <loc>https://alan.com.ar/tags/algokit/</loc>
-    <lastmod>2024-04-16T00:56:54-03:00</lastmod>
+    <lastmod>2024-04-23T00:56:54-03:00</lastmod>
   </url><url>
     <loc>https://alan.com.ar/tags/algorand/</loc>
-    <lastmod>2024-04-16T00:56:54-03:00</lastmod>
+    <lastmod>2024-04-23T00:56:54-03:00</lastmod>
   </url><url>
-    <loc>https://alan.com.ar/post/algochallengepython03/</loc>
-    <lastmod>2024-04-16T00:56:54-03:00</lastmod>
+    <loc>https://alan.com.ar/post/algochallengepython04/</loc>
+    <lastmod>2024-04-23T00:56:54-03:00</lastmod>
   </url><url>
     <loc>https://alan.com.ar/tags/blockchain/</loc>
-    <lastmod>2024-04-16T00:56:54-03:00</lastmod>
+    <lastmod>2024-04-23T00:56:54-03:00</lastmod>
   </url><url>
     <loc>https://alan.com.ar/tags/challenge/</loc>
-    <lastmod>2024-04-16T00:56:54-03:00</lastmod>
+    <lastmod>2024-04-23T00:56:54-03:00</lastmod>
   </url><url>
     <loc>https://alan.com.ar/tags/docker/</loc>
-    <lastmod>2024-04-16T00:56:54-03:00</lastmod>
+    <lastmod>2024-04-23T00:56:54-03:00</lastmod>
   </url><url>
     <loc>https://alan.com.ar/post/</loc>
-    <lastmod>2024-04-16T00:56:54-03:00</lastmod>
+    <lastmod>2024-04-23T00:56:54-03:00</lastmod>
   </url><url>
     <loc>https://alan.com.ar/tags/python/</loc>
-    <lastmod>2024-04-16T00:56:54-03:00</lastmod>
+    <lastmod>2024-04-23T00:56:54-03:00</lastmod>
   </url><url>
     <loc>https://alan.com.ar/tags/</loc>
+    <lastmod>2024-04-23T00:56:54-03:00</lastmod>
+  </url><url>
+    <loc>https://alan.com.ar/post/algochallengepython03/</loc>
     <lastmod>2024-04-16T00:56:54-03:00</lastmod>
   </url><url>
     <loc>https://alan.com.ar/post/algochallengepython02/</loc>
@@ -190,9 +193,5 @@
   </url><url>
     <loc>https://alan.com.ar/imprint/</loc>
     <priority>0</priority>
-  </url><url>
-    <loc>https://alan.com.ar/categories/</loc>
-  </url><url>
-    <loc>https://alan.com.ar/series/</loc>
   </url>
 </urlset>
