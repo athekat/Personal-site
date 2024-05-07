@@ -6,7 +6,18 @@
     <description>Recent content on Alan Cortez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 23 Apr 2024 00:56:54 -0300</lastBuildDate><atom:link href="https://alan.com.ar/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 May 2024 00:24:52 -0300</lastBuildDate><atom:link href="https://alan.com.ar/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Walkthrough: Intermediate Nmap - TryHackMe.</title>
+      <link>https://alan.com.ar/post/intermediatenmap/</link>
+      <pubDate>Mon, 06 May 2024 00:24:52 -0300</pubDate>
+      
+      <guid>https://alan.com.ar/post/intermediatenmap/</guid>
+      
+        <description>You&amp;rsquo;ve learned some great nmap skills! Now can you combine that with other skills with netcat and protocols, to log in to this machine and find the flag?</description>
+      
+    </item>
+    
     <item>
       <title>Algorand Coding Challenge - Volume 2: 🐍 Python #04.</title>
       <link>https://alan.com.ar/post/algochallengepython04/</link>

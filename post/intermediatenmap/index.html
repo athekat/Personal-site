@@ -10,7 +10,7 @@
   <title>
     
       
-        Walkthrough: Basic Pentesting - TryHackMe. |
+        Walkthrough: Intermediate Nmap - TryHackMe. |
       Alan Cortez
 
   </title>
@@ -82,7 +82,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
 
-  <link rel="canonical" href="https://alan.com.ar/post/basicpentesting/" />
+  <link rel="canonical" href="https://alan.com.ar/post/intermediatenmap/" />
 
   
   
@@ -113,20 +113,18 @@
   <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://alan.com.ar/images/site-feature-image.png"/>
 
-<meta name="twitter:title" content="Walkthrough: Basic Pentesting - TryHackMe."/>
-<meta name="twitter:description" content="Link to the room
- In this set of tasks we&rsquo;ll be using:"/>
+<meta name="twitter:title" content="Walkthrough: Intermediate Nmap - TryHackMe."/>
+<meta name="twitter:description" content="You&rsquo;ve learned some great nmap skills! Now can you combine that with other skills with netcat and protocols, to log in to this machine and find the flag?"/>
 
 
 
   
-  <meta property="og:title" content="Walkthrough: Basic Pentesting - TryHackMe." />
-<meta property="og:description" content="Link to the room
- In this set of tasks we&rsquo;ll be using:" />
+  <meta property="og:title" content="Walkthrough: Intermediate Nmap - TryHackMe." />
+<meta property="og:description" content="You&rsquo;ve learned some great nmap skills! Now can you combine that with other skills with netcat and protocols, to log in to this machine and find the flag?" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://alan.com.ar/post/basicpentesting/" /><meta property="og:image" content="https://alan.com.ar/images/site-feature-image.png"/><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2023-11-12T00:24:52-03:00" />
-<meta property="article:modified_time" content="2023-11-12T00:24:52-03:00" /><meta property="og:site_name" content="Alan Cortez" />
+<meta property="og:url" content="https://alan.com.ar/post/intermediatenmap/" /><meta property="og:image" content="https://alan.com.ar/images/site-feature-image.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-05-06T00:24:52-03:00" />
+<meta property="article:modified_time" content="2024-05-06T00:24:52-03:00" /><meta property="og:site_name" content="Alan Cortez" />
 
 
 
@@ -140,12 +138,12 @@
         "@context": "http://schema.org",
         "@type": "BlogPosting",
         "articleSection": "post",
-        "name": "Walkthrough: Basic Pentesting - TryHackMe.",
-        "headline": "Walkthrough: Basic Pentesting - TryHackMe.",
+        "name": "Walkthrough: Intermediate Nmap - TryHackMe.",
+        "headline": "Walkthrough: Intermediate Nmap - TryHackMe.",
         "alternativeHeadline": "",
         "description": "
       
-        Link to the room\n In this set of tasks we\u0026rsquo;ll be using:
+        You\u0026rsquo;ve learned some great nmap skills! Now can you combine that with other skills with netcat and protocols, to log in to this machine and find the flag?
 
 
       
@@ -156,7 +154,7 @@
         "isFamilyFriendly": "true",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/alan.com.ar\/post\/basicpentesting\/"
+            "@id": "https:\/\/alan.com.ar\/post\/intermediatenmap\/"
         },
         "author" : {
             "@type": "Person",
@@ -174,10 +172,10 @@
             "@type": "Person",
             "name": "Alan Cortez"
         },
-        "copyrightYear" : "2023",
-        "dateCreated": "2023-11-12T00:24:52.00Z",
-        "datePublished": "2023-11-12T00:24:52.00Z",
-        "dateModified": "2023-11-12T00:24:52.00Z",
+        "copyrightYear" : "2024",
+        "dateCreated": "2024-05-06T00:24:52.00Z",
+        "datePublished": "2024-05-06T00:24:52.00Z",
+        "dateModified": "2024-05-06T00:24:52.00Z",
         "publisher":{
             "@type":"Organization",
             "name": "Alan Cortez",
@@ -199,8 +197,8 @@
       ]
 
     ,
-        "url" : "https:\/\/alan.com.ar\/post\/basicpentesting\/",
-        "wordCount" : "279",
+        "url" : "https:\/\/alan.com.ar\/post\/intermediatenmap\/",
+        "wordCount" : "179",
         "genre" : [ ],
         "keywords" : [ 
       
@@ -413,7 +411,7 @@
   >
     
     <div class="post__content">
-      <h1>Walkthrough: Basic Pentesting - TryHackMe.</h1>
+      <h1>Walkthrough: Intermediate Nmap - TryHackMe.</h1>
       
         <ul class="post__meta">
           <li class="post__meta-item">
@@ -421,7 +419,7 @@
             <span class="post__meta-text"
               >
                 
-                  12/11/2023
+                  6/5/2024
                 
 
               
@@ -429,90 +427,77 @@
           </li>
           <li class="post__meta-item">
             <em class="fas fa-stopwatch post__meta-icon"></em>
-            <span class="post__meta-text">2-minute read</span>
+            <span class="post__meta-text">One-minute read</span>
           </li>
         </ul>
       <blockquote>
-<p><a href="https://tryhackme.com/room/basicpentestingjt">Link to the room</a></p>
+<p>You&rsquo;ve learned some great nmap skills! Now can you combine that with other skills with netcat and protocols, to log in to this machine and find the flag? This VM MACHINE_IP is listening on a high port, and if you connect to it it may give you some information you can use to connect to a lower port commonly used for remote access!</p>
 </blockquote>
-<p>In this set of tasks we&rsquo;ll be using:</p>
-<ul>
-<li>Brute forcing</li>
-<li>Hash cracking</li>
-<li>Service enumeration</li>
-<li>Linux Enumeration</li>
-</ul>
-<p>The first task is to find the services exposed by the machine. We need to use nmap:</p>
 <blockquote>
-<p>nmap -sC -sV ip-address</p>
+<p><a href="https://tryhackme.com/r/room/intermediatenmap">Link to the room</a></p>
 </blockquote>
-<p>Results:</p>
+<p>First I looked for open ports:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/Documents<span class="o">]</span>
+└─$ nmap -sT 10.10.250.39 -vv       
+</code></pre></div><p>Those were:</p>
 <blockquote>
 <table>
 <thead>
 <tr>
-<th>Port Number</th>
-<th>Service Name</th>
+<th>PORT</th>
+<th>STATE</th>
+<th>SERVICE</th>
+<th>REASON</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>22</td>
-<td>SSH</td>
+<td>22/tcp</td>
+<td>open</td>
+<td>ssh</td>
+<td>syn-ack</td>
 </tr>
 <tr>
-<td>80</td>
-<td>HTTP</td>
+<td>2222/tcp</td>
+<td>open</td>
+<td>EtherNetIP-1</td>
+<td>syn-ack</td>
 </tr>
 <tr>
-<td>139</td>
-<td>SAMBA</td>
-</tr>
-<tr>
-<td>445</td>
-<td>SAMBA</td>
-</tr>
-<tr>
-<td>8009</td>
-<td>APACHE Jserv</td>
-</tr>
-<tr>
-<td>8080</td>
-<td>APACHE Tomcat</td>
+<td>31337/tcp</td>
+<td>open</td>
+<td>Elite</td>
+<td>syn-ack</td>
 </tr>
 </tbody>
 </table>
 </blockquote>
-<p>Then we are asked for the name of the hidden directory on the web server. To look for hidden directories we use dirbuster or gobuster:</p>
+<p>Then, since I&rsquo;ve recently learnt about nmap scripts I first decided to try:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/Documents<span class="o">]</span>
+└─<span class="nv">$nmap</span> -p <span class="m">22</span> 10.10.250.39 --script ssh-brute
+</code></pre></div><p>but wasn&rsquo;t able to get the credentials this way.</p>
+<p>So I followed the instructions and interacted with the 31337 TCP port with netcat:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">netcat -n 10.10.250.39 <span class="m">31337</span>
+<span class="o">(</span>-n --&gt; not resolve DNS<span class="o">)</span>
+</code></pre></div><p>which resulted in:</p>
 <blockquote>
-<p>gobuster dir -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -u ip-address</p>
+<p>In case I forget - user:pass
+ubuntu:Dafdas!!/str0ng</p>
 </blockquote>
-<p>This will give us the hidden dir.</p>
-<p>After thar we need to find our way to User to find the username &amp; password. Back in nmap we find out that samba services are running, so we use enum4linux to find the usernames.</p>
-<blockquote>
-<p>enum4linux -a ip-address</p>
-</blockquote>
-<p>As a result we gain the usernames. To find the password we run Hydra with rockyou.txt as a password list.</p>
-<blockquote>
-<p>hydra -l username -P /usr/share/wordlists/rockyou.txt ssh://ip-address</p>
-</blockquote>
-<p>With these credentials we&rsquo;ll be able to log-in via ssh.</p>
-<p>To enumerate vulnerabilities and privilege escalations we can use <a href="https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS">linPEAS</a>.</p>
-<p>We can use the scp command to copy files between a local and a remote system, so we&rsquo;ll be using that to copy linPeas to the target machine.</p>
-<blockquote>
-<p>scp localFileDir user@ip-address:remoteFileDir</p>
-</blockquote>
-<p>This will find the Private SSH RSA key found for Kay. We cat this private key file. However, the private key is password protected. We can use JohnTheRipper to brute force the password. First we run ssh2john.py and then we run john. Using JohnTheRipper and rockyou.txt will give us the other user&rsquo;s password, and this user we have access to the flag to terminate the ctf.</p>
+<p>With these credentials I was able to login via ssh:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/Documents<span class="o">]</span>
+└─$ ssh ubuntu@10.10.250.39
+</code></pre></div><p>and navigate to the flag.txt file.</p>
 
 
   <h3>Related Posts</h3>
   <ul>
     
-      <li><a href="/post/intermediatenmap/">Walkthrough: Intermediate Nmap - TryHackMe.</a></li>
-    
       <li><a href="/post/picklerickctf/">Walkthrough: Pickle Rick CTF - TryHackMe.</a></li>
     
       <li><a href="/post/simplectf/">Walkthrough: Simple CTF - TryHackMe.</a></li>
+    
+      <li><a href="/post/basicpentesting/">Walkthrough: Basic Pentesting - TryHackMe.</a></li>
     
   </ul>
 

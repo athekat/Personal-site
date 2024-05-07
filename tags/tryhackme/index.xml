@@ -6,7 +6,18 @@
     <description>Recent content in TryHackMe on Alan Cortez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 20 Nov 2023 00:24:52 -0300</lastBuildDate><atom:link href="https://alan.com.ar/tags/tryhackme/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 May 2024 00:24:52 -0300</lastBuildDate><atom:link href="https://alan.com.ar/tags/tryhackme/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Walkthrough: Intermediate Nmap - TryHackMe.</title>
+      <link>https://alan.com.ar/post/intermediatenmap/</link>
+      <pubDate>Mon, 06 May 2024 00:24:52 -0300</pubDate>
+      
+      <guid>https://alan.com.ar/post/intermediatenmap/</guid>
+      
+        <description>You&amp;rsquo;ve learned some great nmap skills! Now can you combine that with other skills with netcat and protocols, to log in to this machine and find the flag?</description>
+      
+    </item>
+    
     <item>
       <title>Walkthrough: Pickle Rick CTF - TryHackMe.</title>
       <link>https://alan.com.ar/post/picklerickctf/</link>
