@@ -6,7 +6,51 @@
     <description>Recent content in Tags on Alan Cortez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 06 May 2024 00:24:52 -0300</lastBuildDate><atom:link href="https://alan.com.ar/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Sep 2024 00:24:52 -0300</lastBuildDate><atom:link href="https://alan.com.ar/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HackTheBox</title>
+      <link>https://alan.com.ar/tags/hackthebox/</link>
+      <pubDate>Sun, 15 Sep 2024 00:24:52 -0300</pubDate>
+      
+      <guid>https://alan.com.ar/tags/hackthebox/</guid>
+      
+        <description></description>
+      
+    </item>
+    
+    <item>
+      <title>SOC</title>
+      <link>https://alan.com.ar/tags/soc/</link>
+      <pubDate>Sun, 15 Sep 2024 00:24:52 -0300</pubDate>
+      
+      <guid>https://alan.com.ar/tags/soc/</guid>
+      
+        <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Walkthrough</title>
+      <link>https://alan.com.ar/tags/walkthrough/</link>
+      <pubDate>Sun, 15 Sep 2024 00:24:52 -0300</pubDate>
+      
+      <guid>https://alan.com.ar/tags/walkthrough/</guid>
+      
+        <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Windows</title>
+      <link>https://alan.com.ar/tags/windows/</link>
+      <pubDate>Sun, 15 Sep 2024 00:24:52 -0300</pubDate>
+      
+      <guid>https://alan.com.ar/tags/windows/</guid>
+      
+        <description></description>
+      
+    </item>
+    
     <item>
       <title>Challenge</title>
       <link>https://alan.com.ar/tags/challenge/</link>
@@ -35,17 +79,6 @@
       <pubDate>Mon, 06 May 2024 00:24:52 -0300</pubDate>
       
       <guid>https://alan.com.ar/tags/tryhackme/</guid>
-      
-        <description></description>
-      
-    </item>
-    
-    <item>
-      <title>Walkthrough</title>
-      <link>https://alan.com.ar/tags/walkthrough/</link>
-      <pubDate>Mon, 06 May 2024 00:24:52 -0300</pubDate>
-      
-      <guid>https://alan.com.ar/tags/walkthrough/</guid>
       
         <description></description>
       

@@ -3,7 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://alan.com.ar/</loc>
-    <lastmod>2024-05-06T00:24:52-03:00</lastmod>
+    <lastmod>2024-09-15T00:24:52-03:00</lastmod>
+  </url><url>
+    <loc>https://alan.com.ar/tags/hackthebox/</loc>
+    <lastmod>2024-09-15T00:24:52-03:00</lastmod>
+  </url><url>
+    <loc>https://alan.com.ar/post/</loc>
+    <lastmod>2024-09-15T00:24:52-03:00</lastmod>
+  </url><url>
+    <loc>https://alan.com.ar/post/windowseventlogshtb/</loc>
+    <lastmod>2024-09-15T00:24:52-03:00</lastmod>
+  </url><url>
+    <loc>https://alan.com.ar/tags/soc/</loc>
+    <lastmod>2024-09-15T00:24:52-03:00</lastmod>
+  </url><url>
+    <loc>https://alan.com.ar/tags/</loc>
+    <lastmod>2024-09-15T00:24:52-03:00</lastmod>
+  </url><url>
+    <loc>https://alan.com.ar/tags/walkthrough/</loc>
+    <lastmod>2024-09-15T00:24:52-03:00</lastmod>
+  </url><url>
+    <loc>https://alan.com.ar/tags/windows/</loc>
+    <lastmod>2024-09-15T00:24:52-03:00</lastmod>
   </url><url>
     <loc>https://alan.com.ar/tags/challenge/</loc>
     <lastmod>2024-05-06T00:24:52-03:00</lastmod>
@@ -11,16 +32,7 @@
     <loc>https://alan.com.ar/tags/ctf/</loc>
     <lastmod>2024-05-06T00:24:52-03:00</lastmod>
   </url><url>
-    <loc>https://alan.com.ar/post/</loc>
-    <lastmod>2024-05-06T00:24:52-03:00</lastmod>
-  </url><url>
-    <loc>https://alan.com.ar/tags/</loc>
-    <lastmod>2024-05-06T00:24:52-03:00</lastmod>
-  </url><url>
     <loc>https://alan.com.ar/tags/tryhackme/</loc>
-    <lastmod>2024-05-06T00:24:52-03:00</lastmod>
-  </url><url>
-    <loc>https://alan.com.ar/tags/walkthrough/</loc>
     <lastmod>2024-05-06T00:24:52-03:00</lastmod>
   </url><url>
     <loc>https://alan.com.ar/post/intermediatenmap/</loc>
