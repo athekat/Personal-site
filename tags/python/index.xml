@@ -6,7 +6,19 @@
     <description>Recent content in Python on Alan Cortez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 23 Apr 2024 00:56:54 -0300</lastBuildDate><atom:link href="https://alan.com.ar/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 22 Sep 2024 00:45:06 -0800</lastBuildDate><atom:link href="https://alan.com.ar/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Age of Empires II - Current Match (Python Script).</title>
+      <link>https://alan.com.ar/post/aoecurrentmatch/</link>
+      <pubDate>Sun, 22 Sep 2024 00:45:06 -0800</pubDate>
+      
+      <guid>https://alan.com.ar/post/aoecurrentmatch/</guid>
+      
+        <description>Check out the GitHub repository.
+ This code fetches information about the most recent Age of Empires 2 match played by a specific profile and summarizes it, giving also the specific civs bonuses.</description>
+      
+    </item>
+    
     <item>
       <title>Algorand Coding Challenge - Volume 2: 🐍 Python #04.</title>
       <link>https://alan.com.ar/post/algochallengepython04/</link>

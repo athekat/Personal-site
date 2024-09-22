@@ -3,21 +3,33 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://alan.com.ar/</loc>
-    <lastmod>2024-09-15T00:24:52-03:00</lastmod>
+    <lastmod>2024-09-22T00:45:06-08:00</lastmod>
   </url><url>
-    <loc>https://alan.com.ar/tags/hackthebox/</loc>
-    <lastmod>2024-09-15T00:24:52-03:00</lastmod>
+    <loc>https://alan.com.ar/tags/age-of-empires-ii/</loc>
+    <lastmod>2024-09-22T00:45:06-08:00</lastmod>
+  </url><url>
+    <loc>https://alan.com.ar/post/aoecurrentmatch/</loc>
+    <lastmod>2024-09-22T00:45:06-08:00</lastmod>
   </url><url>
     <loc>https://alan.com.ar/post/</loc>
+    <lastmod>2024-09-22T00:45:06-08:00</lastmod>
+  </url><url>
+    <loc>https://alan.com.ar/tags/python/</loc>
+    <lastmod>2024-09-22T00:45:06-08:00</lastmod>
+  </url><url>
+    <loc>https://alan.com.ar/tags/scripts/</loc>
+    <lastmod>2024-09-22T00:45:06-08:00</lastmod>
+  </url><url>
+    <loc>https://alan.com.ar/tags/</loc>
+    <lastmod>2024-09-22T00:45:06-08:00</lastmod>
+  </url><url>
+    <loc>https://alan.com.ar/tags/hackthebox/</loc>
     <lastmod>2024-09-15T00:24:52-03:00</lastmod>
   </url><url>
     <loc>https://alan.com.ar/post/windowseventlogshtb/</loc>
     <lastmod>2024-09-15T00:24:52-03:00</lastmod>
   </url><url>
     <loc>https://alan.com.ar/tags/soc/</loc>
-    <lastmod>2024-09-15T00:24:52-03:00</lastmod>
-  </url><url>
-    <loc>https://alan.com.ar/tags/</loc>
     <lastmod>2024-09-15T00:24:52-03:00</lastmod>
   </url><url>
     <loc>https://alan.com.ar/tags/walkthrough/</loc>
@@ -53,9 +65,6 @@
     <loc>https://alan.com.ar/tags/docker/</loc>
     <lastmod>2024-04-23T00:56:54-03:00</lastmod>
   </url><url>
-    <loc>https://alan.com.ar/tags/python/</loc>
-    <lastmod>2024-04-23T00:56:54-03:00</lastmod>
-  </url><url>
     <loc>https://alan.com.ar/post/algochallengepython03/</loc>
     <lastmod>2024-04-16T00:56:54-03:00</lastmod>
   </url><url>
@@ -65,16 +74,10 @@
     <loc>https://alan.com.ar/post/algochallengepython01/</loc>
     <lastmod>2024-04-03T00:56:54-03:00</lastmod>
   </url><url>
-    <loc>https://alan.com.ar/tags/age-of-empires-ii/</loc>
-    <lastmod>2024-04-01T00:24:52-03:00</lastmod>
-  </url><url>
     <loc>https://alan.com.ar/post/aoeaiscripting/</loc>
     <lastmod>2024-04-01T00:24:52-03:00</lastmod>
   </url><url>
     <loc>https://alan.com.ar/tags/ai/</loc>
-    <lastmod>2024-04-01T00:24:52-03:00</lastmod>
-  </url><url>
-    <loc>https://alan.com.ar/tags/scripts/</loc>
     <lastmod>2024-04-01T00:24:52-03:00</lastmod>
   </url><url>
     <loc>https://alan.com.ar/post/algochallenge04/</loc>
