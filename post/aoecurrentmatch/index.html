@@ -118,14 +118,14 @@
 
 <meta name="twitter:title" content="Age of Empires II - Current Match (Python Script)."/>
 <meta name="twitter:description" content="Check out the GitHub repository.
- This code fetches information about the most recent Age of Empires 2 match played by a specific profile and summarizes it, giving also the specific civs bonuses."/>
+ This code fetches information about the most recent (or ongoing) Age of Empires II match played by a specific profile and gives details such as ELO rating, civ and bonuses."/>
 
 
 
   
   <meta property="og:title" content="Age of Empires II - Current Match (Python Script)." />
 <meta property="og:description" content="Check out the GitHub repository.
- This code fetches information about the most recent Age of Empires 2 match played by a specific profile and summarizes it, giving also the specific civs bonuses." />
+ This code fetches information about the most recent (or ongoing) Age of Empires II match played by a specific profile and gives details such as ELO rating, civ and bonuses." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://alan.com.ar/post/aoecurrentmatch/" /><meta property="og:image" content="https://alan.com.ar/images/site-feature-image.png"/><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2024-09-22T00:45:06-08:00" />
@@ -148,7 +148,7 @@
         "alternativeHeadline": "",
         "description": "
       
-        Check out the GitHub repository.\n This code fetches information about the most recent Age of Empires 2 match played by a specific profile and summarizes it, giving also the specific civs bonuses.
+        Check out the GitHub repository.\n This code fetches information about the most recent (or ongoing) Age of Empires II match played by a specific profile and gives details such as ELO rating, civ and bonuses.
 
 
       
@@ -203,7 +203,7 @@
 
     ,
         "url" : "https:\/\/alan.com.ar\/post\/aoecurrentmatch\/",
-        "wordCount" : "297",
+        "wordCount" : "177",
         "genre" : [ ],
         "keywords" : [ 
       
@@ -246,7 +246,7 @@
     <div class="sidebar__introduction">
       <img
         class="sidebar__introduction-profileimage"
-        src="/images/photo.jpeg"
+        src="/images/photoglitch.gif"
         alt="profile picture"
       />
       
@@ -408,16 +408,16 @@
           </li>
           <li class="post__meta-item">
             <em class="fas fa-stopwatch post__meta-icon"></em>
-            <span class="post__meta-text">2-minute read</span>
+            <span class="post__meta-text">One-minute read</span>
           </li>
         </ul>
       <blockquote>
 <p>Check out the <a href="https://github.com/athekat/Aoe-CurrentMatchPy/">GitHub repository</a>.</p>
 </blockquote>
-<p>This code fetches information about the most recent Age of Empires 2 match played by a specific profile and summarizes it, giving also the specific civs bonuses.</p>
+<p>This code fetches information about the most recent (or ongoing) Age of Empires II match played by a specific profile and gives details such as ELO rating, civ and bonuses.</p>
 <p><strong>Functions:</strong></p>
 <ul>
-<li>get_civilization_descriptions(file_path): This function reads a JSON file containing civilization information (likely names and descriptions) and returns a dictionary where the key is the civilization name and the value is its description.</li>
+<li>get_civilization_descriptions(file_path): This function reads a JSON file containing civilization descriptions and bonuses, and returns a dictionary where the key is the civilization name and the value is its description.</li>
 <li>get_match_info(api_url, civilizations_file): This is the main function that retrieves and processes match data.
 <ul>
 <li>It takes the API URL and the path to the civilization data file as input.</li>
@@ -425,23 +425,6 @@
 <li>If the request is successful (status code 200), it parses the JSON response and extracts details of the most recent match, including map name, start time, and player information (names, ratings, and civilizations).</li>
 <li>It then calls the get_civilization_descriptions function to get descriptions for each player&rsquo;s civilization from the provided file.</li>
 <li>Finally, it returns a dictionary containing all the retrieved match information, including player details and civilization descriptions.</li>
-</ul>
-</li>
-</ul>
-<p><strong>Main Script:</strong></p>
-<ul>
-<li>Defines the API URL to retrieve match data for profile ID 208269.</li>
-<li>Defines the path to the file containing civilization data (likely civilizations.json).</li>
-<li>Calls the get_match_info function with the API URL and civilization data file path.</li>
-<li>Converts the retrieved match start time from a timestamp format to a more readable date and time format.</li>
-<li>Checks if the get_match_info function returned any data (indicating a successful match retrieval).
-<ul>
-<li>If there&rsquo;s match data:
-<ul>
-<li>Prints the match date, map name, and detailed information about each player, including their name, rating, civilization, and civilization description.</li>
-<li>If no data is found (likely due to API request failure or missing players in the match data), it prints a message indicating no match information was found.</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>

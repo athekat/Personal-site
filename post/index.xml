@@ -15,7 +15,7 @@
       <guid>https://alan.com.ar/post/aoecurrentmatch/</guid>
       
         <description>Check out the GitHub repository.
- This code fetches information about the most recent Age of Empires 2 match played by a specific profile and summarizes it, giving also the specific civs bonuses.</description>
+ This code fetches information about the most recent (or ongoing) Age of Empires II match played by a specific profile and gives details such as ELO rating, civ and bonuses.</description>
       
     </item>
     
