@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Project on Alan Cortez</title>
+    <link>https://alan.com.ar/tags/project/</link>
+    <description>Recent content in Project on Alan Cortez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 26 Feb 2024 00:56:54 -0300</lastBuildDate><atom:link href="https://alan.com.ar/tags/project/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ePubLibre data charts.</title>
+      <link>https://alan.com.ar/post/epldatasite/</link>
+      <pubDate>Mon, 26 Feb 2024 00:56:54 -0300</pubDate>
+      
+      <guid>https://alan.com.ar/post/epldatasite/</guid>
+      
+        <description>Check out the GitHub repository and the website.
+ A webpage that shows Plotly graphs of ePubLibre data.</description>
+      
+    </item>
+    
+    <item>
+      <title>PureVolume clone profile.</title>
+      <link>https://alan.com.ar/post/sujetopurevolume/</link>
+      <pubDate>Mon, 02 Oct 2023 01:12:32 -0300</pubDate>
+      
+      <guid>https://alan.com.ar/post/sujetopurevolume/</guid>
+      
+        <description>Check out the GitHub repository and the website.
+ PureVolume was a website for the discovery and promotion of new music and emerging artists.</description>
+      
+    </item>
+    
+    <item>
+      <title>This site.</title>
+      <link>https://alan.com.ar/post/thissite/</link>
+      <pubDate>Sun, 01 Oct 2023 01:12:32 -0300</pubDate>
+      
+      <guid>https://alan.com.ar/post/thissite/</guid>
+      
+        <description>A blog-like site to upload projects and stuff I&amp;rsquo;ve been working on.</description>
+      
+    </item>
+    
+    <item>
+      <title>Inventory Management Website.</title>
+      <link>https://alan.com.ar/post/inventorymanager/</link>
+      <pubDate>Thu, 22 Jun 2023 01:12:32 -0300</pubDate>
+      
+      <guid>https://alan.com.ar/post/inventorymanager/</guid>
+      
+        <description>Check out the GitHub repository and the website.
+ This project was developed for the &amp;ldquo;Codo a Codo - Django&amp;rdquo; course together with Omar Scarazzato.</description>
+      
+    </item>
+    
+    <item>
+      <title>Age Of Carpincho Website.</title>
+      <link>https://alan.com.ar/post/ageofcarpincho/</link>
+      <pubDate>Wed, 16 Feb 2022 00:56:54 -0300</pubDate>
+      
+      <guid>https://alan.com.ar/post/ageofcarpincho/</guid>
+      
+        <description>Check out the GitHub repository and the website.
+ A site made with Angular framework that shows Plotly graphs of Age Of Empires II data.</description>
+      
+    </item>
+    
+  </channel>
+</rss>
