@@ -205,5 +205,7 @@
   </url><url>
     <loc>https://alan.com.ar/imprint/</loc>
     <priority>0</priority>
+  </url><url>
+    <loc>https://alan.com.ar/portfolio/</loc>
   </url>
 </urlset>
