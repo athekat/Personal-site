@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Modding on Alan Cortez</title>
+    <link>https://alan.com.ar/tags/modding/</link>
+    <description>Recent content in Modding on Alan Cortez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 19 Jan 2025 00:24:52 -0300</lastBuildDate><atom:link href="https://alan.com.ar/tags/modding/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Age of Empires II - Visual Mods and changing sprites.</title>
+      <link>https://alan.com.ar/post/aoevisualmods/</link>
+      <pubDate>Sun, 19 Jan 2025 00:24:52 -0300</pubDate>
+      
+      <guid>https://alan.com.ar/post/aoevisualmods/</guid>
+      
+        <description>In this guide, I’ll walk you through the process of changing the sprites for Age of Empires II: Definitive Edition (AoE2 DE).</description>
+      
+    </item>
+    
+  </channel>
+</rss>
