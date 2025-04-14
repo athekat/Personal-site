@@ -1,0 +1,2218 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>.:: Alan Cortez</title><description>Personal Site</description><link>https://fuwari.vercel.app/</link><language>en</language><item><title>Age of Empires II - Visual Mods and changing sprites.</title><link>https://fuwari.vercel.app/posts/aoevisualmods/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/aoevisualmods/</guid><pubDate>Sun, 19 Jan 2025 03:24:52 GMT</pubDate><content:encoded>&lt;p&gt;In this guide, I’ll walk you through the process of changing the sprites for &lt;em&gt;Age of Empires II: Definitive Edition&lt;/em&gt; (AoE2 DE). We’ll be using a few tools to extract, edit, and reimplement custom sprites into the game.&lt;/p&gt;
+&lt;h3&gt;Tools You’ll Need:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;SLD Extractor&lt;/strong&gt;: &lt;a href=&quot;https://gamebanana.com/tools/download/13516#&quot;&gt;Download here&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SLX Studio&lt;/strong&gt;: &lt;a href=&quot;https://ageofempires.fandom.com/wiki/SLX_Studio&quot;&gt;Download here&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AdvancedGenieEditor3&lt;/strong&gt;: Located in the game’s directory (e.g., &lt;code&gt;C:\Program Files (x86)\Steam\steamapps\common\AoE2DE\Tools_Builds&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Steps to Change Sprites:&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Extract the Sprite Files&lt;/strong&gt;&lt;br /&gt;
+First, we use &lt;strong&gt;SLD Extractor&lt;/strong&gt; to convert the in-game sprite files (.sld) into PNG images and CSV files, which we can then edit. These sprite files are found in:&lt;br /&gt;
+&lt;code&gt;C:\Program Files (x86)\Steam\steamapps\common\AoE2DE\resources\_common\drs\graphics&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Edit the Sprites in SLX Studio&lt;/strong&gt;&lt;br /&gt;
+Open &lt;strong&gt;SLX Studio&lt;/strong&gt; and load the folder containing the PNG files you edited.
+Set the anchor values for all images. The values are in the csv files. Then, in the &lt;em&gt;Tool&lt;/em&gt; menu, use the &lt;strong&gt;Generate Data Graphic&lt;/strong&gt; option.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Turn off the &lt;em&gt;Mask&lt;/em&gt; setting.&lt;/li&gt;
+&lt;li&gt;Turn on the &lt;em&gt;Shadow&lt;/em&gt; setting, and adjust the shadow colors by modifying the alpha values.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;images/aoevisualmods/Shadows.jpg&quot; alt=&quot;SlX Studio&quot; /&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Export the Sprite&lt;/strong&gt;&lt;br /&gt;
+After making your changes, save the SLX file. Then export it to SMX format, keeping the shadow alphas intact.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Place the File in the Correct Directory&lt;/strong&gt;&lt;br /&gt;
+Place the exported SMX file in the following directory:&lt;br /&gt;
+&lt;code&gt;C:\Users\User\Games\Age of Empires 2 DE\{PROFILE_NUMBER}\mods\local\EliteMangu\resources\_common\drs\graphics&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Rename the SLX File&lt;/strong&gt;&lt;br /&gt;
+You’ll need to rename the SLX file based on the graphic ID of the unit. To find this ID, open &lt;strong&gt;AdvancedGenieEditor3&lt;/strong&gt;, go to the &lt;em&gt;Units&lt;/em&gt; tab, and search for the unit you’re editing. There, you’ll find the unit’s graphic ID. Next, move to the &lt;em&gt;Graphics&lt;/em&gt; tab, search for that ID, and you’ll get the file name you need.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Activate Your Custom Sprite in the Game&lt;/strong&gt;&lt;br /&gt;
+If everything was done correctly, the new sprite should now appear in the &lt;em&gt;Local Mods&lt;/em&gt; section of AoE2 DE. Simply activate the mod, and you should see your custom sprites in the game.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;h3&gt;My Custom Project: Adding a Badge to Elite Mangudai&lt;/h3&gt;
+&lt;p&gt;For my project, I decided to add a badge to the &lt;em&gt;Elite Mangudai&lt;/em&gt; so it can be easily distinguished from the non-elite unit. This was tricky because both units share the same sprite.&lt;/p&gt;
+&lt;p&gt;To add the badge, I used a Python script to edit all the PNG files in batch, so I wouldn’t have to manually place the logo on every single image.&lt;/p&gt;
+&lt;p&gt;Here’s the Python code I used:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from PIL import Image
+import os
+
+def add_logo_to_image(image_path, logo_path, output_path, logo_position):
+    try:
+        img = Image.open(image_path)
+        logo = Image.open(logo_path)
+
+        # Ensure logo is RGBA for transparency
+        logo = logo.convert(&quot;RGBA&quot;)
+
+        # Resize the logo if needed
+        logo = logo.resize((12, 12)) 
+
+        img.paste(logo, logo_position, mask=logo)
+        img.save(output_path)
+        print(f&quot;Processed: {image_path}&quot;)
+    except FileNotFoundError:
+        print(f&quot;Error: File not found: {image_path} or {logo_path}&quot;)
+    except Exception as e:
+        print(f&quot;Error processing {image_path}: {e}&quot;)
+
+logo_path = &quot;logo2.png&quot;
+logo_position = (80, 40) 
+
+for filename in os.listdir(&quot;.&quot;): 
+    if filename.lower().endswith((&quot;.png&quot;)) and filename.lower() != &quot;logo2.png&quot;:
+        image_path = filename
+        output_path = f&quot;{filename}&quot;
+        add_logo_to_image(image_path, logo_path, output_path, logo_position)
+
+print(&quot;Finished&quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Result&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;images/aoevisualmods/elitemangudai.png&quot; alt=&quot;EliteMangudai&quot; /&gt;&lt;/p&gt;
+&lt;h3&gt;Adding the New Dat File in AdvancedGenieEditor3&lt;/h3&gt;
+&lt;p&gt;Once the badges were added, I went to &lt;strong&gt;AdvancedGenieEditor3&lt;/strong&gt; to generate a new DAT file. There I needed to create a new graphic entry, and link it to the Elite Manguai unit. The new DAT file should be placed in:&lt;br /&gt;
+&lt;code&gt;C:\Users\User\Games\Age of Empires 2 DE\{PROFILE_NUMBER}\mods\local\EliteMangu\resources\_common\dat&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Important&lt;/strong&gt;: Make sure the DAT file is placed in your user’s directory (as shown above), not the Steam directory, as putting it in the Steam folder will cause the game to crash.&lt;/p&gt;
+&lt;h3&gt;Result&lt;/h3&gt;
+&lt;p&gt;Everything worked great! The sprites now display in the game. However, the shadows are a bit off, so I’ll need to tweak the alpha values a little more to get them looking just right.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;images/aoevisualmods/output.png&quot; alt=&quot;Output&quot; /&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Walkthrough: Valley CTF - TryHackMe.</title><link>https://fuwari.vercel.app/posts/valley/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/valley/</guid><pubDate>Wed, 08 Jan 2025 03:24:52 GMT</pubDate><content:encoded>&lt;h3&gt;Beginner level ctf.&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://tryhackme.com/r/room/valleype&quot;&gt;Link to the room&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Can you find your way into the Valley?&lt;/p&gt;
+&lt;p&gt;Answer the questions below&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;What is the user flag?&lt;/li&gt;
+&lt;li&gt;What is the root flag?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Since we don&apos;t care being noticed, we can run &lt;a href=&quot;https://github.com/RustScan/RustScan&quot;&gt;rustscan&lt;/a&gt;, which is faster than nmap.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;┌──(kali㉿kali)-[~/Documents]
+└─$rustscan -a 10.10.91.79
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Results:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;PORT&lt;/th&gt;
+&lt;th&gt;STATE&lt;/th&gt;
+&lt;th&gt;SERVICE&lt;/th&gt;
+&lt;th&gt;REASON&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;22/tcp&lt;/td&gt;
+&lt;td&gt;open&lt;/td&gt;
+&lt;td&gt;ssh&lt;/td&gt;
+&lt;td&gt;syn-ack&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;80/tcp&lt;/td&gt;
+&lt;td&gt;open&lt;/td&gt;
+&lt;td&gt;http&lt;/td&gt;
+&lt;td&gt;syn-ack&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;37370/tcp&lt;/td&gt;
+&lt;td&gt;open&lt;/td&gt;
+&lt;td&gt;unknown&lt;/td&gt;
+&lt;td&gt;syn-ack&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Port 22 doesn&apos;t allow anon login, so we move forward.&lt;/p&gt;
+&lt;p&gt;We access the site via web browser.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;index.html&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;pricing.html&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;gallery.html&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Not much to see in the source code. Also nothing relevant in styles.css&lt;/p&gt;
+&lt;p&gt;We run gobuster on port 80 in case we miss anything:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;┌──(kali㉿kali)-[~/Documents]
+└─$gobuster dir --url http://10.10.91.79:80/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;|Results:|
+|--|--|--|--|
+|/gallery|              (Status: 301)| [Size: 312] |[--&amp;gt; http://10.10.91.79/gallery/]|
+|/static |             (Status: 301) |[Size: 311] |[--&amp;gt; http://10.10.91.79/static/]|
+|/pricing|              (Status: 301)| [Size: 312] |[--&amp;gt; http://10.10.91.79/pricing/]|&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;/static --&amp;gt; we can&apos;t see any file there.&lt;/p&gt;
+&lt;p&gt;/pricing --&amp;gt; a note.txt file and the html file.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;note.txt&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;J,&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Please stop leaving notes randomly on the website&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-RP&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;/gallery --&amp;gt; just the html file.&lt;/p&gt;
+&lt;p&gt;We dig deeper in the found directories.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;┌──(kali㉿kali)-[~/Documents]
+└─$gobuster dir --url http://10.10.91.79:80/static -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Results:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Starting gobuster in directory enumeration mode&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;/11                   (Status: 200) [Size: 627909]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/12                   (Status: 200) [Size: 2203486]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/3                    (Status: 200) [Size: 421858]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/10                   (Status: 200) [Size: 2275927]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/13                   (Status: 200) [Size: 3673497]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/16                   (Status: 200) [Size: 2468462]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/6                    (Status: 200) [Size: 2115495]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/18                   (Status: 200) [Size: 2036137]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/1                    (Status: 200) [Size: 2473315]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/9                    (Status: 200) [Size: 1190575]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/5                    (Status: 200) [Size: 1426557]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/14                   (Status: 200) [Size: 3838999]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/17                   (Status: 200) [Size: 3551807]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/7                    (Status: 200) [Size: 5217844]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/8                    (Status: 200) [Size: 7919631]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/15                   (Status: 200) [Size: 3477315]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/00                   (Status: 200) [Size: 127]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;/00 seems to be an outlier. In there we found some notes:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;dev notes from valleyDev:&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;-add wedding photo examples&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-redo the editing on #4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-remove /dev1243224123123&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-check for SIEM alerts&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;We check if /dev1243224123123 is still up.&lt;/p&gt;
+&lt;p&gt;It is. There&apos;s a login page. In the source code we find 2 .js files. One of them includes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;loginButton.addEventListener(&quot;click&quot;, (e) =&amp;gt; {
+    e.preventDefault();
+    const username = loginForm.username.value;
+    const password = loginForm.password.value;
+
+    if (username === &quot;siemDev&quot; &amp;amp;&amp;amp; password === &quot;california&quot;) {
+        window.location.href = &quot;/dev1243224123123/devNotes37370.txt&quot;;
+    } else {
+        loginErrorMsg.style.opacity = 1;
+    }
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Going to /dev1243224123123/devNotes37370.txt we get more notes:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;dev notes for ftp server&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;-stop reusing credentials&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-check for any vulnerabilies&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-stay up to published on patching&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-change ftp port to normal port&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Since it mentioned the port, we check that weird tcp port we found with rustscan. We check if dev is reusing credentials. It is, we can log in.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;┌──(kali㉿kali)-[~]
+└─$ ftp 10.10.91.79 -P 37370  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There we found some pcapng files.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;|Results|
+|--|--|--|--|--|--|
+|-rw-rw-r--|   1 1000|     1000|         7272| Mar 06  2023| siemFTP.pcapng|
+|-rw-rw-r--|   1 1000|     1000|      1978716| Mar 06  2023| siemHTTP1.pcapng|
+|-rw-rw-r--|   1 1000|     1000|      1972448| Mar 06  2023| siemHTTP2.pcapng|&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;We open them with Wireshark:&lt;/p&gt;
+&lt;p&gt;In siemFTP.pcanpng we found the existencie of some files which may or may not be relevant:
+Line-based text data (6 lines)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;|siemFTP.pcanpng|
+|--|--|--|--|--|--|--|
+|-rw-r--r--|    1| 0|        0|               0| Mar 06 13:27| AnnualReport.txt\r\n|
+|-rw-r--r--|    1| 0|        0|               0| Mar 06 13:27| BusinessReport.t|xt\r\n|
+|-rw-r--r--|    1| 0|        0|               0| Mar 06 13:27| CISOReport.txt\r\n|
+|-rw-r--r--|    1| 0|        0|               0| Mar 06 13:27| HrReport.txt\r\n|
+|-rw-r--r--|    1| 0|        0|               0| Mar 06 13:27| ItReport.txt\r\n|
+|-rw-r--r--|    1| 0|        0|               0| Mar 06 13:27| SecurityReport.txt\r\n|&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In siemHTTP.pcanpg we found nothing. Everything&apos;s encrypted.&lt;/p&gt;
+&lt;p&gt;In siemHTTP2.pcanpg we found a package with the following information:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;HTML Form URL Encoded: application/x-www-form-urlencoded
+    Form item: &quot;uname&quot; = &quot;valleyDev&quot;
+    Form item: &quot;psw&quot; = &quot;ph0t0s1234&quot;
+    Form item: &quot;remember&quot; = &quot;on&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can use that to access via ssh:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;┌──(kali㉿kali)
+└─$ ssh valleyDev@10.10.91.79
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As soon as we access there is a user.txt file containing the first flag.&lt;/p&gt;
+&lt;p&gt;Next flag to be continued...&lt;/p&gt;
+</content:encoded></item><item><title>Age Of Empires Clan Webpage.</title><link>https://fuwari.vercel.app/posts/ageofempiresclan/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/ageofempiresclan/</guid><pubDate>Fri, 11 Oct 2024 03:56:54 GMT</pubDate><content:encoded>&lt;p&gt;::github{repo=&quot;athekat/Aoe-SiemprePobresClan&quot;}&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://github.com/athekat/Aoe-SiemprePobresClan/&quot;&gt;GitHub repository&lt;/a&gt; and the &lt;a href=&quot;https://siemprepobres.alan.com.ar/&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This is a simple webpage made with &lt;a href=&quot;https://getbootstrap.com/&quot;&gt;Bootstrap&lt;/a&gt; that shows some stats from an Age Of Empires II Clan I have with some friends.&lt;/p&gt;
+&lt;p&gt;The information is gathered using a Python script that interacts with external APIs (like &lt;a href=&quot;https://wiki.librematch.org/rlink/community/start&quot;&gt;LibreMatch&lt;/a&gt; and &lt;a href=&quot;https://www.aoe2companion.com/&quot;&gt;Aoe2 Companion&lt;/a&gt;), saves them to a json file and then is retrieved using a js script.&lt;/p&gt;
+&lt;p&gt;The 1v1 elo chart is generated with &lt;a href=&quot;https://plotly.com/&quot;&gt;Plotly&lt;/a&gt; using &lt;a href=&quot;https://ratings.aoe2.se/&quot;&gt;Age of Empires II: Definitive Edition Rating Charts&lt;/a&gt; data.&lt;/p&gt;
+&lt;p&gt;Everything is automatically uppublishedd using GitHub Actions.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;images/ageofempiresclan/output.jpg&quot; alt=&quot;Output&quot; /&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Age of Empires II - Current Match (Python Script).</title><link>https://fuwari.vercel.app/posts/aoecurrentmatch/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/aoecurrentmatch/</guid><pubDate>Sun, 22 Sep 2024 08:45:06 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://github.com/athekat/Aoe-CurrentMatchPy/&quot;&gt;GitHub repository&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This code fetches information about the most recent (or ongoing) Age of Empires II match played by a specific profile and gives details such as ELO rating, civ and bonuses.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Functions:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;get_civilization_descriptions(file_path): This function reads a JSON file containing civilization descriptions and bonuses, and returns a dictionary where the key is the civilization name and the value is its description.&lt;/li&gt;
+&lt;li&gt;get_match_info(api_url, civilizations_file): This is the main function that retrieves and processes match data.
+&lt;ul&gt;
+&lt;li&gt;It takes the API URL and the path to the civilization data file as input.&lt;/li&gt;
+&lt;li&gt;It sends a request to the provided API to get match information for a specific profile.&lt;/li&gt;
+&lt;li&gt;If the request is successful (status code 200), it parses the JSON response and extracts details of the most recent match, including map name, start time, and player information (names, ratings, and civilizations).&lt;/li&gt;
+&lt;li&gt;It then calls the get_civilization_descriptions function to get descriptions for each player&apos;s civilization from the provided file.&lt;/li&gt;
+&lt;li&gt;Finally, it returns a dictionary containing all the retrieved match information, including player details and civilization descriptions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Output&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;images/aoecurrentmatch/AoeCurrentMatchoutput.jpg&quot; alt=&quot;Output&quot; /&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Skills Assessment - Windows Event Logs &amp; Finding Evil - HackTheBox.</title><link>https://fuwari.vercel.app/posts/windowseventlogshtb/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/windowseventlogshtb/</guid><pubDate>Sun, 15 Sep 2024 03:24:52 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;This module covers the exploration of Windows Event Logs and their significance in uncovering suspicious activities. Throughout the course, we delve into the anatomy of Windows Event Logs and highlight the logs that hold the most valuable information for investigations. The module also focuses on utilizing Sysmon and Event Logs for detecting and analyzing malicious behavior. Additionally, we delve into Event Tracing for Windows (ETW), explaining its architecture and components, and provide ETW-based detection examples. To streamline the analysis process, we introduce the powerful Get-WinEvent cmdlet.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://academy.hackthebox.com/module/details/216&quot;&gt;Link to the module&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;By examining the logs located in the &quot;C:\Logs\DLLHijack&quot; directory, determine the process responsible for executing a DLL hijacking attack. Enter the process name as your answer. Answer format: _.exe&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Using Get-WinEvent, I attempted to filter for events related to DLL hijacking attacks. While this might not be the most efficient method, I recalled that DLLs involved in such attacks are often unsigned. Therefore, I searched for events with &lt;a href=&quot;https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon#events&quot;&gt;ID&lt;/a&gt; 7 AND those with the message &quot;signed: false&quot;.&lt;/p&gt;
+&lt;p&gt;I run:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-WinEvent -Path &apos;C:\Logs\DLLHijack\*&apos; | Where-Object{$_.ID -like &quot;7&quot;} | Where-Object{$_.Message -like &quot;*signed: false*&quot;} | Select-Object TimeCreated, ID, ProviderName, LevelDisplayName, Message 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Only got 2 results and one of those was the correct answer.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;By examining the logs located in the &quot;C:\Logs\PowershellExec&quot; directory, determine the process that executed unmanaged PowerShell code. Enter the process name as your answer. Answer format: _.exe&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;As per the guide, the presence of &quot;Microsoft .NET Runtime...&quot;, clr.dll, and clrjit.dll in processes that typically don&apos;t require them is indicative of potential execute-assembly or unmanaged PowerShell injection attacks. These DLLs are typically used for executing C# code. Therefore, I searched for events containing &quot;clr.dll&quot;. The initial results highlighted a suspicious executable file that should not have access to this DLL.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-WinEvent -Path &apos;C:\Logs\PowershellExec\*&apos; | Where-Object{$_.ID -like &quot;7&quot;} | Where-Object{$_.Message -like &quot;*clr.dll*&quot;} | Select-Object TimeCreated, ID, ProviderName, LevelDisplayName, Message
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;By examining the logs located in the &quot;C:\Logs\PowershellExec&quot; directory, determine the process that injected into the process that executed unmanaged PowerShell code. Enter the process name as your answer. Answer format: _.exe&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For this specific scenario, I focused on Calculator.exe and filtered events with &lt;a href=&quot;https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon#events&quot;&gt;ID&lt;/a&gt; 8, indicating a CreateRemoteThread operation.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-WinEvent -Path &apos;C:\Logs\PowershellExec\*&apos; | Where-Object{$_.ID -like &quot;8&quot;} | Where-Object{$_.Message -like &quot;*Calculator.exe*&quot;} | Select-Object TimeCreated, ID, ProviderName, LevelDisplayName, Message
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;By examining the logs located in the &quot;C:\Logs\Dump&quot; directory, determine the process that performed an LSASS dump. Enter the process name as your answer. Answer format: _.exe&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I filtered for events with &lt;a href=&quot;https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon#events&quot;&gt;ID&lt;/a&gt; 10 (ProcessAccess) and searched for entries targeting lsass.exe. While there were multiple results, only one was initiated by a suspicious executable file.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-WinEvent -Path &apos;C:\Logs\Dump\*&apos; | Where-Object{$_.ID -like &quot;10&quot;} | Where-Object{$_.Message -like &quot;*TargetImage*lsass.exe*&quot;} | Select-Object TimeCreated, ID, ProviderName, LevelDisplayName, Message
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;By examining the logs located in the &quot;C:\Logs\Dump&quot; directory, determine if an ill-intended login took place after the LSASS dump. Answer format: Yes or No&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I searched for events with ID 4624 (which indicates a successful account login), but found no relevant entries.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;By examining the logs located in the &quot;C:\Logs\StrangePPID&quot; directory, determine a process that was used to temporarily execute code based on a strange parent-child relationship. Enter the process name as your answer. Answer format: _.exe&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Finally, I filtered for events with &lt;a href=&quot;https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon#events&quot;&gt;ID&lt;/a&gt; 1 (Process creation). There were limited results, and only one of them appeared suspicious.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-WinEvent -Path &apos;C:\Logs\StrangePPID\*&apos; | Where-Object{$_.ID -like &quot;1&quot;} | Select-Object TimeCreated, ID, ProviderName, LevelDisplayName, Message
+&lt;/code&gt;&lt;/pre&gt;
+</content:encoded></item><item><title>Walkthrough: Intermediate Nmap - TryHackMe.</title><link>https://fuwari.vercel.app/posts/intermediatenmap/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/intermediatenmap/</guid><pubDate>Mon, 06 May 2024 03:24:52 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;You&apos;ve learned some great nmap skills! Now can you combine that with other skills with netcat and protocols, to log in to this machine and find the flag? This VM MACHINE_IP is listening on a high port, and if you connect to it it may give you some information you can use to connect to a lower port commonly used for remote access!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://tryhackme.com/r/room/intermediatenmap&quot;&gt;Link to the room&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;First I looked for open ports:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;┌──(kali㉿kali)-[~/Documents]
+└─$ nmap -sT 10.10.250.39 -vv       
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Those were:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;PORT&lt;/th&gt;
+&lt;th&gt;STATE&lt;/th&gt;
+&lt;th&gt;SERVICE&lt;/th&gt;
+&lt;th&gt;REASON&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;22/tcp&lt;/td&gt;
+&lt;td&gt;open&lt;/td&gt;
+&lt;td&gt;ssh&lt;/td&gt;
+&lt;td&gt;syn-ack&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2222/tcp&lt;/td&gt;
+&lt;td&gt;open&lt;/td&gt;
+&lt;td&gt;EtherNetIP-1&lt;/td&gt;
+&lt;td&gt;syn-ack&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;31337/tcp&lt;/td&gt;
+&lt;td&gt;open&lt;/td&gt;
+&lt;td&gt;Elite&lt;/td&gt;
+&lt;td&gt;syn-ack&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Then, since I&apos;ve recently learnt about nmap scripts I first decided to try:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;┌──(kali㉿kali)-[~/Documents]
+└─$nmap -p 22 10.10.250.39 --script ssh-brute
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;but wasn&apos;t able to get the credentials this way.&lt;/p&gt;
+&lt;p&gt;So I followed the instructions and interacted with the 31337 TCP port with netcat:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;netcat -n 10.10.250.39 31337
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;which resulted in:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In case I forget - user:pass
+ubuntu:Dafdas!!/str0ng&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;With these credentials I was able to login via ssh:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;┌──(kali㉿kali)-[~/Documents]
+└─$ ssh ubuntu@10.10.250.39
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and navigate to the flag.txt file.&lt;/p&gt;
+</content:encoded></item><item><title>Algorand Coding Challenge - Volume 2: 🐍 Python #04.</title><link>https://fuwari.vercel.app/posts/algochallengepython04/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/algochallengepython04/</guid><pubDate>Tue, 23 Apr 2024 03:56:54 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://github.com/algorand-coding-challenges/python-challenge-4&quot;&gt;GitHub repository&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;🚩 Challenge 4: Can I Trust This AI Doctor? 🤖&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The smart contract that keeps track of information about the AI doctor is broken! For some reason the method to record new AI info doesn&apos;t work. Humanity is doomed! 😱&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Inside of &lt;code&gt;smart_contracts/verify_medical_ai/contract.py&lt;/code&gt; file, there is a simple smart contract used for recording AI information written in Algorand Python.&lt;/p&gt;
+&lt;p&gt;It is a simple contract that has a &lt;code&gt;record_ai_info&lt;/code&gt; method and a &lt;code&gt;get_ai_info&lt;/code&gt; method and the AI information is recorded in the local state &lt;code&gt;ai_info&lt;/code&gt;. There is also an &lt;code&gt;opt_in&lt;/code&gt; method used to opt in to the contract to create local state for Txn.sender.&lt;/p&gt;
+&lt;p&gt;If you don&apos;t know what &lt;code&gt;opt-in to app&lt;/code&gt; is it is a unique feature on Algorand that allows smart contract to create local state for each account opted in to the contract. You can learn more about opt-ins and local state &lt;a href=&quot;https://developer.algorand.org/docs/get-details/dapps/smart-contracts/apps/state/?from_query=local%20state#local-storage&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;If you try building the smart contract by opening Docker Desktop, and then running:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;algokit bootstrap all # set up dev environment on your computer
+algokit localnet start # launch an Algorand local network for testing
+algokit project run build # Compile the smart contract and get low-level TEAL code.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;it will fail and show multiple errors.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Find out what is wrong and fix the bug.&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;💬 Meet other hackers working on this challenge and get help in the &lt;a href=&quot;https://discord.com/channels/491256308461207573/1182612934455722075&quot;&gt;Algorand Python Discord Channel&lt;/a&gt;!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Checkpoint 1: 🧰 Prerequisites&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.python.org/downloads/&quot;&gt;Install Python 3.12 or higher&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/tree/main?tab=readme-ov-file#install&quot;&gt;Install AlgoKit&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Install &lt;a href=&quot;https://www.docker.com/products/docker-desktop/&quot;&gt;Docker&lt;/a&gt;. It is used to run a local Algorand network for development.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Checkpoint 2: 💻 Set up your development environment&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo&quot;&gt;Fork this repository.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Clone the repository&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;cd [DIRECTORY_OF_YOUR_CHOICE]
+git clone [FORKED_REPO_URL]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now you have 2 ways of opening your AlgoKit project.&lt;/p&gt;
+&lt;h3&gt;With VSCode Workspaces&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Open the cloned repository with the code editor of your choosing.&lt;/li&gt;
+&lt;li&gt;Open workspace mode by clicking &lt;code&gt;open workspace&lt;/code&gt; inside of &lt;code&gt;python-challenge-4.code-workspace&lt;/code&gt; file at the root level.&lt;/li&gt;
+&lt;li&gt;Go inside of the &lt;code&gt;challenge&lt;/code&gt; folder.&lt;/li&gt;
+&lt;li&gt;To setup your dev environment using AlgoKit, run the below command:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;algokit project bootstrap all #algokit bootstrap all is being deprecated. Use this command from now on.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This command will install all dependencies and also generate a &lt;code&gt;.env&lt;/code&gt; file for you.
+5. Activate Python virtual environment by running:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;poetry shell
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;venv will automatically be activated the next time you open the project.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Please note, in addition to built-in support for &lt;a href=&quot;https://code.visualstudio.com/docs/editor/workspaces&quot;&gt;VSCode Workspaces&lt;/a&gt;, the cli provides native support for monorepos called &lt;code&gt;algokit workspaces&lt;/code&gt;. Refer to &lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/blob/main/docs/features/project/run.md#workspace-vs-standalone-projects&quot;&gt;documentation&lt;/a&gt; for detailed guidelines for recommended project structures and ability to leverage custom command orchestration via &lt;code&gt;algokit project run&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;Without VSCode Workspaces&lt;/h3&gt;
+&lt;p&gt;All AlgoKit projects initialized with &lt;code&gt;--workspace&lt;/code&gt; option has the following directory structure:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;├── projects
+│   ├── smart-contract
+│   └── frontend # doesn&apos;t exist for this project
+│   └── ...
+├── {several config files...}
+├── ...
+├── .algokit.toml # workspace-typed algokit project config
+├── {project-name}.code-workspace
+├── README.md
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So to access a single project under the &lt;code&gt;projects&lt;/code&gt; folder, it is recommended to &lt;code&gt;cd&lt;/code&gt; into the project you want to work with and then open your code editor (alternatively refer to VSCode Workspace file at the root). If you are reading this and didn&apos;t open the &lt;code&gt;challenge&lt;/code&gt; folder directly, go do that now!! 😁&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;cd into &lt;code&gt;projects/challenge&lt;/code&gt; then open the code editor&lt;/li&gt;
+&lt;li&gt;To setup your dev environment using AlgoKit, run the below command:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;algokit project bootstrap all #algokit bootstrap all is being deprecated. Use this command from now on.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This command will install all dependencies and also generate a &lt;code&gt;.env&lt;/code&gt; file for you.
+3. Activate the Python virtual environment by running below inside of &lt;code&gt;challenge&lt;/code&gt; folder:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;poetry shell
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;venv will automatically be activated the next time you open the project.&lt;/p&gt;
+&lt;p&gt;Video walkthrough of forking and cloning this repository:&lt;/p&gt;
+&lt;p&gt;https://github.com/algorand-fix-the-bug-campaign/challenge-1/assets/52557585/acde8053-a8dd-4f53-8bad-45de1068bfda&lt;/p&gt;
+&lt;p&gt;Now you are ready to fix the bug!&lt;/p&gt;
+&lt;h2&gt;Checkpoint 3: 🐞 Fix the bug 🧐&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Open Docker Desktop and launch Algorand localnet by running &lt;code&gt;algokit localnet start&lt;/code&gt; in your terminal &lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/blob/main/docs/features/localnet.md#creating--starting-the-localnet&quot;&gt;For more info click me!&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Go to &lt;code&gt;smart_contracts/verify_medical_ai/contract.py&lt;/code&gt; and see the source code of the smart contract. Also go to &lt;code&gt;smart_contracts/verify_medical_ai/deploy_config.py&lt;/code&gt; to understand the deployment/test script.&lt;/li&gt;
+&lt;li&gt;Try compiling the contract with &lt;code&gt;algokit project run build&lt;/code&gt;. It will fail.&lt;/li&gt;
+&lt;li&gt;Read the error, figure out what is wrong, and fix the bug! The bug is inside of the smart contract. There is nothing wrong with the deploy script inside of &lt;code&gt;smart_contracts/verify_medical_ai/deploy_config.py&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;After fixing the bug, build and run the deploy script with the below command:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;algokit project run build
+algokit project deploy localnet
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;OR if you are on VSCode, hit F5 or go to the &lt;code&gt;Run and Debug&lt;/code&gt; tab and run the debug script.&lt;/p&gt;
+&lt;p&gt;If you see something like this in the console, you successfully fixed the bug! 😆
+&amp;lt;img width=&quot;1335&quot; alt=&quot;image&quot; src=&quot;https://github.com/algorand-coding-challenges/python-challenge-4/assets/52557585/98a97a72-d80a-491e-8a52-a983862fcefa&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;😰 Are you struggling?&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.algorand.org/docs/get-details/dapps/smart-contracts/apps/innertx/?from_query=inner%20t#template-modal-overlay&quot;&gt;Inner Transaction Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://algorandfoundation.github.io/puya/api-algopy.itxn.html#algopy.itxn.AssetTransfer&quot;&gt;Algorand Python Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.algorand.org/docs/get-details/transactions/transactions/?from_query=zero%20asset%20transfer#asset-transfer-transaction:~:text=A%20zero%20amount%20transferred%20to%20self%20allocates%20that%20asset%20in%20the%20account%27s%20Asset%20map.&quot;&gt;How to opt-in to an asset with assetTransfer txn&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Checkpoint 4: 💯 Submit your answer&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;After fixing the bug, push your code to your forked Github repo and &lt;a href=&quot;https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork&quot;&gt;make a PR to the original repo.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Inside the PR include:
+&lt;ol&gt;
+&lt;li&gt;What was the problem?&lt;/li&gt;
+&lt;li&gt;How did you solve the problem?&lt;/li&gt;
+&lt;li&gt;Screenshot of your terminal showing the result of running the deploy script.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Checkpoint 5: 🏆 Claim your certificate of completion NFT! 🎓&lt;/h2&gt;
+&lt;p&gt;The Algorand Developer Relations team will review the submission and &quot;approve&quot; the PR by labeling it &lt;code&gt;Approved&lt;/code&gt;. Once it&apos;s approved, we will share the magic link to claim your certificate of completion NFT in the comment of the PR!&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The certificate of completion NFT is a verifiable credential minted on the &lt;a href=&quot;https://goplausible.com/&quot;&gt;GoPlausible platform&lt;/a&gt; that follows the W3C standard for certificates and OpenBadges standard for badges.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The certificate of completion NFT for Python challenges was designed by &lt;a href=&quot;https://twitter.com/MaarsComics&quot;&gt;Maars&lt;/a&gt;, an artist &amp;amp; a dev in web3. Definitely follow his work! It&apos;s awesome. 😆&lt;/p&gt;
+&lt;p&gt;🎉 Congratulations on completing the challenge Algodev!&lt;/p&gt;
+&lt;h2&gt;Below is the default readme of the Python AlgoKit Template. Read to learn more about this template.&lt;/h2&gt;
+&lt;p&gt;This project has been generated using AlgoKit. See below for default getting started instructions.&lt;/p&gt;
+&lt;h1&gt;Setup&lt;/h1&gt;
+&lt;h3&gt;Pre-requisites&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.python.org/downloads/&quot;&gt;Python 3.12&lt;/a&gt; or later&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.docker.com/&quot;&gt;Docker&lt;/a&gt; (only required for LocalNet)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Initial setup&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Clone this repository locally&lt;/li&gt;
+&lt;li&gt;Install pre-requisites:
+&lt;ul&gt;
+&lt;li&gt;Make sure to have &lt;a href=&quot;https://www.docker.com/&quot;&gt;Docker&lt;/a&gt; installed and running on your machine.&lt;/li&gt;
+&lt;li&gt;Install &lt;code&gt;AlgoKit&lt;/code&gt; - &lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli#install&quot;&gt;Link&lt;/a&gt;: The recommended version is &lt;code&gt;1.7.3&lt;/code&gt;. Ensure you can execute &lt;code&gt;algokit --version&lt;/code&gt; and get &lt;code&gt;1.7.1&lt;/code&gt; or later.&lt;/li&gt;
+&lt;li&gt;Bootstrap your local environment; run &lt;code&gt;algokit bootstrap all&lt;/code&gt; within this folder, which will:
+&lt;ul&gt;
+&lt;li&gt;Install &lt;code&gt;Poetry&lt;/code&gt; - &lt;a href=&quot;https://python-poetry.org/docs/#installation&quot;&gt;Link&lt;/a&gt;: The minimum required version is &lt;code&gt;^1.7&lt;/code&gt;. Ensure you can execute &lt;code&gt;poetry -V&lt;/code&gt; and get &lt;code&gt;1.2&lt;/code&gt;+&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;poetry install&lt;/code&gt; in the root directory, which will set up a &lt;code&gt;.venv&lt;/code&gt; folder with a Python virtual environment and also install all Python dependencies&lt;/li&gt;
+&lt;li&gt;Copy &lt;code&gt;.env.template&lt;/code&gt; to &lt;code&gt;.env&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;algokit localnet start&lt;/code&gt; to start a local Algorand network in Docker. If you are using VS Code launch configurations provided by the template, this will be done automatically for you.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Open the project and start debugging / developing via:
+&lt;ul&gt;
+&lt;li&gt;VS Code
+&lt;ol&gt;
+&lt;li&gt;Open the repository root in VS Code&lt;/li&gt;
+&lt;li&gt;Install recommended extensions&lt;/li&gt;
+&lt;li&gt;Hit F5 (or whatever you have debug mapped to) and it should start running with breakpoint debugging.
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;
+If using Windows: Before running for the first time you will need to select the Python Interpreter.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;Open the command palette (Ctrl/Cmd + Shift + P)&lt;/li&gt;
+&lt;li&gt;Search for &lt;code&gt;Python: Select Interpreter&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Select &lt;code&gt;./.venv/Scripts/python.exe&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;JetBrains IDEs (please note, this setup is primarily optimized for PyCharm Community Edition)
+&lt;ol&gt;
+&lt;li&gt;Open the repository root in the IDE&lt;/li&gt;
+&lt;li&gt;It should automatically detect it&apos;s a Poetry project and set up a Python interpreter and virtual environment.&lt;/li&gt;
+&lt;li&gt;Hit Shift+F10|Ctrl+R (or whatever you have debug mapped to) and it should start running with breakpoint debugging. Please note, JetBrains IDEs on Windows have a known bug that in some cases may prevent executing shell scripts as pre-launch tasks, for workarounds refer to &lt;a href=&quot;https://youtrack.jetbrains.com/issue/IDEA-277486/Shell-script-configuration-cannot-run-as-before-launch-task&quot;&gt;JetBrains forums&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Other
+&lt;ol&gt;
+&lt;li&gt;Open the repository root in your text editor of choice&lt;/li&gt;
+&lt;li&gt;In a terminal run &lt;code&gt;poetry shell&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;python -m smart_contracts&lt;/code&gt; through your debugger of choice&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Subsequently&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;If you uppublished to the latest source code and there are new dependencies you will need to run &lt;code&gt;algokit bootstrap all&lt;/code&gt; again&lt;/li&gt;
+&lt;li&gt;Follow step 3 above&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For guidance on &lt;code&gt;smart_contracts&lt;/code&gt; folder and adding new contracts to the project please see &lt;a href=&quot;smart_contracts/README.md&quot;&gt;README&lt;/a&gt; on the respective folder.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1&gt;Tools&lt;/h1&gt;
+&lt;p&gt;This project makes use of Algorand Python to build Algorand smart contracts. The following tools are in use:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.algorand.com/&quot;&gt;Algorand&lt;/a&gt; - Layer 1 Blockchain; &lt;a href=&quot;https://developer.algorand.org/&quot;&gt;Developer portal&lt;/a&gt;, &lt;a href=&quot;https://developer.algorand.org/docs/get-started/basics/why_algorand/&quot;&gt;Why Algorand?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli&quot;&gt;AlgoKit&lt;/a&gt; - One-stop shop tool for developers building on the Algorand network; &lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/blob/main/docs/algokit.md&quot;&gt;docs&lt;/a&gt;, &lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/blob/main/docs/tutorials/intro.md&quot;&gt;intro tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/algorandfoundation/puya&quot;&gt;Algorand Python&lt;/a&gt; - A semantically and syntactically compatible, typed Python language that works with standard Python tooling and allows you to express smart contracts (apps) and smart signatures (logic signatures) for deployment on the Algorand Virtual Machine (AVM); &lt;a href=&quot;https://github.com/algorandfoundation/puya&quot;&gt;docs&lt;/a&gt;, &lt;a href=&quot;https://github.com/algorandfoundation/puya/tree/main/examples&quot;&gt;examples&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/algorandfoundation/algokit-utils-py&quot;&gt;AlgoKit Utils&lt;/a&gt; - A set of core Algorand utilities that make it easier to build solutions on Algorand.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://python-poetry.org/&quot;&gt;Poetry&lt;/a&gt;: Python packaging and dependency management.
+It has also been configured to have a productive dev experience out of the box in &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;VS Code&lt;/a&gt;, see the .vscode folder.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Solution:&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;What was the bug?&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The error shown in terminal was that Argument &quot;name&quot; to &quot;AiInfo&quot; has incompatible type &quot;str&quot;; expected &quot;String&quot;  [arg-type], meaning there was a type mismatch between arguments and LocalState. The LocalState expects arguments of the corresponding ARC4 types.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;How did you fix the bug?&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Using ARC4 types for arguments. By matching the types, the code can now properly assign the provided information to the user&apos;s record in the ai_info LocalState.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ipfs.algonode.xyz/ipfs/bafybeicxwdnhsek3smb6yz7u53rxmfioqsjfiap5ycqbsmb7lojy4essx4?optimizer=image&amp;amp;width=600&quot; alt=&quot;cert&quot; /&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Algorand Coding Challenge - Volume 2: 🐍 Python #03.</title><link>https://fuwari.vercel.app/posts/algochallengepython03/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/algochallengepython03/</guid><pubDate>Tue, 16 Apr 2024 03:56:54 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://github.com/algorand-coding-challenges/python-challenge-3&quot;&gt;GitHub repository&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;🚩 Challenge 3: Algorand smart contract can send transactions!? 🤯&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I want to deposit my Super RARE Oranges NFT into my ASA Vault contract but the contract is failing to opt-in to the asset! What is going on?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Inside of &lt;code&gt;smart_contracts/asa_vault/contract.py&lt;/code&gt; file, there is a simple ASA vault smart contract written in Algorand Python.&lt;/p&gt;
+&lt;p&gt;It is a simple contract that has a &lt;code&gt;deposit_asa&lt;/code&gt; function and a &lt;code&gt;withdraw_asa&lt;/code&gt; function and the depositor&apos;s balance is recorded in the global state &lt;code&gt;asa_balance&lt;/code&gt;. There is also an &lt;code&gt;opt_in_to_asset&lt;/code&gt; method that opts the smart contract account into the asset that is being deposited.&lt;/p&gt;
+&lt;p&gt;If you don&apos;t know what &lt;code&gt;opt-in&lt;/code&gt; is it is a unique feature on Algorand that prevents someone from sending a token to an account that hasn&apos;t opted in to the token that is being sent. You can learn more about opt-ins &lt;a href=&quot;https://developer.algorand.org/docs/get-details/algokit/utils/ts/capabilities/asset/?from_query=opt%20in#opt-inout&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The smart contract builds successfully but if you try deploying and testing the smart contract by opening Docker Desktop, and then running:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;algokit bootstrap all # set up dev environment on your computer
+algokit localnet start # launch an Algorand local network for testing
+algokit project run build # Compile the smart contract and get low-level TEAL code.
+algokit project deploy localnet # Run the `smart_contracts/asa_vault/deploy_config.py` file to deploy and test the smart contract.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;it will fail and show this error:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;algosdk.error.AlgodHTTPError: TransactionPool.Remember: transaction ESKVFLSCWNUNJJWMF34QBEQHTXGWFQNDTBYS3MBXZQNEIQOYLKXQ: receiver error: must optin, asset 1442 missing from NIADJIGAJ2KYNX5HJ35I7RK66VVN6SE6NBUB46NJXAC4USYXJEYSXDH4JQ
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Find out what is wrong and fix the bug.&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;💬 Meet other hackers working on this challenge and get help in the &lt;a href=&quot;https://discord.com/channels/491256308461207573/1182612934455722075&quot;&gt;Algorand Python Discord Channel&lt;/a&gt;!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Checkpoint 1: 🧰 Prerequisites&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.python.org/downloads/&quot;&gt;Install Python 3.12 or higher&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/tree/main?tab=readme-ov-file#install&quot;&gt;Install AlgoKit&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Install &lt;a href=&quot;https://www.docker.com/products/docker-desktop/&quot;&gt;Docker&lt;/a&gt;. It is used to run a local Algorand network for development.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Checkpoint 2: 💻 Set up your development environment&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo&quot;&gt;Fork this repository.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Clone the repository&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;cd [DIRECTORY_OF_YOUR_CHOICE]
+git clone [FORKED_REPO_URL]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now you have 2 ways of opening your AlgoKit project.&lt;/p&gt;
+&lt;h3&gt;With VSCode Workspaces&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Open the cloned repository with the code editor of your choosing.&lt;/li&gt;
+&lt;li&gt;Open workspace mode by clicking &lt;code&gt;open workspace&lt;/code&gt; inside of &lt;code&gt;python-challenge-3.code-workspace&lt;/code&gt; file at the root level.&lt;/li&gt;
+&lt;li&gt;Go inside of the &lt;code&gt;challenge&lt;/code&gt; folder.&lt;/li&gt;
+&lt;li&gt;To setup your dev environment using AlgoKit, run the below command:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;algokit project bootstrap all #algokit bootstrap all is being deprecated. Use this command from now on.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This command will install all dependencies and also generate a &lt;code&gt;.env&lt;/code&gt; file for you.
+5. Activate Python virtual environment by running:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;poetry shell
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;venv will automatically be activated the next time you open the project.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Please note, in addition to built-in support for &lt;a href=&quot;https://code.visualstudio.com/docs/editor/workspaces&quot;&gt;VSCode Workspaces&lt;/a&gt;, the cli provides native support for monorepos called &lt;code&gt;algokit workspaces&lt;/code&gt;. Refer to &lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/blob/main/docs/features/project/run.md#workspace-vs-standalone-projects&quot;&gt;documentation&lt;/a&gt; for detailed guidelines for recommended project structures and ability to leverage custom command orchestration via &lt;code&gt;algokit project run&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;Without VSCode Workspaces&lt;/h3&gt;
+&lt;p&gt;All AlgoKit projects initialized with &lt;code&gt;--workspace&lt;/code&gt; option has the following directory structure:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;├── projects
+│   ├── smart-contract
+│   └── frontend # doesn&apos;t exist for this project
+│   └── ...
+├── {several config files...}
+├── ...
+├── .algokit.toml # workspace-typed algokit project config
+├── {project-name}.code-workspace
+├── README.md
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So to access a single project under the &lt;code&gt;projects&lt;/code&gt; folder, it is recommended to &lt;code&gt;cd&lt;/code&gt; into the project you want to work with and then open your code editor (alternatively refer to VSCode Workspace file at the root). If you are reading this and didn&apos;t open the &lt;code&gt;challenge&lt;/code&gt; folder directly, go do that now!! 😁&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;cd into &lt;code&gt;projects/challenge&lt;/code&gt; then open the code editor&lt;/li&gt;
+&lt;li&gt;To setup your dev environment using AlgoKit, run the below command:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;algokit project bootstrap all #algokit bootstrap all is being deprecated. Use this command from now on.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This command will install all dependencies and also generate a &lt;code&gt;.env&lt;/code&gt; file for you.
+3. Activate the Python virtual environment by running below inside of &lt;code&gt;challenge&lt;/code&gt; folder:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;poetry shell
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;venv will automatically be activated the next time you open the project.&lt;/p&gt;
+&lt;p&gt;Video walkthrough of forking and cloning this repository:&lt;/p&gt;
+&lt;p&gt;https://github.com/algorand-fix-the-bug-campaign/challenge-1/assets/52557585/acde8053-a8dd-4f53-8bad-45de1068bfda&lt;/p&gt;
+&lt;p&gt;Now you are ready to fix the bug!&lt;/p&gt;
+&lt;h2&gt;Checkpoint 3: 🐞 Fix the bug 🧐&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Open Docker Desktop and launch Algorand localnet by running &lt;code&gt;algokit localnet start&lt;/code&gt; in your terminal &lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/blob/main/docs/features/localnet.md#creating--starting-the-localnet&quot;&gt;For more info click me!&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Go to &lt;code&gt;smart_contracts/asa_vault/contract.py&lt;/code&gt; and see the source code of the ASA vault smart contract.&lt;/li&gt;
+&lt;li&gt;Compile the contract with &lt;code&gt;algokit project run build&lt;/code&gt; and then try running the test script with &lt;code&gt;algokit project deploy localnet&lt;/code&gt;. It will fail.&lt;/li&gt;
+&lt;li&gt;Go to &lt;code&gt;smart_contracts/asa_vault/deploy_config.py&lt;/code&gt; to understand the deployment/test script.&lt;/li&gt;
+&lt;li&gt;Read the error, figure out what is wrong, and fix the bug! The bug is inside of the ASA Vault contract. There is nothing wrong with the deploy script inside of &lt;code&gt;smart_contracts/asa_vault/deploy_config.py&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;After fixing the bug, build and run the deploy script again with the below command:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;algokit project run build
+algokit project deploy localnet
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;OR if you are on VSCode, hit F5 or go to the &lt;code&gt;Run and Debug&lt;/code&gt; tab and run the debug script.&lt;/p&gt;
+&lt;p&gt;If you see something like this in the console, you successfully fixed the bug! 😆
+&amp;lt;img width=&quot;1217&quot; alt=&quot;image&quot; src=&quot;https://github.com/algorand-coding-challenges/python-challenge-3/assets/52557585/79b4a6a8-ce59-4e64-85bf-35bc82583869&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;😰 Are you struggling?&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.algorand.org/docs/get-details/dapps/smart-contracts/apps/innertx/?from_query=inner%20t#template-modal-overlay&quot;&gt;Inner Transaction Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://algorandfoundation.github.io/puya/api-algopy.itxn.html#algopy.itxn.AssetTransfer&quot;&gt;Algorand Python Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.algorand.org/docs/get-details/transactions/transactions/?from_query=zero%20asset%20transfer#asset-transfer-transaction:~:text=A%20zero%20amount%20transferred%20to%20self%20allocates%20that%20asset%20in%20the%20account%27s%20Asset%20map.&quot;&gt;How to opt-in to an asset with assetTransfer txn&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Checkpoint 4: 💯 Submit your answer&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;After fixing the bug, push your code to your forked Github repo and &lt;a href=&quot;https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork&quot;&gt;make a PR to the original repo.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Inside the PR include:
+&lt;ol&gt;
+&lt;li&gt;What was the problem?&lt;/li&gt;
+&lt;li&gt;How did you solve the problem?&lt;/li&gt;
+&lt;li&gt;Screenshot of your terminal showing the result of running the deploy script.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Checkpoint 5: 🏆 Claim your certificate of completion NFT! 🎓&lt;/h2&gt;
+&lt;p&gt;The Algorand Developer Relations team will review the submission and &quot;approve&quot; the PR by labeling it &lt;code&gt;Approved&lt;/code&gt;. Once it&apos;s approved, we will share the magic link to claim your certificate of completion NFT in the comment of the PR!&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The certificate of completion NFT is a verifiable credential minted on the &lt;a href=&quot;https://goplausible.com/&quot;&gt;GoPlausible platform&lt;/a&gt; that follows the W3C standard for certificates and OpenBadges standard for badges.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The certificate of completion NFT for Python challenges was designed by &lt;a href=&quot;https://twitter.com/MaarsComics&quot;&gt;Maars&lt;/a&gt;, an artist &amp;amp; a dev in web3. Definitely follow his work! It&apos;s awesome. 😆&lt;/p&gt;
+&lt;p&gt;🎉 Congratulations on completing the challenge Algodev!&lt;/p&gt;
+&lt;h2&gt;Below is the default readme of the Python AlgoKit Template. Read to learn more about this template.&lt;/h2&gt;
+&lt;p&gt;This project has been generated using AlgoKit. See below for default getting started instructions.&lt;/p&gt;
+&lt;h1&gt;Setup&lt;/h1&gt;
+&lt;h3&gt;Pre-requisites&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.python.org/downloads/&quot;&gt;Python 3.12&lt;/a&gt; or later&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.docker.com/&quot;&gt;Docker&lt;/a&gt; (only required for LocalNet)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Initial setup&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Clone this repository locally&lt;/li&gt;
+&lt;li&gt;Install pre-requisites:
+&lt;ul&gt;
+&lt;li&gt;Make sure to have &lt;a href=&quot;https://www.docker.com/&quot;&gt;Docker&lt;/a&gt; installed and running on your machine.&lt;/li&gt;
+&lt;li&gt;Install &lt;code&gt;AlgoKit&lt;/code&gt; - &lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli#install&quot;&gt;Link&lt;/a&gt;: The recommended version is &lt;code&gt;1.7.3&lt;/code&gt;. Ensure you can execute &lt;code&gt;algokit --version&lt;/code&gt; and get &lt;code&gt;1.7.1&lt;/code&gt; or later.&lt;/li&gt;
+&lt;li&gt;Bootstrap your local environment; run &lt;code&gt;algokit bootstrap all&lt;/code&gt; within this folder, which will:
+&lt;ul&gt;
+&lt;li&gt;Install &lt;code&gt;Poetry&lt;/code&gt; - &lt;a href=&quot;https://python-poetry.org/docs/#installation&quot;&gt;Link&lt;/a&gt;: The minimum required version is &lt;code&gt;^1.7&lt;/code&gt;. Ensure you can execute &lt;code&gt;poetry -V&lt;/code&gt; and get &lt;code&gt;1.2&lt;/code&gt;+&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;poetry install&lt;/code&gt; in the root directory, which will set up a &lt;code&gt;.venv&lt;/code&gt; folder with a Python virtual environment and also install all Python dependencies&lt;/li&gt;
+&lt;li&gt;Copy &lt;code&gt;.env.template&lt;/code&gt; to &lt;code&gt;.env&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;algokit localnet start&lt;/code&gt; to start a local Algorand network in Docker. If you are using VS Code launch configurations provided by the template, this will be done automatically for you.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Open the project and start debugging / developing via:
+&lt;ul&gt;
+&lt;li&gt;VS Code
+&lt;ol&gt;
+&lt;li&gt;Open the repository root in VS Code&lt;/li&gt;
+&lt;li&gt;Install recommended extensions&lt;/li&gt;
+&lt;li&gt;Hit F5 (or whatever you have debug mapped to) and it should start running with breakpoint debugging.
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;
+If using Windows: Before running for the first time you will need to select the Python Interpreter.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;Open the command palette (Ctrl/Cmd + Shift + P)&lt;/li&gt;
+&lt;li&gt;Search for &lt;code&gt;Python: Select Interpreter&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Select &lt;code&gt;./.venv/Scripts/python.exe&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;JetBrains IDEs (please note, this setup is primarily optimized for PyCharm Community Edition)
+&lt;ol&gt;
+&lt;li&gt;Open the repository root in the IDE&lt;/li&gt;
+&lt;li&gt;It should automatically detect it&apos;s a Poetry project and set up a Python interpreter and virtual environment.&lt;/li&gt;
+&lt;li&gt;Hit Shift+F10|Ctrl+R (or whatever you have debug mapped to) and it should start running with breakpoint debugging. Please note, JetBrains IDEs on Windows have a known bug that in some cases may prevent executing shell scripts as pre-launch tasks, for workarounds refer to &lt;a href=&quot;https://youtrack.jetbrains.com/issue/IDEA-277486/Shell-script-configuration-cannot-run-as-before-launch-task&quot;&gt;JetBrains forums&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Other
+&lt;ol&gt;
+&lt;li&gt;Open the repository root in your text editor of choice&lt;/li&gt;
+&lt;li&gt;In a terminal run &lt;code&gt;poetry shell&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;python -m smart_contracts&lt;/code&gt; through your debugger of choice&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Subsequently&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;If you uppublished to the latest source code and there are new dependencies you will need to run &lt;code&gt;algokit bootstrap all&lt;/code&gt; again&lt;/li&gt;
+&lt;li&gt;Follow step 3 above&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For guidance on &lt;code&gt;smart_contracts&lt;/code&gt; folder and adding new contracts to the project please see &lt;a href=&quot;smart_contracts/README.md&quot;&gt;README&lt;/a&gt; on the respective folder.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1&gt;Tools&lt;/h1&gt;
+&lt;p&gt;This project makes use of Algorand Python to build Algorand smart contracts. The following tools are in use:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.algorand.com/&quot;&gt;Algorand&lt;/a&gt; - Layer 1 Blockchain; &lt;a href=&quot;https://developer.algorand.org/&quot;&gt;Developer portal&lt;/a&gt;, &lt;a href=&quot;https://developer.algorand.org/docs/get-started/basics/why_algorand/&quot;&gt;Why Algorand?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli&quot;&gt;AlgoKit&lt;/a&gt; - One-stop shop tool for developers building on the Algorand network; &lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/blob/main/docs/algokit.md&quot;&gt;docs&lt;/a&gt;, &lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/blob/main/docs/tutorials/intro.md&quot;&gt;intro tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/algorandfoundation/puya&quot;&gt;Algorand Python&lt;/a&gt; - A semantically and syntactically compatible, typed Python language that works with standard Python tooling and allows you to express smart contracts (apps) and smart signatures (logic signatures) for deployment on the Algorand Virtual Machine (AVM); &lt;a href=&quot;https://github.com/algorandfoundation/puya&quot;&gt;docs&lt;/a&gt;, &lt;a href=&quot;https://github.com/algorandfoundation/puya/tree/main/examples&quot;&gt;examples&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/algorandfoundation/algokit-utils-py&quot;&gt;AlgoKit Utils&lt;/a&gt; - A set of core Algorand utilities that make it easier to build solutions on Algorand.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://python-poetry.org/&quot;&gt;Poetry&lt;/a&gt;: Python packaging and dependency management.
+It has also been configured to have a productive dev experience out of the box in &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;VS Code&lt;/a&gt;, see the &lt;a href=&quot;./.vscode&quot;&gt;.vscode&lt;/a&gt; folder.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Solution:&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;What was the bug?&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The error stated that the asset wasn&apos;t opted in.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;How did you fix the bug?&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;According to the documentation, if a smart contract wishes to transfer an asset it holds or needs to opt into an asset this can be done with an asset transfer inner transaction. So I added the transaction to &lt;code&gt;opt_in_to_asset.&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ipfs.algonode.xyz/ipfs/bafybeierejy4fcjygtcjhms4quhzabnjst5las4wreb7e5jvpxpu7se6gi?optimizer=image&amp;amp;width=600&quot; alt=&quot;cert&quot; /&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Algorand Coding Challenge - Volume 2: 🐍 Python #02.</title><link>https://fuwari.vercel.app/posts/algochallengepython02/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/algochallengepython02/</guid><pubDate>Tue, 09 Apr 2024 03:56:54 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://github.com/algorand-coding-challenges/python-challenge-2&quot;&gt;GitHub repository&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;🚩 Challenge 2: How Do You Store States on the Python Contract?! 📀&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;When compiling my Python smart contract, it fails to build. There seems to be issues around how I am defining my states... 🤔&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Inside of &lt;code&gt;smart_contracts/counter/contract.py&lt;/code&gt; file, there is a simple counter smart contract written in Algorand Python.&lt;/p&gt;
+&lt;p&gt;It is a simple contract that has an &lt;code&gt;opt_in&lt;/code&gt; method and an &lt;code&gt;increment&lt;/code&gt; method and it keeps track of how many counts each user has in the &lt;code&gt;count&lt;/code&gt; local state and the total amount of participants tracked in the &lt;code&gt;counters&lt;/code&gt; global state.&lt;/p&gt;
+&lt;p&gt;However, if you try to build the smart contract by opening Docker Desktop, and then running:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;algokit bootstrap all
+algokit localnet start
+algokit project run build # Compile the smart contract and get low-level TEAL code.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;it will fail.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Find out what is wrong and fix the bug.&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;💬 Meet other hackers working on this challenge and get help in the &lt;a href=&quot;https://discord.com/channels/491256308461207573/1182612934455722075&quot;&gt;Algorand Python Discord Channel&lt;/a&gt;!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Checkpoint 1: 🧰 Prerequisites&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.python.org/downloads/&quot;&gt;Install Python 3.12 or higher&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/tree/main?tab=readme-ov-file#install&quot;&gt;Install AlgoKit&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Install &lt;a href=&quot;https://www.docker.com/products/docker-desktop/&quot;&gt;Docker&lt;/a&gt;. It is used to run a local Algorand network for development.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Checkpoint 2: 💻 Set up your development environment&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo&quot;&gt;Fork this repository.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Clone the repository&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;cd [DIRECTORY_OF_YOUR_CHOICE]
+git clone [FORKED_REPO_URL]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now you have 2 ways of opening your AlgoKit project.&lt;/p&gt;
+&lt;h3&gt;With VSCode Workspaces&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Open the cloned repository with the code editor of your choosing.&lt;/li&gt;
+&lt;li&gt;Open workspace mode by clicking &lt;code&gt;open workspace&lt;/code&gt; inside of &lt;code&gt;python-challenge-2.code-workspace&lt;/code&gt; file at the root level.&lt;/li&gt;
+&lt;li&gt;Go inside of the &lt;code&gt;challenge&lt;/code&gt; folder.&lt;/li&gt;
+&lt;li&gt;To setup your dev environment using AlgoKit, run the below command:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;algokit project bootstrap all #algokit bootstrap all is being deprecated. Use this command from now on.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This command will install all dependecies and also generate a &lt;code&gt;.env&lt;/code&gt; file for you.
+5. Activate Python virtual environment by running:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;poetry shell
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;venv will automatically be activated the next time you open the project.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Please note, in addition to built-in support for &lt;a href=&quot;https://code.visualstudio.com/docs/editor/workspaces&quot;&gt;VSCode Workspaces&lt;/a&gt;, the cli provides native support for monorepos called &lt;code&gt;algokit workspaces&lt;/code&gt;. Refer to &lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/blob/main/docs/features/project/run.md#workspace-vs-standalone-projects&quot;&gt;documentation&lt;/a&gt; for detailed guidelines for recommended project structures and ability to leverage custom command orchestration via &lt;code&gt;algokit project run&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;Without VSCode Workspaces&lt;/h3&gt;
+&lt;p&gt;All AlgoKit projects initialized with &lt;code&gt;--workspace&lt;/code&gt; option has the following directory structure:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;├── projects
+│   ├── smart-contract
+│   └── frontend # doesn&apos;t exist for this project
+│   └── ...
+├── {several config files...}
+├── ...
+├── .algokit.toml # workspace-typed algokit project config
+├── {project-name}.code-workspace
+├── README.md
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So to access a single project under the &lt;code&gt;projects&lt;/code&gt; folder, it is recommended to &lt;code&gt;cd&lt;/code&gt; into the project you want to work with and then open your code editor (alternatively refer to VSCode Workspace file at the root). If you are reading this and didn&apos;t open the &lt;code&gt;challenge&lt;/code&gt; folder directly, go do that now!! 😁&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;cd into &lt;code&gt;projects/challenge&lt;/code&gt; then open the code editor&lt;/li&gt;
+&lt;li&gt;To setup your dev environment using AlgoKit, run the below command:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;algokit project bootstrap all #algokit bootstrap all is being deprecated. Use this command from now on.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This command will install all dependecies and also generate a &lt;code&gt;.env&lt;/code&gt; file for you.
+3. Activate Python virtual environment by running below inside of &lt;code&gt;challenge&lt;/code&gt; folder:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;poetry shell
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;venv will automatically be activated the next time you open the project.&lt;/p&gt;
+&lt;p&gt;Video walkthrough of forking and cloning this repository:&lt;/p&gt;
+&lt;p&gt;https://github.com/algorand-fix-the-bug-campaign/challenge-1/assets/52557585/acde8053-a8dd-4f53-8bad-45de1068bfda&lt;/p&gt;
+&lt;p&gt;Now you are ready to fix the bug!&lt;/p&gt;
+&lt;h2&gt;Checkpoint 3: 🐞 Fix the bug 🧐&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Open Docker Desktop and launch Algorand localnet by running &lt;code&gt;algokit localnet start&lt;/code&gt; in your terminal &lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/blob/main/docs/features/localnet.md#creating--starting-the-localnet&quot;&gt;For more info click me!&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Go to &lt;code&gt;smart_contracts/counter/contract.py&lt;/code&gt; to see the source code of the counter smart contract.&lt;/li&gt;
+&lt;li&gt;Try building the contract with &lt;code&gt;algokit project run build&lt;/code&gt;. It will fail.&lt;/li&gt;
+&lt;li&gt;Figure out what is wrong and fix the bug!&lt;/li&gt;
+&lt;li&gt;After fixing the bug, build and run the deploy script with the below command:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;algokit project run build
+algokit project deploy localnet
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;OR if you are on VSCode, hit F5 or go to the &lt;code&gt;Run and Debug&lt;/code&gt; tab and run the debug script.&lt;/p&gt;
+&lt;p&gt;If you see something like this in the console, you successfully fixed the bug! 😆
+&amp;lt;img width=&quot;945&quot; alt=&quot;image&quot; src=&quot;https://github.com/algorand-coding-challenges/python-challenge-2/assets/52557585/9611641a-05a4-428c-ba52-aeee8dd7bb49&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;😰 Are you struggling?&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.algorand.org/docs/get-details/dapps/smart-contracts/apps/state/?from_query=global%20state#reading-global-state-from-other-smart-contracts&quot;&gt;Algorand Smart Contract Storage Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://algorandfoundation.github.io/puya/lg-storage.html&quot;&gt;Algorand Python Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/blob/main/docs/algokit.md&quot;&gt;AlgoKit CLI Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Checkpoint 4: 💯 Submit your answer&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;After fixing the bug, push your code to your forked Github repo and &lt;a href=&quot;https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork&quot;&gt;make a PR to the original repo.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Inside the PR include:
+&lt;ol&gt;
+&lt;li&gt;What was the problem?&lt;/li&gt;
+&lt;li&gt;How did you solve the problem?&lt;/li&gt;
+&lt;li&gt;Screenshot of your terminal showing the result of running the deploy script.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Checkpoint 5: 🏆 Claim your certificate of completion NFT! 🎓&lt;/h2&gt;
+&lt;p&gt;The Algorand Developer Relations team will review the submission and &quot;approve&quot; the PR by labeling it &lt;code&gt;Approved&lt;/code&gt;. Once it&apos;s approved, we will share the magic link to claim your certificate of completion NFT in the comment of the PR!&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The certificate of completion NFT is a verifiable credential minted on the &lt;a href=&quot;https://goplausible.com/&quot;&gt;GoPlausible platform&lt;/a&gt; that follows the W3C standard for certificates and OpenBadges standard for badges.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The certificate of completion NFT for Python challenges were designed by &lt;a href=&quot;https://twitter.com/MaarsComics&quot;&gt;Maars&lt;/a&gt;, an artist &amp;amp; a dev in web3. Definitely follow his work! It&apos;s awesome. 😆&lt;/p&gt;
+&lt;p&gt;🎉 Congratulations on completing the challenge Algodev! This was the final challenge of the 1st season of #AlgoCodingChallenge. Be on the lookout for the 2nd season of #AlgoCodingChallenge!&lt;/p&gt;
+&lt;h2&gt;Below is the default readme of the Python AlgoKit Template. Read to learn more about this template.&lt;/h2&gt;
+&lt;p&gt;This project has been generated using AlgoKit. See below for default getting started instructions.&lt;/p&gt;
+&lt;h1&gt;Setup&lt;/h1&gt;
+&lt;h3&gt;Pre-requisites&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.python.org/downloads/&quot;&gt;Python 3.12&lt;/a&gt; or later&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.docker.com/&quot;&gt;Docker&lt;/a&gt; (only required for LocalNet)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Initial setup&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Clone this repository locally&lt;/li&gt;
+&lt;li&gt;Install pre-requisites:
+&lt;ul&gt;
+&lt;li&gt;Make sure to have &lt;a href=&quot;https://www.docker.com/&quot;&gt;Docker&lt;/a&gt; installed and running on your machine.&lt;/li&gt;
+&lt;li&gt;Install &lt;code&gt;AlgoKit&lt;/code&gt; - &lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli#install&quot;&gt;Link&lt;/a&gt;: The recommended version is &lt;code&gt;1.7.3&lt;/code&gt;. Ensure you can execute &lt;code&gt;algokit --version&lt;/code&gt; and get &lt;code&gt;1.7.1&lt;/code&gt; or later.&lt;/li&gt;
+&lt;li&gt;Bootstrap your local environment; run &lt;code&gt;algokit bootstrap all&lt;/code&gt; within this folder, which will:
+&lt;ul&gt;
+&lt;li&gt;Install &lt;code&gt;Poetry&lt;/code&gt; - &lt;a href=&quot;https://python-poetry.org/docs/#installation&quot;&gt;Link&lt;/a&gt;: The minimum required version is &lt;code&gt;^1.7&lt;/code&gt;. Ensure you can execute &lt;code&gt;poetry -V&lt;/code&gt; and get &lt;code&gt;1.2&lt;/code&gt;+&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;poetry install&lt;/code&gt; in the root directory, which will set up a &lt;code&gt;.venv&lt;/code&gt; folder with a Python virtual environment and also install all Python dependencies&lt;/li&gt;
+&lt;li&gt;Copy &lt;code&gt;.env.template&lt;/code&gt; to &lt;code&gt;.env&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;algokit localnet start&lt;/code&gt; to start a local Algorand network in Docker. If you are using VS Code launch configurations provided by the template, this will be done automatically for you.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Open the project and start debugging / developing via:
+&lt;ul&gt;
+&lt;li&gt;VS Code
+&lt;ol&gt;
+&lt;li&gt;Open the repository root in VS Code&lt;/li&gt;
+&lt;li&gt;Install recommended extensions&lt;/li&gt;
+&lt;li&gt;Hit F5 (or whatever you have debug mapped to) and it should start running with breakpoint debugging.
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;
+If using Windows: Before running for the first time you will need to select the Python Interpreter.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;Open the command palette (Ctrl/Cmd + Shift + P)&lt;/li&gt;
+&lt;li&gt;Search for &lt;code&gt;Python: Select Interpreter&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Select &lt;code&gt;./.venv/Scripts/python.exe&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;JetBrains IDEs (please note, this setup is primarily optimized for PyCharm Community Edition)
+&lt;ol&gt;
+&lt;li&gt;Open the repository root in the IDE&lt;/li&gt;
+&lt;li&gt;It should automatically detect it&apos;s a Poetry project and set up a Python interpreter and virtual environment.&lt;/li&gt;
+&lt;li&gt;Hit Shift+F10|Ctrl+R (or whatever you have debug mapped to) and it should start running with breakpoint debugging. Please note, JetBrains IDEs on Windows have a known bug that in some cases may prevent executing shell scripts as pre-launch tasks, for workarounds refer to &lt;a href=&quot;https://youtrack.jetbrains.com/issue/IDEA-277486/Shell-script-configuration-cannot-run-as-before-launch-task&quot;&gt;JetBrains forums&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Other
+&lt;ol&gt;
+&lt;li&gt;Open the repository root in your text editor of choice&lt;/li&gt;
+&lt;li&gt;In a terminal run &lt;code&gt;poetry shell&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;python -m smart_contracts&lt;/code&gt; through your debugger of choice&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Subsequently&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;If you uppublished to the latest source code and there are new dependencies you will need to run &lt;code&gt;algokit bootstrap all&lt;/code&gt; again&lt;/li&gt;
+&lt;li&gt;Follow step 3 above&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For guidance on &lt;code&gt;smart_contracts&lt;/code&gt; folder and adding new contracts to the project please see &lt;a href=&quot;smart_contracts/README.md&quot;&gt;README&lt;/a&gt; on the respective folder.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1&gt;Tools&lt;/h1&gt;
+&lt;p&gt;This project makes use of Algorand Python to build Algorand smart contracts. The following tools are in use:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.algorand.com/&quot;&gt;Algorand&lt;/a&gt; - Layer 1 Blockchain; &lt;a href=&quot;https://developer.algorand.org/&quot;&gt;Developer portal&lt;/a&gt;, &lt;a href=&quot;https://developer.algorand.org/docs/get-started/basics/why_algorand/&quot;&gt;Why Algorand?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli&quot;&gt;AlgoKit&lt;/a&gt; - One-stop shop tool for developers building on the Algorand network; &lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/blob/main/docs/algokit.md&quot;&gt;docs&lt;/a&gt;, &lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/blob/main/docs/tutorials/intro.md&quot;&gt;intro tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/algorandfoundation/puya&quot;&gt;Algorand Python&lt;/a&gt; - A semantically and syntactically compatible, typed Python language that works with standard Python tooling and allows you to express smart contracts (apps) and smart signatures (logic signatures) for deployment on the Algorand Virtual Machine (AVM); &lt;a href=&quot;https://github.com/algorandfoundation/puya&quot;&gt;docs&lt;/a&gt;, &lt;a href=&quot;https://github.com/algorandfoundation/puya/tree/main/examples&quot;&gt;examples&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/algorandfoundation/algokit-utils-py&quot;&gt;AlgoKit Utils&lt;/a&gt; - A set of core Algorand utilities that make it easier to build solutions on Algorand.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://python-poetry.org/&quot;&gt;Poetry&lt;/a&gt;: Python packaging and dependency management.
+It has also been configured to have a productive dev experience out of the box in &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;VS Code&lt;/a&gt;, see the &lt;a href=&quot;./.vscode&quot;&gt;.vscode&lt;/a&gt; folder.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Solution:&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;What was the bug?&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;GlobalState and LocalState weren&apos;t initialized because &lt;code&gt;(__Init__)&lt;/code&gt; was missing.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;How did you fix the bug?&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Added the &lt;code&gt;(__init__ )&lt;/code&gt; to the Counter class, so it initialized the GlobalState and LocalState.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ipfs.algonode.xyz/ipfs/bafybeicsqnoepvc3jwwp6n7rnsuuf2oihprut6beyjs7q4o7boowi3yoze?optimizer=image&amp;amp;width=600&quot; alt=&quot;cert&quot; /&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Algorand Coding Challenge - Volume 2: 🐍 Python #01.</title><link>https://fuwari.vercel.app/posts/algochallengepython01/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/algochallengepython01/</guid><pubDate>Wed, 03 Apr 2024 03:56:54 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://github.com/algorand-coding-challenges/python-challenge-1&quot;&gt;GitHub repository&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;🚩 Challenge 1: My Vault Contract is failing to build! 🏗️&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;When compiling my Python smart contract, it fails to build. There seems to be 2 issues... 🤔&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Inside of &lt;code&gt;smart_contracts/personal_vault/contract.py&lt;/code&gt; file, there is a simple vault smart contract written in Algorand Python.&lt;/p&gt;
+&lt;p&gt;It is a simple contract that has a &lt;code&gt;deposit&lt;/code&gt; function and a &lt;code&gt;withdraw&lt;/code&gt; function and the depositor&apos;s balance is recorded in a local state after they opt in to the smart contract with the &lt;code&gt;opt_in_to_app&lt;/code&gt; bare method.&lt;/p&gt;
+&lt;p&gt;However, if you try to build and deploy the smart contract by opening Docker Desktop, and then running:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;algokit bootstrap all
+algokit localnet start
+algokit project run build # Compile the smart contract and get low-level TEAL code.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;it will fail and show 2 errors:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;smart_contracts/personal_vault/contract.py:26 error: Unsupported operand types for == (&quot;Account&quot; and &quot;Application&quot;)  [operator]
+ptxn.receiver == Global.current_application_id
+
+smart_contracts/personal_vault/contract.py:30 error: Argument 2 to &quot;app_opted_in&quot; has incompatible type &quot;Account&quot;; expected &quot;Application | UInt64 | int&quot;  [arg-type]
+Txn.sender, Global.current_application_address
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Find out what is wrong and fix the bug.&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;💬 Meet other hackers working on this challenge and get help in the &lt;a href=&quot;https://discord.com/channels/491256308461207573/1182612934455722075&quot;&gt;Algorand Python Discord Channel&lt;/a&gt;!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Checkpoint 1: 🧰 Prerequisites&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.python.org/downloads/&quot;&gt;Install Python 3.12 or higher&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/tree/main?tab=readme-ov-file#install&quot;&gt;Install AlgoKit&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Install &lt;a href=&quot;https://www.docker.com/products/docker-desktop/&quot;&gt;Docker&lt;/a&gt;. It is used to run a local Algorand network for development.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Checkpoint 2: 💻 Set up your development environment&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo&quot;&gt;Fork this repository.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Clone the repository&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;cd [DIRECTORY_OF_YOUR_CHOICE]
+git clone [FORKED_REPO_URL]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now you have 2 ways of opening your AlgoKit project.&lt;/p&gt;
+&lt;h3&gt;With VSCode Workspaces&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Open the cloned repository with the code editor of your choosing.&lt;/li&gt;
+&lt;li&gt;Open workspace mode by clicking &lt;code&gt;open workspace&lt;/code&gt; inside of &lt;code&gt;python-challenge-1.code-workspace&lt;/code&gt; file at the root level.&lt;/li&gt;
+&lt;li&gt;Go inside of the &lt;code&gt;challenge&lt;/code&gt; folder.&lt;/li&gt;
+&lt;li&gt;To setup your dev environment using AlgoKit, run the below command:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;algokit project bootstrap all #algokit bootstrap all is being deprecated. Use this command from now on. 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This command will install all dependecies and also generate a &lt;code&gt;.env&lt;/code&gt; file for you.
+5. Activate Python virtual environment by running:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;poetry shell
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;venv will automatically be activated the next time you open the project.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Please note, in addition to built-in support for &lt;a href=&quot;https://code.visualstudio.com/docs/editor/workspaces&quot;&gt;VSCode Workspaces&lt;/a&gt;, the cli provides native support for monorepos called &lt;code&gt;algokit workspaces&lt;/code&gt;. Refer to &lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/blob/main/docs/features/project/run.md#workspace-vs-standalone-projects&quot;&gt;documentation&lt;/a&gt; for detailed guidelines for recommended project structures and ability to leverage custom command orchestration via &lt;code&gt;algokit project run&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;Without VSCode Workspaces&lt;/h3&gt;
+&lt;p&gt;All AlgoKit projects initialized with &lt;code&gt;--workspace&lt;/code&gt; option has the following directory structure:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;├── projects
+│   ├── smart-contract
+│   └── frontend # doesn&apos;t exist for this project
+│   └── ...
+├── {several config files...}
+├── ...
+├── .algokit.toml # workspace-typed algokit project config
+├── {project-name}.code-workspace
+├── README.md
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So to access a single project under the &lt;code&gt;projects&lt;/code&gt; folder, it is recommended to &lt;code&gt;cd&lt;/code&gt; into the project you want to work with and then open your code editor (alternatively refer to VSCode Workspace file at the root). If you are reading this and didn&apos;t open the &lt;code&gt;challenge&lt;/code&gt; folder directly, go do that now!! 😁&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;cd into &lt;code&gt;projects/challenge&lt;/code&gt; then open the code editor&lt;/li&gt;
+&lt;li&gt;To setup your dev environment using AlgoKit, run the below command:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;algokit project bootstrap all #algokit bootstrap all is being deprecated. Use this command from now on. 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This command will install all dependecies and also generate a &lt;code&gt;.env&lt;/code&gt; file for you.
+3. Activate Python virtual environment by running below inside of &lt;code&gt;challenge&lt;/code&gt; folder:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;poetry shell
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;venv will automatically be activated the next time you open the project.&lt;/p&gt;
+&lt;p&gt;Video walkthrough of forking and cloning this repository:&lt;/p&gt;
+&lt;p&gt;https://github.com/algorand-fix-the-bug-campaign/challenge-1/assets/52557585/acde8053-a8dd-4f53-8bad-45de1068bfda&lt;/p&gt;
+&lt;p&gt;Now you are ready to fix the bug!&lt;/p&gt;
+&lt;h2&gt;Checkpoint 3: 🐞 Fix the bug 🧐&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Open Docker Desktop and launch Algorand localnet by running &lt;code&gt;algokit localnet start&lt;/code&gt; in your terminal &lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/blob/main/docs/features/localnet.md#creating--starting-the-localnet&quot;&gt;For more info click me!&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Go to &lt;code&gt;smart_contracts/personal_vault/contract.py&lt;/code&gt; and to see the source code of the personal vault smart contract.&lt;/li&gt;
+&lt;li&gt;Try building the contract with &lt;code&gt;algokit project run build&lt;/code&gt;. It will fail.&lt;/li&gt;
+&lt;li&gt;Read the error, figure out what is wrong and fix the bug!&lt;/li&gt;
+&lt;li&gt;After fixing the bug, build and run the deploy script with the below command:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;algokit project run build
+algokit project deploy localnet
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;OR if you are on VSCode, hit F5 or go to the &lt;code&gt;Run and Debug&lt;/code&gt; tab and run the debug script.&lt;/p&gt;
+&lt;p&gt;If you see something like this in the console, you successfully fixed the bug! 😆
+&amp;lt;img width=&quot;1293&quot; alt=&quot;image&quot; src=&quot;https://github.com/algorand-coding-challenges/python-challenge-1/assets/52557585/5879f852-e356-4616-9b11-35e0d210ec81&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;😰 Are you struggling?&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.algorand.org/docs/get-details/ethereum_to_algorand/?from_query=ethereunm#accounts-and-smart-contracts&quot;&gt;Algorand Smart Contract Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://algorandfoundation.github.io/puya/api-algopy.html#algopy.Global:~:text=current_application_address%3A%20Final%5B,executing.%20Application%20mode%20only.&quot;&gt;Algorand Python Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/blob/main/docs/algokit.md&quot;&gt;AlgoKit CLI Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Checkpoint 4: 💯 Submit your answer&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;After fixing the bug, push your code to your forked Github repo and &lt;a href=&quot;https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork&quot;&gt;make a PR to the original repo.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Inside the PR include:
+&lt;ol&gt;
+&lt;li&gt;What was the problem?&lt;/li&gt;
+&lt;li&gt;How did you solve the problem?&lt;/li&gt;
+&lt;li&gt;Screenshot of your terminal showing the result of running the deploy script.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Checkpoint 5: 🏆 Claim your certificate of completion NFT! 🎓&lt;/h2&gt;
+&lt;p&gt;The Algorand Developer Relations team will review the submission and &quot;approve&quot; the PR by labeling it &lt;code&gt;Approved&lt;/code&gt;. Once it&apos;s approved, we will share the magic link to claim your certificate of completion NFT in the comment of the PR!&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The certificate of completion NFT is a verifiable credential minted on the &lt;a href=&quot;https://goplausible.com/&quot;&gt;GoPlausible platform&lt;/a&gt; that follows the W3C standard for certificates and OpenBadges standard for badges.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The certificate of completion NFT for Python challenges were designed by &lt;a href=&quot;https://twitter.com/MaarsComics&quot;&gt;Maars&lt;/a&gt;, an artist &amp;amp; a dev in web3. Definitely follow his work! It&apos;s awesome. 😆&lt;/p&gt;
+&lt;p&gt;🎉 Congratulations on completing the challenge Algodev! This was the final challenge of the 1st season of #AlgoCodingChallenge. Be on the lookout for the 2nd season of #AlgoCodingChallenge!&lt;/p&gt;
+&lt;h2&gt;Below is the default readme of the Python AlgoKit Template. Read to learn more about this template.&lt;/h2&gt;
+&lt;p&gt;This project has been generated using AlgoKit. See below for default getting started instructions.&lt;/p&gt;
+&lt;h1&gt;Setup&lt;/h1&gt;
+&lt;h3&gt;Pre-requisites&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.python.org/downloads/&quot;&gt;Python 3.12&lt;/a&gt; or later&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.docker.com/&quot;&gt;Docker&lt;/a&gt; (only required for LocalNet)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Initial setup&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Clone this repository locally&lt;/li&gt;
+&lt;li&gt;Install pre-requisites:
+&lt;ul&gt;
+&lt;li&gt;Make sure to have &lt;a href=&quot;https://www.docker.com/&quot;&gt;Docker&lt;/a&gt; installed and running on your machine.&lt;/li&gt;
+&lt;li&gt;Install &lt;code&gt;AlgoKit&lt;/code&gt; - &lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli#install&quot;&gt;Link&lt;/a&gt;: The recommended version is &lt;code&gt;1.7.3&lt;/code&gt;. Ensure you can execute &lt;code&gt;algokit --version&lt;/code&gt; and get &lt;code&gt;1.7.1&lt;/code&gt; or later.&lt;/li&gt;
+&lt;li&gt;Bootstrap your local environment; run &lt;code&gt;algokit bootstrap all&lt;/code&gt; within this folder, which will:
+&lt;ul&gt;
+&lt;li&gt;Install &lt;code&gt;Poetry&lt;/code&gt; - &lt;a href=&quot;https://python-poetry.org/docs/#installation&quot;&gt;Link&lt;/a&gt;: The minimum required version is &lt;code&gt;^1.7&lt;/code&gt;. Ensure you can execute &lt;code&gt;poetry -V&lt;/code&gt; and get &lt;code&gt;1.2&lt;/code&gt;+&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;poetry install&lt;/code&gt; in the root directory, which will set up a &lt;code&gt;.venv&lt;/code&gt; folder with a Python virtual environment and also install all Python dependencies&lt;/li&gt;
+&lt;li&gt;Copy &lt;code&gt;.env.template&lt;/code&gt; to &lt;code&gt;.env&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;algokit localnet start&lt;/code&gt; to start a local Algorand network in Docker. If you are using VS Code launch configurations provided by the template, this will be done automatically for you.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Open the project and start debugging / developing via:
+&lt;ul&gt;
+&lt;li&gt;VS Code
+&lt;ol&gt;
+&lt;li&gt;Open the repository root in VS Code&lt;/li&gt;
+&lt;li&gt;Install recommended extensions&lt;/li&gt;
+&lt;li&gt;Hit F5 (or whatever you have debug mapped to) and it should start running with breakpoint debugging.
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;
+If using Windows: Before running for the first time you will need to select the Python Interpreter.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;Open the command palette (Ctrl/Cmd + Shift + P)&lt;/li&gt;
+&lt;li&gt;Search for &lt;code&gt;Python: Select Interpreter&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Select &lt;code&gt;./.venv/Scripts/python.exe&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;JetBrains IDEs (please note, this setup is primarily optimized for PyCharm Community Edition)
+&lt;ol&gt;
+&lt;li&gt;Open the repository root in the IDE&lt;/li&gt;
+&lt;li&gt;It should automatically detect it&apos;s a Poetry project and set up a Python interpreter and virtual environment.&lt;/li&gt;
+&lt;li&gt;Hit Shift+F10|Ctrl+R (or whatever you have debug mapped to) and it should start running with breakpoint debugging. Please note, JetBrains IDEs on Windows have a known bug that in some cases may prevent executing shell scripts as pre-launch tasks, for workarounds refer to &lt;a href=&quot;https://youtrack.jetbrains.com/issue/IDEA-277486/Shell-script-configuration-cannot-run-as-before-launch-task&quot;&gt;JetBrains forums&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Other
+&lt;ol&gt;
+&lt;li&gt;Open the repository root in your text editor of choice&lt;/li&gt;
+&lt;li&gt;In a terminal run &lt;code&gt;poetry shell&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;python -m smart_contracts&lt;/code&gt; through your debugger of choice&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Subsequently&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;If you uppublished to the latest source code and there are new dependencies you will need to run &lt;code&gt;algokit bootstrap all&lt;/code&gt; again&lt;/li&gt;
+&lt;li&gt;Follow step 3 above&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For guidance on &lt;code&gt;smart_contracts&lt;/code&gt; folder and adding new contracts to the project please see &lt;a href=&quot;smart_contracts/README.md&quot;&gt;README&lt;/a&gt; on the respective folder.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1&gt;Tools&lt;/h1&gt;
+&lt;p&gt;This project makes use of Algorand Python to build Algorand smart contracts. The following tools are in use:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.algorand.com/&quot;&gt;Algorand&lt;/a&gt; - Layer 1 Blockchain; &lt;a href=&quot;https://developer.algorand.org/&quot;&gt;Developer portal&lt;/a&gt;, &lt;a href=&quot;https://developer.algorand.org/docs/get-started/basics/why_algorand/&quot;&gt;Why Algorand?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli&quot;&gt;AlgoKit&lt;/a&gt; - One-stop shop tool for developers building on the Algorand network; &lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/blob/main/docs/algokit.md&quot;&gt;docs&lt;/a&gt;, &lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/blob/main/docs/tutorials/intro.md&quot;&gt;intro tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/algorandfoundation/puya&quot;&gt;Algorand Python&lt;/a&gt; - A semantically and syntactically compatible, typed Python language that works with standard Python tooling and allows you to express smart contracts (apps) and smart signatures (logic signatures) for deployment on the Algorand Virtual Machine (AVM); &lt;a href=&quot;https://github.com/algorandfoundation/puya&quot;&gt;docs&lt;/a&gt;, &lt;a href=&quot;https://github.com/algorandfoundation/puya/tree/main/examples&quot;&gt;examples&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/algorandfoundation/algokit-utils-py&quot;&gt;AlgoKit Utils&lt;/a&gt; - A set of core Algorand utilities that make it easier to build solutions on Algorand.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://python-poetry.org/&quot;&gt;Poetry&lt;/a&gt;: Python packaging and dependency management.
+It has also been configured to have a productive dev experience out of the box in &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;VS Code&lt;/a&gt;, see the &lt;a href=&quot;./.vscode&quot;&gt;.vscode&lt;/a&gt; folder.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Solution:&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;What was the bug?&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The console showed 2 errors in the contract:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;smart_contracts/personal_vault/contract.py:26 error: Unsupported operand types for == (&quot;Account&quot; and &quot;Application&quot;)  [operator]
+ptxn.receiver == Global.current_application_id
+
+smart_contracts/personal_vault/contract.py:30 error: Argument 2 to &quot;app_opted_in&quot; has incompatible type &quot;Account&quot;; expected &quot;Application | UInt64 | int&quot;  [arg-type]
+Txn.sender, Global.current_application_address
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Turns out there was a type mismatch in a comparison within the deposit function.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;How did you fix the bug?&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Swapping Global.current_application_id and Global.current_application_address solved the issue.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ipfs.algonode.xyz/ipfs/bafybeiaqbaxonxcuhmyq5fugwk6huvpunvu3dwrjz4hcgs53cmuyr4yog4?optimizer=image&amp;amp;width=600&quot; alt=&quot;cert&quot; /&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Age of Empires II - AI Scripting.</title><link>https://fuwari.vercel.app/posts/aoeaiscripting/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/aoeaiscripting/</guid><pubDate>Mon, 01 Apr 2024 03:24:52 GMT</pubDate><content:encoded>&lt;p&gt;This is a brief introduction to AI scripting in Age Of Empires II. In the following resources you may find an in depth overview of the tools and relevant settings.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Resources:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/playlist?list=PL8UM8VqZhE0tRwdn-uvTUSvugUOArNc_j&quot;&gt;interlepus YouTube Playlist (English)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/playlist?list=PL0EWYDbi48enyAJUlIynOpe7HxBHU2tt7&quot;&gt;arandi YouTube Playlist (English)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/playlist?list=PLcOYlGU7ZRqhsuMxaOwP4Ztl7Wfp-Ns_H&quot;&gt;AI Game Junction YouTube Playlist (English)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/playlist?list=PLl7E3Sjv1CvOQyCqS9ZZ3U5qToJkExo_2&quot;&gt;Igor Hernández YouTube Playlist (Spanish)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://userpatch.aiscripters.net&quot;&gt;UserPatch AI Scripters&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://aok.heavengames.com/university/other/world-of-ai-scripting-chapter-1/&quot;&gt;AoK Heaven Games - World of AI Scripting Chapter 1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://archive.org/download/aoe-tce-manual-and-guide/CPSB.DOC&quot;&gt;Microsoft&apos;s Computer Player Strategy Builder Guide Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://airef.github.io/index.html&quot;&gt;AI Scripting Encyclopedia&lt;/a&gt; by &lt;a href=&quot;https://github.com/airef&quot;&gt;airef&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://discord.gg/GK84FCrtWJ&quot;&gt;AI Scripters Discord Link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;images/aoeaiscripting/resources.jpeg&quot; alt=&quot;Resources&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;.per and .ai files:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;AIs files come in pairs: name.ai and name.per (name&apos;s must be identical).&lt;/li&gt;
+&lt;li&gt;This files should be located:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;-- AoE II DE: &lt;code&gt;C:\Program Files (x86)\Steam\steamapps\common\AoE2DE\resources\_common\ai\&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;-- Classic AoE II: &lt;code&gt;\Age Of Empires II\AOE II - The Conquerors\AI&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Scripting Language Overview:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;AoE II scripting language is based on CLIPS (C Language Integrated Production System).&lt;/li&gt;
+&lt;li&gt;Defining rules involves &lt;code&gt;defrule&lt;/code&gt; instruction with facts and actions.&lt;/li&gt;
+&lt;li&gt;Facts trigger actions as long as they remain true unless disabled.&lt;/li&gt;
+&lt;li&gt;Example:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;(defrule
+	(true)
+=&amp;gt;
+	(chat-to-all &quot;Hi, let&apos;s play AoE II!&quot;)
+	(disable-self)	;Disable after executed once.
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Programming Levels:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;There are five levels of AoE II programming:
+&lt;ol&gt;
+&lt;li&gt;Defrules, defconsts, timers...&lt;/li&gt;
+&lt;li&gt;Random generator, conditional (file) loading, goals&lt;/li&gt;
+&lt;li&gt;Strategic Numbers&lt;/li&gt;
+&lt;li&gt;Userpatch commands&lt;/li&gt;
+&lt;li&gt;Direct Unit Control&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Scouting the Map:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Level 3 programming involves strategic numbers (SN) for adjusting AI parameters.&lt;/li&gt;
+&lt;li&gt;SN adjust AI behavior and can be changed throughout the game.&lt;/li&gt;
+&lt;li&gt;Default values are important to understand AI behavior fully.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Setting Strategic Numbers:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(defrule
+	(true)
+=&amp;gt;
+	(set-strategic-number strategic-number number)
+	(disable-self)
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Example:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(defrule
+	(true)
+=&amp;gt;
+	(set-strategic-number sn-cap-civilian-explorers 0)
+	(set-strategic-number sn-total-number-explorers 0)
+	(disable-self)
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Units and Buildings IDs:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;IDs list: &lt;a href=&quot;https://airef.github.io/tables/objects.html&quot;&gt;Unit/Building ID list&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Define constants using &lt;code&gt;(defconst constant-name constant-value)&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Example:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(defconst livestock-class 958)
+(unit-type-count livestock-class &amp;gt; 0)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Conditionals:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use &lt;code&gt;#load-if-defined&lt;/code&gt; to check civilization.&lt;/li&gt;
+&lt;li&gt;Example:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;#load-if-defined BRITON-CIV
+	(defconst text-my-civ &quot;I&apos;m Britons, will make Longbows&quot;)
+#else
+	(defconst text-my-civ &quot;I&apos;m not Britons, will not make Longbows&quot;)
+#end-if
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Training Villagers:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use fact-checkers like &lt;code&gt;can-train&lt;/code&gt; to avoid bugs.&lt;/li&gt;
+&lt;li&gt;Example:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;(defrule
+	(can-train villager)
+=&amp;gt;
+	(train villager)
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Miscellaneous:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use space with relative operators like &lt;code&gt;&amp;gt;= 5&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Prefix types with TypeOp (only for level 4 and 5).&lt;/li&gt;
+&lt;li&gt;Example:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;(defconst starting-vills-on-sheep 6)
+(defrule
+	(true)
+=&amp;gt;
+	(chat-to-all &quot;I need %d villagers on sheep&quot; c: starting-vills-on-sheep)
+	(disable-self)
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Building conditions:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;can-build&lt;/code&gt; checks if the building is available.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sn-initial-exploration-required&lt;/code&gt;: Change default from 2 to 0.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;(housing-headroom &amp;lt; 4)&lt;/code&gt;: Example condition for housing.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded></item><item><title>Algorand Challenge #04: Fix the bug.</title><link>https://fuwari.vercel.app/posts/algochallenge04/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/algochallenge04/</guid><pubDate>Wed, 27 Mar 2024 03:56:54 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://github.com/algorand-coding-challenges/challenge-4/&quot;&gt;GitHub repository&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;🚩 Challenge 4: How Do I Atomically Send 2 Payment Transactions? 🤔&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I want to group 2 payment transactions using Algorand&apos;s atomic transfers feature but it&apos;s not working!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Inside of &lt;code&gt;index.ts&lt;/code&gt; file, there is code that is trying to atomically group 2 payment transactions and synchronously send them using atomic transfers. The code is using the &lt;a href=&quot;https://github.com/algorand/js-algorand-sdk&quot;&gt;Algorand JavaScript SDK&lt;/a&gt; and the &lt;a href=&quot;https://github.com/algorandfoundation/algokit-utils-ts/tree/main&quot;&gt;AlgoKit Utils TypeScript&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;However, if you try to run the &lt;code&gt;index.ts&lt;/code&gt; file after going into the &lt;code&gt;challenge&lt;/code&gt; directory, opening Docker Desktop, and then running:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;algokit bootstrap all
+algokit localnet start
+npm run start
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;it will fail and show this error: &lt;code&gt;TypeError: signer is not a function&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Find out what is wrong and fix the bug.&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;💬 Meet other hackers working on this challenge and get help in the &lt;a href=&quot;https://discord.com/channels/491256308461207573/813198189334888469&quot;&gt;General Dev Discord Channel&lt;/a&gt;!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Checkpoint 1: 🧰 Prerequisites&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/tree/main?tab=readme-ov-file#install&quot;&gt;Install AlgoKit&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Install &lt;a href=&quot;https://www.docker.com/products/docker-desktop/&quot;&gt;Docker&lt;/a&gt;. It is used to run a local Algorand network for development.&lt;/li&gt;
+&lt;li&gt;Install &lt;a href=&quot;https://docs.npmjs.com/downloading-and-installing-node-js-and-npm&quot;&gt;Node.JS / npm&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Checkpoint 2: 💻 Set up your development environment&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo&quot;&gt;Fork this repository.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Clone the repository&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;cd [DIRECTORY_OF_YOUR_CHOICE]
+git clone [FORKED_REPO_URL]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;Open the cloned repository with the code editor of your choosing.&lt;/li&gt;
+&lt;li&gt;Setup Dev environment using AlgoKit. Run the below command inside of the &lt;code&gt;challenge&lt;/code&gt; folder.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;algokit bootstrap all
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This command will install all dependencies and also generate a &lt;code&gt;.env&lt;/code&gt; file for you.&lt;/p&gt;
+&lt;p&gt;Video walkthrough of forking and cloning this repository:&lt;/p&gt;
+&lt;p&gt;https://github.com/algorand-fix-the-bug-campaign/challenge-1/assets/52557585/acde8053-a8dd-4f53-8bad-45de1068bfda&lt;/p&gt;
+&lt;p&gt;Now you are ready to fix the bug!&lt;/p&gt;
+&lt;h2&gt;Checkpoint 3: 🐞 Fix the bug 🧐&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Open Docker Desktop and launch Algorand localnet by running &lt;code&gt;algokit localnet start&lt;/code&gt; in your terminal &lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/blob/main/docs/features/localnet.md#creating--starting-the-localnet&quot;&gt;For more info click me!&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Go to &lt;code&gt;./index.ts&lt;/code&gt; and read the comments on the file and fix the bug!&lt;/li&gt;
+&lt;li&gt;After fixing the bug run the below command inside of the &lt;code&gt;challenge&lt;/code&gt; folder:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;npm run start
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;If you see: &lt;code&gt;The first payment transaction sent 1000000 microAlgos and the second payment transaction sent 2000000 microAlgos&lt;/code&gt; in the console, you successfully fixed the bug! 😆&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;References&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.algorand.org/docs/get-details/atc/?from_query=atomic#template-modal-overlay&quot;&gt;Atomic Transfers Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/algorandfoundation/algokit-utils-ts/blob/main/docs/capabilities/transaction.md&quot;&gt;AlgoKit Utils TypeScript Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;😰 Are you struggling?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;atc.addTransaction()&lt;/code&gt; takes in a &lt;a href=&quot;https://github.com/algorand/js-algorand-sdk/blob/6fdfa116f0e47e68982281028fdc817577c6aab7/src/signer.ts#L105&quot;&gt;&lt;code&gt;transactionWithSigner&lt;/code&gt;&lt;/a&gt; object as the parameter. You can get the signer of an account using the &lt;a href=&quot;https://github.com/algorand/js-algorand-sdk/blob/6fdfa116f0e47e68982281028fdc817577c6aab7/src/signer.ts#L23&quot;&gt;&lt;code&gt;makeBasicAccountTransactionSigner&lt;/code&gt;&lt;/a&gt; function from the Algorand JavaScript SDK.&lt;/p&gt;
+&lt;h2&gt;Checkpoint 4: 💯 Submit your answer&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;After fixing the bug, push your code to your forked Github repo and &lt;a href=&quot;https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork&quot;&gt;make a PR to the original repo.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Inside the PR include:
+&lt;ol&gt;
+&lt;li&gt;What was the problem?&lt;/li&gt;
+&lt;li&gt;How did you solve the problem?&lt;/li&gt;
+&lt;li&gt;Screenshot of your terminal showing the result of running &lt;code&gt;index.ts&lt;/code&gt; file.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Checkpoint 5: 🏆 Claim your certificate of completion NFT! 🎓&lt;/h2&gt;
+&lt;p&gt;The Algorand Developer Relations team will review the submission and &quot;approve&quot; the PR by labeling it &lt;code&gt;Approved&lt;/code&gt;. Once it&apos;s approved, we will share the magic link to claim your certificate of completion NFT in the comment of the PR!&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The certificate of completion NFT is a verifiable credential minted on the &lt;a href=&quot;https://goplausible.com/&quot;&gt;GoPlausible platform&lt;/a&gt; that follows the W3C standard for certificates and OpenBadges standard for badges.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;🎉 Congratulations on completing the challenge Algodev! This was the final challenge of the 1st season of #AlgoCodingChallenge. Be on the lookout for the 2nd season of #AlgoCodingChallenge!&lt;/p&gt;
+&lt;h2&gt;Solution:&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;What was the bug?&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The error shown was: &lt;strong&gt;TypeError: signer is not a function&lt;/strong&gt;.
+Also, according to Visual Studio Code: &lt;strong&gt;Type Account&apos; is not assignable to type &apos;TransactionSigner&apos;.&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;How did you fix the bug?&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I used the &lt;strong&gt;makeBasicAccountTransactionSigner&lt;/strong&gt; function.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ipfs.algonode.xyz/ipfs/bafkreibdcm5nrqx2624toblrcvzthsgk2fzzrxfyueh2y6bitlzorc343u?optimizer=image&amp;amp;width=600&quot; alt=&quot;cert&quot; /&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Algorand Challenge #03: Fix the bug.</title><link>https://fuwari.vercel.app/posts/algochallenge03/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/algochallenge03/</guid><pubDate>Tue, 19 Mar 2024 03:56:54 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://github.com/algorand-coding-challenges/challenge-3/&quot;&gt;GitHub repository&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;🚩 Challenge 3: My AppClient is Broken! 😭&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I want to instantiate an app client to deploy and interact with my smart contract but it&apos;s not working!!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This project includes a simple &lt;code&gt;helloWorld&lt;/code&gt; smart contract written with &lt;a href=&quot;https://tealscript.netlify.app/&quot;&gt;TEALScript&lt;/a&gt; inside of &lt;code&gt;./contract/helloWorld.algo.ts&lt;/code&gt; file. The smart contract is already compiled with artifacts generated inside of the &lt;code&gt;./contracts/artifacts&lt;/code&gt; folder and the application typed client inside of &lt;code&gt;./contracts/clients/helloWorldClient.ts&lt;/code&gt; file.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Artifacts: autogenerated assets (TEAL contract code, ABI spec, source mapping) for your smart contract.
+Application Typed Client: autogenerated client used to easily deploy / interact with Algorand smart contract.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The &lt;code&gt;index.ts&lt;/code&gt; file in the root level is a script that deploys the &lt;code&gt;helloWorld&lt;/code&gt; smart contract and calls the &lt;code&gt;helloWorld&lt;/code&gt; method.&lt;/p&gt;
+&lt;p&gt;However, if you try to run the &lt;code&gt;index.ts&lt;/code&gt; file after going into the &lt;code&gt;challenge&lt;/code&gt; directory, opening Docker Desktop, and then running:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;algokit bootstrap all
+algokit localnet start
+npm run start
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;it will fail.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Find out what is wrong and fix the bug.&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;💬 Meet other hackers working on this challenge and get help in the &lt;a href=&quot;https://discord.com/channels/491256308461207573/1065320801970180168&quot;&gt;AlgoKit Discord Channel&lt;/a&gt;!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Checkpoint 1: 🧰 Prerequisites&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/tree/main?tab=readme-ov-file#install&quot;&gt;Install AlgoKit&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Install &lt;a href=&quot;https://www.docker.com/products/docker-desktop/&quot;&gt;Docker&lt;/a&gt;. It is used to run a local Algorand network for development.&lt;/li&gt;
+&lt;li&gt;Install &lt;a href=&quot;https://docs.npmjs.com/downloading-and-installing-node-js-and-npm&quot;&gt;Node.JS / npm&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Make sure to install these 3 prerequisites before continuing!&lt;/strong&gt;&lt;/p&gt;
+&lt;h2&gt;Checkpoint 2: 💻 Set up your development environment&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo&quot;&gt;Fork this repository.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Clone the repository&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;cd [DIRECTORY_OF_YOUR_CHOICE]
+git clone [FORKED_REPO_URL]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;Open the cloned repository with the code editor of your choosing.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Video walkthrough of forking and cloning this repository:&lt;/p&gt;
+&lt;p&gt;https://github.com/algorand-fix-the-bug-campaign/challenge-1/assets/52557585/acde8053-a8dd-4f53-8bad-45de1068bfda&lt;/p&gt;
+&lt;p&gt;Now you are ready to fix the bug!&lt;/p&gt;
+&lt;h2&gt;Checkpoint 3: 🐞 Fix the bug 🧐&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Open Docker Desktop and launch Algorand localnet by running &lt;code&gt;algokit localnet start&lt;/code&gt; in your terminal &lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/blob/main/docs/features/localnet.md#creating--starting-the-localnet&quot;&gt;For more info click me!&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Go to &lt;code&gt;./contracts/helloWorld.algo.ts&lt;/code&gt; to read the &lt;code&gt;helloWorld&lt;/code&gt; TEALScript smart contract and understand what it does.&lt;/li&gt;
+&lt;li&gt;Go to &lt;code&gt;./index.ts&lt;/code&gt; and read the comments on the file and fix the bug!&lt;/li&gt;
+&lt;li&gt;After fixing the bug run the below command inside the &lt;code&gt;challenge&lt;/code&gt; directory:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;npm run start
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you see something like the image below, you have successfully fixed the bug! Congratulations 😆
+&amp;lt;img width=&quot;827&quot; alt=&quot;image&quot; src=&quot;https://github.com/algorand-coding-challenges/challenge-3/assets/52557585/662d86ea-4d8b-4a5f-95c1-b228cbbadd9b&quot;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;😰 Are you struggling?&lt;/strong&gt;
+Here is a hint for you: https://developer.algorand.org/docs/get-details/algokit/features/generate/?from_query=algokit%20utils#1-typed-clients&lt;/p&gt;
+&lt;h2&gt;Checkpoint 4: 💯 Submit your answer&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;After fixing the bug, push your code to your forked Github repo and &lt;a href=&quot;https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork&quot;&gt;make a PR to the original repo.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Inside the PR include:
+&lt;ol&gt;
+&lt;li&gt;What was the problem?&lt;/li&gt;
+&lt;li&gt;How did you solve the problem?&lt;/li&gt;
+&lt;li&gt;A screenshot of your terminal that shows the console.log &amp;lt;img width=&quot;827&quot; alt=&quot;image&quot; src=&quot;https://github.com/algorand-coding-challenges/challenge-3/assets/52557585/69dae6bd-f7cd-431a-b29a-71af3d534c9b&quot;&amp;gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Checkpoint 5: 🏆 Claim your certificate of completion NFT! 🎓&lt;/h2&gt;
+&lt;p&gt;The Algorand Developer Relations team will review the submission and &quot;approve&quot; the PR by labeling it &lt;code&gt;Approved&lt;/code&gt;. Once it&apos;s approved, we will share the magic link to claim your certificate of completion NFT in the comment of the PR!&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The certificate of completion NFT is a verifiable credential minted on the &lt;a href=&quot;https://goplausible.com/&quot;&gt;GoPlausible platform&lt;/a&gt; that follows the W3C standard for certificates and OpenBadges standard for badges.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;🎉 Congratulations on completing the challenge Algodev! Now on to the next one 💪&lt;/p&gt;
+&lt;h2&gt;Solution:&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;What was the bug?&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;In the creator address it was missing the addr property.&lt;/li&gt;
+&lt;li&gt;A wrong function was being returned in index.ts&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;How did you fix the bug?&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Following the documentation I fixed the bugs by setting the correct creatorAddress to &quot;deployer.addr&quot; and changing indexer to &quot;algod&quot;, which is the correct function.
+Also changed &quot;YOUR_NAME&quot; to my nickname.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ipfs.algonode.xyz/ipfs/bafkreicaefsujfwqvaobmlafc62n2lhkmx6xshhcb3u5bxvm74im3wnrze?optimizer=image&amp;amp;width=600&quot; alt=&quot;cert&quot; /&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Algorand Challenge #02: Fix the bug.</title><link>https://fuwari.vercel.app/posts/algochallenge02/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/algochallenge02/</guid><pubDate>Tue, 12 Mar 2024 03:56:54 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://github.com/algorand-coding-challenges/challenge-2/&quot;&gt;GitHub repository&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;🚩 Challenge 2: Why Isn&apos;t the Code Running?! 😡&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I cloned this Algorand project but the code doesn&apos;t run! What is going on???&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This project was created with the TEALScript AlgoKit template and inside of &lt;code&gt;contracts/algorand-puzzle-2.algo.ts&lt;/code&gt; file, there is a simple smart contract with one method that simply returns a string value when called. The application client used to deploy/call the smart contract is already generated inside of &lt;code&gt;contracts/clients/AlgorandPuzzle2Client.ts&lt;/code&gt; and the test defined in &lt;code&gt;__test__/algorand-puzzle-2.test.ts&lt;/code&gt; is accurately written.&lt;/p&gt;
+&lt;p&gt;In short, all of the code inside of this project is correct, so unlike the name of this campaign &quot;Fix The Bug&quot;, there is no need to change the codebase to solve this problem.&lt;/p&gt;
+&lt;p&gt;However, if you try and run the test file with &lt;code&gt;npm run test&lt;/code&gt; after cloning this repo, the test will fail and give this error:
+&lt;code&gt;sh: tealscript: command not found&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Find out what is wrong and Fix the problem.&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;💬 Meet other hackers working on this challenge and get help in the &lt;a href=&quot;https://discord.com/channels/491256308461207573/1065320801970180168&quot;&gt;AlgoKit Discord Channel&lt;/a&gt;!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Checkpoint 1: 🧰 Prerequisites&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/tree/main?tab=readme-ov-file#install&quot;&gt;Install AlgoKit&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Install &lt;a href=&quot;https://www.docker.com/products/docker-desktop/&quot;&gt;Docker&lt;/a&gt;. It is used to run a local Algorand network for development.&lt;/li&gt;
+&lt;li&gt;Install &lt;a href=&quot;https://docs.npmjs.com/downloading-and-installing-node-js-and-npm&quot;&gt;Node.JS / npm&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Make sure to install these 3 prerequisites before continuing!&lt;/strong&gt;&lt;/p&gt;
+&lt;h2&gt;Checkpoint 2: 💻 Set up your development environment&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo&quot;&gt;Fork this repository.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Clone the repository&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;cd [DIRECTORY_OF_YOUR_CHOICE]
+git clone [FORKED_REPO_URL]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;Open the cloned repository with the code editor of your choosing.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Video walkthrough of forking and cloning this repository:&lt;/p&gt;
+&lt;p&gt;https://github.com/algorand-fix-the-bug-campaign/challenge-1/assets/52557585/acde8053-a8dd-4f53-8bad-45de1068bfda&lt;/p&gt;
+&lt;p&gt;Now you are ready to fix the bug!&lt;/p&gt;
+&lt;h2&gt;Checkpoint 3: 🐞 Fix the bug 🧐&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Open Docker Desktop and launch Algorand localnet by running &lt;code&gt;algokit localnet start&lt;/code&gt; in your terminal &lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/blob/main/docs/features/localnet.md#creating--starting-the-localnet&quot;&gt;For more info click me!&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Go to &lt;code&gt;contracts/algorand-puzzle-2.algo.ts&lt;/code&gt; and uncomment line 8.&lt;/li&gt;
+&lt;li&gt;Make sure you are inside the &lt;code&gt;challenge&lt;/code&gt; directory and run &lt;code&gt;npm run test&lt;/code&gt; in your terminal to run the &lt;code&gt;__test__/algorand-puzzle-2.test.ts&lt;/code&gt; file and see the error message.&lt;/li&gt;
+&lt;li&gt;Find out what is wrong and fix the bug!&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;npm run test&lt;/code&gt; inside of &lt;code&gt;challenge&lt;/code&gt; directory
+If all of the test cases pass, you solved the problem! Congratulations 😆&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;😰 Are you struggling?&lt;/strong&gt;
+Here is a hint for you: https://developer.algorand.org/docs/get-details/algokit/features/bootstrap/&lt;/p&gt;
+&lt;h2&gt;Checkpoint 4: 💯 Submit your answer&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;After fixing the bug, push your code to your forked Github repo and &lt;a href=&quot;https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork&quot;&gt;make a PR to the original repo.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Inside the PR include:
+&lt;ol&gt;
+&lt;li&gt;What was the problem?&lt;/li&gt;
+&lt;li&gt;How did you solve the problem?&lt;/li&gt;
+&lt;li&gt;Screenshot of your terminal showing the test cases passing. &amp;lt;img width=&quot;558&quot; alt=&quot;image&quot; src=&quot;https://github.com/algorand-devrel/fix-the-bug-private/assets/52557585/3017375c-f85a-42f1-b6e5-262b4560f96d&quot;&amp;gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Checkpoint 5: 🏆 Claim your certificate of completion NFT! 🎓&lt;/h2&gt;
+&lt;p&gt;The Algorand Developer Relations team will review the submission and &quot;approve&quot; the PR by labeling it &lt;code&gt;Approved&lt;/code&gt;. Once it&apos;s approved, we will share the magic link to claim your certificate of completion NFT in the comment of the PR!&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The certificate of completion NFT is a verifiable credential minted on the &lt;a href=&quot;https://goplausible.com/&quot;&gt;GoPlausible platform&lt;/a&gt; that follows the W3C standard for certificates and OpenBadges standard for badges.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;🎉 Congratulations on completing the challenge Algodev! Now on to the next one 💪&lt;/p&gt;
+&lt;h2&gt;AlgoKit TEALScript Template Information&lt;/h2&gt;
+&lt;h3&gt;Build Contract&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;npm run build&lt;/code&gt; will compile the contract to TEAL and generate an ABI and appspec JSON in &lt;a href=&quot;./contracts/artifacts/&quot;&gt;./contracts/artifacts&lt;/a&gt; and a algokit TypeScript client in &lt;a href=&quot;./contracts/clients/&quot;&gt;./contracts/clients&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;npm run compile-contract&lt;/code&gt; or &lt;code&gt;npm run generate-client&lt;/code&gt; can be used to compile the contract or generate the contract separately.&lt;/p&gt;
+&lt;h3&gt;Run Tests&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;npm run test&lt;/code&gt; will execute the tests defined in &lt;a href=&quot;./__test__&quot;&gt;./__test__&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Lint&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;npm run lint&lt;/code&gt; will lint the contracts and tests with ESLint.&lt;/p&gt;
+&lt;h2&gt;Solution&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;What was the bug?&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;When running&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;npm run test&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I got: &apos;tealscript&apos; is not recognized as an internal or external command, operable program or batch file. Also Visual Studio Code showed that couldn&apos;t find the tealscript module.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;How did you fix the bug?&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;According to the &lt;a href=&quot;https://developer.algorand.org/docs/get-details/algokit/features/bootstrap/&quot;&gt;documentation&lt;/a&gt; the AlgoKit Bootstrap feature allows you to bootstrap different project dependencies by looking up specific files in your current directory and immediate sub directories by convention.&lt;/p&gt;
+&lt;p&gt;To install these dependencies I run&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;algokit bootstrap all&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;and since it showed there were also some vulnerabilities I run&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;npm audit fix&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;https://ipfs.algonode.xyz/ipfs/bafkreifq23oojm7gadi467qdn477d66xlyhliwwir25ipwutnl6lm7bdrm?optimizer=image&amp;amp;width=600&quot; alt=&quot;cert&quot; /&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Algorand Challenge #01: Fix the bug.</title><link>https://fuwari.vercel.app/posts/algochallenge01/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/algochallenge01/</guid><pubDate>Wed, 06 Mar 2024 03:56:54 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://github.com/algorand-coding-challenges/challenge-1/&quot;&gt;GitHub repository&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;🚩 Challenge 1: I Can&apos;t Send My Transaction! 😭&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I want to send 1 ALGO to my friend to show how amazing Algorand is but I can&apos;t send my transaction! what&apos;s wrong???&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Inside of &lt;code&gt;index.ts&lt;/code&gt; file, there is a script that sends a payment transaction that sends 1,000,000 microAlgos (1 ALGO) to the receiver&apos;s wallet. However if you try running the &lt;code&gt;index.ts&lt;/code&gt; file after opening Docker Desktop and then running:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;algokit bootstrap all
+algokit localnet start
+npm run start
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;it will fail and show this error: &lt;code&gt;TypeError: Argument must be byte array&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This repository has the &lt;code&gt;challenge&lt;/code&gt; folder on the root level, which contains the fix the bug challenge codebase.
+Find the &lt;code&gt;index.ts&lt;/code&gt; file inside of the &lt;code&gt;challenge&lt;/code&gt; folder and &lt;strong&gt;fix the bug! 🐞&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;💬 Meet other hackers working on this challenge and get help in the &lt;a href=&quot;https://discord.com/channels/491256308461207573/631209194967531559&quot;&gt;JavaScript SDK Discord Channel&lt;/a&gt;!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Checkpoint 1: 🧰 Prerequisites&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/tree/main?tab=readme-ov-file#install&quot;&gt;Install AlgoKit&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Install &lt;a href=&quot;https://www.docker.com/products/docker-desktop/&quot;&gt;Docker&lt;/a&gt;. It is used to run a local Algorand network for development.&lt;/li&gt;
+&lt;li&gt;Install &lt;a href=&quot;https://docs.npmjs.com/downloading-and-installing-node-js-and-npm&quot;&gt;Node.JS / npm&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Make sure to install these 2 prerequisites before continuing!&lt;/strong&gt;&lt;/p&gt;
+&lt;h2&gt;Checkpoint 2: 💻 Set up your development environment&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo&quot;&gt;Fork this repository.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Clone the repository&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;cd [DIRECTORY_OF_YOUR_CHOICE]
+git clone [FORKED_REPO_URL]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;Open the cloned repository with the code editor of your choosing.&lt;/li&gt;
+&lt;li&gt;Go into the &lt;code&gt;challenge&lt;/code&gt; directory and run the following in your terminal:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;algokit bootstrap all
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now you are ready to fix the bug!&lt;/p&gt;
+&lt;h2&gt;Checkpoint 3: 🐞 Fix the bug 🧐&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Open Docker Desktop and launch Algorand localnet by running &lt;code&gt;algokit localnet start&lt;/code&gt; in your terminal &lt;a href=&quot;https://github.com/algorandfoundation/algokit-cli/blob/main/docs/features/localnet.md#creating--starting-the-localnet&quot;&gt;For more info click me!&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Make sure you are inside the &lt;code&gt;challenge&lt;/code&gt; directory and run &lt;code&gt;npm run start&lt;/code&gt; in your terminal to run the &lt;code&gt;index.ts&lt;/code&gt; file and see the error message.&lt;/li&gt;
+&lt;li&gt;Go to &lt;code&gt;index.ts&lt;/code&gt; file and fix the code to make it work.&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;npm run start&lt;/code&gt; inside of &lt;code&gt;challenge&lt;/code&gt; directory again to run the &lt;code&gt;index.ts&lt;/code&gt; file.
+If you see: &lt;code&gt;Payment of 1000000 microAlgos was sent to [receiver&apos;s address]&lt;/code&gt; in the console, you successfully fixed the bug! 👏&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;😰 Are you struggling?&lt;/strong&gt;
+Here is a hint for you: https://developer.algorand.org/docs/sdks/javascript/&lt;/p&gt;
+&lt;h2&gt;Checkpoint 4: 💯 Submit your answer&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;After fixing the bug, push your code to your forked Github repo and &lt;a href=&quot;https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork&quot;&gt;make a PR to the original repo.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Inside the PR include:
+&lt;ol&gt;
+&lt;li&gt;What was the problem?&lt;/li&gt;
+&lt;li&gt;How did you solve the problem?&lt;/li&gt;
+&lt;li&gt;Screenshot of your terminal showing the logged sentence. &lt;code&gt;Payment of 1000000 microAlgos was sent to [receiver&apos;s address]&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Checkpoint 5: 🏆 Claim your certificate of completion NFT! 🎓&lt;/h2&gt;
+&lt;p&gt;The Algorand Developer Relations team will review the submission and &quot;approve&quot; the PR by labeling it &lt;code&gt;Approved&lt;/code&gt;. Once it&apos;s approved, we will share the magic link to claim your certificate of completion NFT in the comment of the PR!&lt;/p&gt;
+&lt;h2&gt;Solution:&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;What was the bug?&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Before the transaction is considered valid, it must be signed by a private key. In this case it wasn&apos;t being signed.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;How did you fix the bug?&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Following the &lt;a href=&quot;https://developer.algorand.org/docs/sdks/javascript/&quot;&gt;documentation&lt;/a&gt;, I added the code to sign the transaction:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const signedTxn = txn.signTxn(sender.sk);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;https://ipfs.algonode.xyz/ipfs/bafkreiazf53xittevlukgz7yocdaz6opdjxiimbepu3d7oskots2dlulha?optimizer=image&amp;amp;width=600&quot; alt=&quot;cert&quot; /&gt;&lt;/p&gt;
+</content:encoded></item><item><title>ePubLibre data charts.</title><link>https://fuwari.vercel.app/posts/epldatasite/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/epldatasite/</guid><pubDate>Mon, 26 Feb 2024 03:56:54 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://github.com/athekat/EPL-data-website/&quot;&gt;GitHub repository&lt;/a&gt; and the &lt;a href=&quot;https://epldatawebsite.alan.com.ar/&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A webpage that shows Plotly graphs of &lt;a href=&quot;https://www.epublibre.org/&quot;&gt;ePubLibre&lt;/a&gt; data.&lt;/p&gt;
+&lt;p&gt;The repository contains a Python script for analyzing book data stored in a CSV file and generating visualizations using Plotly. The CSV file is provided by ePubLibre Library via RSS. The script loads the data from the CSV file, performs analysis, and creates three types of charts:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Bar Chart of Genre Distribution: Visualizes the distribution of books across different genres.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Pie Chart of Language Distribution: Displays the distribution of books based on their language.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Line Chart of Publication Trend: Illustrates the trend of book publications over the years.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;Prerequisites&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Python 3.x&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Plotly library (pip install plotly)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The Python script can be found in /assets/charts&lt;/p&gt;
+&lt;/blockquote&gt;
+</content:encoded></item><item><title>Age of Empires II - Most used civilizations (Python Script).</title><link>https://fuwari.vercel.app/posts/aoemostusedciv-python/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/aoemostusedciv-python/</guid><pubDate>Wed, 07 Feb 2024 08:45:06 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://github.com/athekat/AoE---MostUsedCiv/&quot;&gt;GitHub repository&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A Python script that uses &lt;a href=&quot;https://wiki.librematch.org/steam/start&quot;&gt;LibreMatch API&lt;/a&gt; to output a Plotly pie chart of the civs used.&lt;/p&gt;
+</content:encoded></item><item><title>Age of Empires II - Most Recent Match (Python Script).</title><link>https://fuwari.vercel.app/posts/aoemostrecentmatch/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/aoemostrecentmatch/</guid><pubDate>Tue, 23 Jan 2024 21:56:54 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://github.com/athekat/Aoe-MostRecentMatch/&quot;&gt;GitHub repository&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A Python script that uses &lt;a href=&quot;https://wiki.librematch.org/steam/start&quot;&gt;LibreMatch API&lt;/a&gt; to output information about a player&apos;s most recent match in Age Of Empires II DE.&lt;/p&gt;
+&lt;p&gt;This script:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. Retrieves match history:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Prompts the user to enter a Steam ID.&lt;/li&gt;
+&lt;li&gt;Uses the &lt;code&gt;requests&lt;/code&gt; library to fetch match history data from the Age of Empires 2 API for the specified Steam ID.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;2. Processes the match data:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Focuses on the most recent match played.&lt;/li&gt;
+&lt;li&gt;Extracts information about the players involved in the match, including their aliases, civilizations, ELO ratings, and teams.&lt;/li&gt;
+&lt;li&gt;Converts timestamps to human-readable publisheds.&lt;/li&gt;
+&lt;li&gt;Replaces civilization IDs with their corresponding names for better readability.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;3. Presents the match summary:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Prints the published and map of the most recent match.&lt;/li&gt;
+&lt;li&gt;Groups players by their teams and displays their information in a clear format, including aliases, ELOs, and civilizations.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Output:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;images/aoemostrecentmatch/Screenshot.jpg&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Walkthrough: Pickle Rick CTF - TryHackMe.</title><link>https://fuwari.vercel.app/posts/picklerickctf/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/picklerickctf/</guid><pubDate>Mon, 20 Nov 2023 03:24:52 GMT</pubDate><content:encoded>&lt;h3&gt;A Rick and Morty CTF. Help turn Rick back into a human!&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://tryhackme.com/room/picklerick&quot;&gt;Link to the room&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In this ctf we have to find out 3 ingredients for a potion.&lt;/p&gt;
+&lt;p&gt;We start by running nmap to find open ports.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;┌──(kali㉿kali)-[~/Documents]
+└─$nmap -sV machine-ip
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Results:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Port Number&lt;/th&gt;
+&lt;th&gt;Service Name&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;22&lt;/td&gt;
+&lt;td&gt;SSH&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;80&lt;/td&gt;
+&lt;td&gt;HTTP&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I also checked the source code of the web page. It has the username hidden in the html code.&lt;/p&gt;
+&lt;p&gt;Then I tried running Hydra to see if I could access via ssh, but it didn&apos;t work.&lt;/p&gt;
+&lt;p&gt;After that I ran gobuster to find directories.&lt;/p&gt;
+&lt;p&gt;Results:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;/assets&lt;/li&gt;
+&lt;li&gt;/index.html&lt;/li&gt;
+&lt;li&gt;/robots.txt --&amp;gt; Wubbalubbadubdub --&amp;gt; Maybe this is the pw?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Then I ran&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;┌──(kali㉿kali)-[~/Documents]
+└─$nikito -h machine-ip
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Nikto is a free software command-line vulnerability scanner that scans web servers for dangerous files/CGIs, outpublishedd server software and other problems. It performs generic and server type specific checks.&lt;/p&gt;
+&lt;p&gt;Results:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;/login.php&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The found credentials worked.
+From this panel we are able to execute commands.&lt;/p&gt;
+&lt;p&gt;Using ls we can see files besides the ones we saw running gobuster.&lt;/p&gt;
+&lt;p&gt;Sup3rS3cretPickl3Ingred.txt &amp;lt;-- first ingredient&lt;/p&gt;
+&lt;p&gt;We can&apos;t use cat over there, but we can read the files contents with less:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;less Sup3rS3cretPickl3Ingred.txt&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;cd /home; ls -al; pwd&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This will show up as the home folder. We can see there&apos;s a &quot;rick&quot; folder.&lt;/p&gt;
+&lt;p&gt;We can see its contents with:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ls /home/rick&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In that folder is located the file giving us the second ingredient.&lt;/p&gt;
+&lt;p&gt;Finally for the last ingredient we try to access the root folder. Using&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;sudo -l&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;we can see what privileges we have. It turns out that we can run any command without password.&lt;/p&gt;
+&lt;p&gt;So, if we run&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ls /root&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;we won&apos;t get any results.&lt;/p&gt;
+&lt;p&gt;But if we run:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;sudo ls /root&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;we can access the directory without any password.&lt;/p&gt;
+&lt;p&gt;In this directory is located the last ingredient.&lt;/p&gt;
+</content:encoded></item><item><title>Walkthrough: Simple CTF - TryHackMe.</title><link>https://fuwari.vercel.app/posts/simplectf/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/simplectf/</guid><pubDate>Thu, 16 Nov 2023 03:24:52 GMT</pubDate><content:encoded>&lt;h3&gt;Beginner level ctf.&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://tryhackme.com/room/easyctf&quot;&gt;Link to the room&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;As usual, the first step is to run nmap to find open ports.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;┌──(kali㉿kali)-[~/Documents]
+└─$nmap -sV machine-ip
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Results:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Port Number&lt;/th&gt;
+&lt;th&gt;Service Name&lt;/th&gt;
+&lt;th&gt;Notes&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;21&lt;/td&gt;
+&lt;td&gt;FTP&lt;/td&gt;
+&lt;td&gt;Anonymous login allowed&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;80&lt;/td&gt;
+&lt;td&gt;HTTP&lt;/td&gt;
+&lt;td&gt;robots.txt&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2222&lt;/td&gt;
+&lt;td&gt;SSH&lt;/td&gt;
+&lt;td&gt;Non standard ssh port&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This will solve the first two questions.&lt;/p&gt;
+&lt;p&gt;Then we are asked for the CVE to use against the application.&lt;/p&gt;
+&lt;p&gt;I run GoBuster to find out the directories of our target.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;┌──(kali㉿kali)-[~/Documents]
+└─$gobuster dir -u http://&apos;machine-ip&apos; -w /usr/share/dirb/wordlists/common.txt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Results&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;/index&lt;/li&gt;
+&lt;li&gt;/simple &amp;lt;--- This one has a Vulnerability&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The /simple dir has a CVE. I did a bit of googling to find the CVE number, type of attack and exploit.&lt;/p&gt;
+&lt;p&gt;Using the exploit I found the username.&lt;/p&gt;
+&lt;p&gt;Exploit&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;┌──(kali㉿kali)-[~/Documents]
+└─$python3 exploit.py -u http://machine-ip/simple -w list.txt -c
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I struggled a bit to run the exploit, got a couple of errors, but I ended up getting the username.&lt;/p&gt;
+&lt;p&gt;However, the password took ages and couldn&apos;t get it. Instead I used Hydra:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;┌──(kali㉿kali)-[~/Documents]
+└─$hydra -l mitch -P rockyou.txt ssh://machine-ip:2222
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;password found: secret&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;With this information we can log in using ssh.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;┌──(kali㉿kali)-[~/Documents]
+└─$ssh mitch@machine-ip -p 2222.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There we find a .txt with the first flag.&lt;/p&gt;
+&lt;p&gt;Doing cd we found there&apos;s anothers users folder.&lt;/p&gt;
+&lt;p&gt;To get the root flag we need to check what is this allowed run as sudo using ‘sudo -l’&lt;/p&gt;
+&lt;p&gt;Vim can be run as sudo and without a password.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;┌──(kali㉿kali)-[~/Documents]
+└─$sudo vim -c &quot;!sh&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This gives us root privileges.&lt;/p&gt;
+&lt;p&gt;We go to the root folder to find the final flag.&lt;/p&gt;
+</content:encoded></item><item><title>ISC2 Certified in Cybersecurity (CC).</title><link>https://fuwari.vercel.app/posts/isc2cc/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/isc2cc/</guid><pubDate>Wed, 15 Nov 2023 04:12:32 GMT</pubDate><content:encoded>&lt;p&gt;ISC2 &lt;a href=&quot;https://www.isc2.org/certifications/cc&quot;&gt;Certified in Cybersecurity&lt;/a&gt; is a foundational cybersecurity certification designed to help recipients build a pathway to a rewarding career in cybersecurity. This entry-level certification will prove to employers you have the foundational knowledge, skills and abilities necessary for an entry- or junior-level cybersecurity role. It proves your willingness and ability to learn and grow on the job.&lt;/p&gt;
+&lt;p&gt;There are five domains to this certification:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Security Principles&lt;/li&gt;
+&lt;li&gt;Business Continuity (BC), Disaster Recovery (DR) &amp;amp; Incident Response Concepts&lt;/li&gt;
+&lt;li&gt;Access Controls Concepts&lt;/li&gt;
+&lt;li&gt;Network Security&lt;/li&gt;
+&lt;li&gt;Security Operations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To this published ISC2 is offering FREE Certified in Cybersecurity (CC) Online Self-Paced Training and exams to one million people. Visit the &lt;a href=&quot;https://www.isc2.org/Landing/1MCC&quot;&gt;site&lt;/a&gt; to learn more.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Some of the resources I used to prepare for the exam are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.udemy.com/course/certifiedincybersecurity/&quot;&gt;ThorTeaches Udemy Course&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://jesilicht.notion.site/Jesi-s-ISC-Certified-in-Cybersecurity-1c121b31da64486c9a9915caf2320dff&quot;&gt;Jesi&apos;s Summary&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://play.google.com/store/apps/details?id=com.examprepinc.iscccexamprep&amp;amp;pcampaignid=web_share&quot;&gt;This app&lt;/a&gt; that gives mock exams to practice. Beware it&apos;s full of ads though.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=usr4-wvaTXs&amp;amp;list=PLp0Kqt2EWTuGSAydNzCjBA2Brsz4E6keC&amp;amp;index=4&quot;&gt;Youtube video&lt;/a&gt; with plenty of questions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.isc2.org/Training/Self-Study-Resources/CC/chapter-1&quot;&gt;ICS2 flashcards&lt;/a&gt; to study the terms.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Gladly last week I took the exam, passed and got my &lt;a href=&quot;https://www.credly.com/badges/576278cc-0ea9-4ecc-a1cc-0e7040ffebae&quot;&gt;certification&lt;/a&gt;.&lt;/p&gt;
+</content:encoded></item><item><title>Walkthrough: Basic Pentesting - TryHackMe.</title><link>https://fuwari.vercel.app/posts/basicpentesting/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/basicpentesting/</guid><pubDate>Sun, 12 Nov 2023 03:24:52 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://tryhackme.com/room/basicpentestingjt&quot;&gt;Link to the room&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In this set of tasks we&apos;ll be using:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Brute forcing&lt;/li&gt;
+&lt;li&gt;Hash cracking&lt;/li&gt;
+&lt;li&gt;Service enumeration&lt;/li&gt;
+&lt;li&gt;Linux Enumeration&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The first task is to find the services exposed by the machine. We need to use nmap:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;┌──(kali㉿kali)-[~/Documents]
+└─$nmap -sC -sV ip-address
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Results:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Port Number&lt;/th&gt;
+&lt;th&gt;Service Name&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;22&lt;/td&gt;
+&lt;td&gt;SSH&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;80&lt;/td&gt;
+&lt;td&gt;HTTP&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;139&lt;/td&gt;
+&lt;td&gt;SAMBA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;445&lt;/td&gt;
+&lt;td&gt;SAMBA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;8009&lt;/td&gt;
+&lt;td&gt;APACHE Jserv&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;8080&lt;/td&gt;
+&lt;td&gt;APACHE Tomcat&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Then we are asked for the name of the hidden directory on the web server. To look for hidden directories we use dirbuster or gobuster:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;┌──(kali㉿kali)-[~/Documents]
+└─$gobuster dir -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -u ip-address
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This will give us the hidden dir.&lt;/p&gt;
+&lt;p&gt;After thar we need to find our way to User to find the username &amp;amp; password. Back in nmap we find out that samba services are running, so we use enum4linux to find the usernames.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;┌──(kali㉿kali)-[~/Documents]
+└─$enum4linux -a ip-address
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As a result we gain the usernames. To find the password we run Hydra with rockyou.txt as a password list.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;┌──(kali㉿kali)-[~/Documents]
+└─$hydra -l username -P /usr/share/wordlists/rockyou.txt ssh://ip-address
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With these credentials we&apos;ll be able to log-in via ssh.&lt;/p&gt;
+&lt;p&gt;To enumerate vulnerabilities and privilege escalations we can use &lt;a href=&quot;https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS&quot;&gt;linPEAS&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We can use the scp command to copy files between a local and a remote system, so we&apos;ll be using that to copy linPeas to the target machine.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;┌──(kali㉿kali)-[~/Documents]
+└─$scp localFileDir user@ip-address:remoteFileDir
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This will find the Private SSH RSA key found for Kay. We cat this private key file. However, the private key is password protected. We can use JohnTheRipper to brute force the password. First we run ssh2john.py and then we run john. Using JohnTheRipper and rockyou.txt will give us the other user&apos;s password, and this user we have access to the flag to terminate the ctf.&lt;/p&gt;
+</content:encoded></item><item><title>PureVolume clone profile.</title><link>https://fuwari.vercel.app/posts/sujetopurevolume/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/sujetopurevolume/</guid><pubDate>Mon, 02 Oct 2023 04:12:32 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://github.com/athekat/sujeto-purevolume/&quot;&gt;GitHub repository&lt;/a&gt; and the &lt;a href=&quot;https://purevolume.alan.com.ar/&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/PureVolume&quot;&gt;PureVolume&lt;/a&gt; was a website for the discovery and promotion of new music and emerging artists. The mission was to give artists a new promotion tool. The site shut down on June 30, 2018. Luckily it was archived by &lt;a href=&quot;https://archive.org/web/&quot;&gt;Wayback Machine&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This is a profile page of a band. For the music player is used &lt;a href=&quot;https://github.com/abdes-zakari/HtmlAudioPlayer&quot;&gt;this one&lt;/a&gt; by &lt;a href=&quot;https://twitter.com/Abdessamad_Zak&quot;&gt;Zakari Abdessamad&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;images/sujetopurevolume/purevolume.jpg&quot; alt=&quot;screenshot&quot; /&gt;&lt;/p&gt;
+</content:encoded></item><item><title>This site.</title><link>https://fuwari.vercel.app/posts/thissite/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/thissite/</guid><pubDate>Sun, 01 Oct 2023 04:12:32 GMT</pubDate><content:encoded>&lt;p&gt;A blog-like site to upload projects and stuff I&apos;ve been working on. Made with &lt;a href=&quot;https://gohugo.io/&quot;&gt;Hugo Framework&lt;/a&gt;, using &lt;a href=&quot;https://github.com/dillonzq/LoveIt&quot;&gt;Loveit&lt;/a&gt; theme and some personal tweaks and changes.&lt;/p&gt;
+</content:encoded></item><item><title>Inventory Management Website.</title><link>https://fuwari.vercel.app/posts/inventorymanager/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/inventorymanager/</guid><pubDate>Thu, 22 Jun 2023 04:12:32 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://github.com/athekat/Gestion-de-inventario-Django/&quot;&gt;GitHub repository&lt;/a&gt; and the &lt;a href=&quot;https://palomar57.pythonanywhere.com/&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This project was developed for the &quot;Codo a Codo - Django&quot; course together with &lt;a href=&quot;https://github.com/omar-sca/&quot;&gt;Omar Scarazzato&lt;/a&gt;. It was made with Django Framework and PostgreSQL.&lt;/p&gt;
+&lt;p&gt;The website allows the stock management of a warehouse. There are 3 levels of users:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Employee (Level 1, mostly read permissions).&lt;/li&gt;
+&lt;li&gt;Supervisor (Level 2, read and write permissions).&lt;/li&gt;
+&lt;li&gt;Administrator (Level 3, read and write permissions and access to Django&apos;s admin panel).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Functionalities:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;View products: the products that are registered in the system will be listed in a table with their corresponding name, manufacturer and stock.
+&lt;ul&gt;
+&lt;li&gt;Depending on the type of user, the last column will show a button to edit and delete the product.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Register product: will allow you to register new products in the system.&lt;/li&gt;
+&lt;li&gt;Edit product.&lt;/li&gt;
+&lt;li&gt;Delete product.&lt;/li&gt;
+&lt;li&gt;View manufacturers: the manufacturers that are registered in the system will be listed in a table with their corresponding name, address, telephone number and email address.
+&lt;ul&gt;
+&lt;li&gt;Depending on the type of user, the last column will show a button to edit and delete the manufacturer.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Register manufacturer.&lt;/li&gt;
+&lt;li&gt;Edit manufacturer.&lt;/li&gt;
+&lt;li&gt;Remove manufacturer: will allow you to remove manufacturers from the system. When deleting a manufacturer, the products associated to it will be deleted.&lt;/li&gt;
+&lt;li&gt;Enter and exit items: it will modify the stock of the products. An invoice will be associated to each stock modification.&lt;/li&gt;
+&lt;li&gt;View invoices: the invoices will be listed and will allow access to their details.&lt;/li&gt;
+&lt;li&gt;View users.&lt;/li&gt;
+&lt;li&gt;Add user.&lt;/li&gt;
+&lt;li&gt;Edit user.&lt;/li&gt;
+&lt;li&gt;Delete user.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Screenshots&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Login Page:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;images/inventorymanager/sitelogin.jpg&quot; alt=&quot;login&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Stock Page:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;images/inventorymanager/sitemain.jpg&quot; alt=&quot;login&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Entity-relationship diagram:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;images/inventorymanager/DER.jpg&quot; alt=&quot;login&quot; /&gt;&lt;/p&gt;
+</content:encoded></item><item><title>PS2 Tools</title><link>https://fuwari.vercel.app/posts/ps2tools/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/ps2tools/</guid><pubDate>Wed, 22 Jun 2022 04:12:32 GMT</pubDate><content:encoded>&lt;h3&gt;Requirements:&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Memory Card with FreeMcBoot installed.&lt;/li&gt;
+&lt;li&gt;Usb drive.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;Tools:&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;PS2 Retroarch&lt;/strong&gt;
+Emulators for Sega, Gameboy, Famicom, etc.
+Just copy and paste to usb drive.&lt;/p&gt;
+&lt;p&gt;http://buildbot.libretro.com/nightly/playstation/ps2/&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;OPL Manager&lt;/strong&gt;
+Manage roms (PS1 and PS2), add art covers.
+Then copy and paste to usb drive.&lt;/p&gt;
+&lt;p&gt;https://oplmanager.com/site/&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;PSXVCD&lt;/strong&gt;
+This application will help with converting PS1 games images (.zip, .7z, .rar, .ecm, .bin, .cue) into VCD to use it with POPStarter.&lt;/p&gt;
+&lt;p&gt;https://www.psx-place.com/threads/psxvcd-by-englishl1989.19063/&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;POPStarter&lt;/strong&gt;
+POPStarter is a launcher which lets you play your PS1 games in combination with Sony’s PS1 emulator for PS2 (known as “POPS” or “SLBB-00001”).&lt;/p&gt;
+&lt;p&gt;https://www.psx-place.com/threads/popstarter.19139/&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;USBUtil&lt;/strong&gt;
+Useful for moving large PS2 game files to usb FAT32 drives.&lt;/p&gt;
+&lt;p&gt;https://www.psx-place.com/threads/usbutil-by-iseko.19048/&lt;/p&gt;
+&lt;/blockquote&gt;
+</content:encoded></item><item><title>Age Of Carpincho Website.</title><link>https://fuwari.vercel.app/posts/ageofcarpincho/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/ageofcarpincho/</guid><pubDate>Wed, 16 Feb 2022 03:56:54 GMT</pubDate><content:encoded>&lt;p&gt;::github{repo=&quot;athekat/ageofcarpincho-angular&quot;}&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://github.com/athekat/ageofcarpincho-angular/&quot;&gt;GitHub repository&lt;/a&gt; and the &lt;a href=&quot;https://ageofcarpincho.alan.com.ar/&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A site made with Angular framework that shows Plotly graphs of Age Of Empires II data.&lt;/p&gt;
+&lt;p&gt;The project was originally just a static web page which can be viewed &lt;a href=&quot;https://athekat.github.io/AgeOfCarpincho/&quot;&gt;here&lt;/a&gt; and &lt;a href=&quot;https://github.com/athekat/AgeOfCarpincho/&quot;&gt;this&lt;/a&gt; is the GitHub repository for that site. After learning a bit of Angular in a course I decided to take the site to the next level.&lt;/p&gt;
+&lt;p&gt;Site:&lt;br /&gt;
+&lt;img src=&quot;images/ageofcarpincho/output.jpg&quot; alt=&quot;Output&quot; /&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Binance P2P Prices (Python Script).</title><link>https://fuwari.vercel.app/posts/binancep2p/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/binancep2p/</guid><pubDate>Wed, 08 Dec 2021 02:03:29 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://github.com/athekat/Binance_P2P_Arb&quot;&gt;GitHub repository&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;One of my first Python scripts. It uses the Binance API to retrieve price information for BTC, ETH and USDT in both Spot and P2P markets.&lt;/p&gt;
+&lt;p&gt;Output:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;images/binancep2p/output.jpg&quot; alt=&quot;output&quot; /&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Age of Empires II - Most used civilizations (R Script).</title><link>https://fuwari.vercel.app/posts/aoemostusedciv/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/aoemostusedciv/</guid><pubDate>Fri, 20 Aug 2021 03:45:06 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://github.com/athekat/aoc-mostusedciv/&quot;&gt;GitHub repository&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;R script to get the last 10 matches (using &lt;a href=&quot;https://aoe2.net&quot;&gt;aoe2.net&lt;/a&gt; API) and output a Plotly pie chart of the civs used.&lt;/p&gt;
+</content:encoded></item><item><title>Age of Empires II - Compare players&apos; ratings (R Script).</title><link>https://fuwari.vercel.app/posts/aoeeloplot/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/aoeeloplot/</guid><pubDate>Mon, 19 Jul 2021 03:24:52 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://github.com/athekat/AoE2-CompareUserRatings/&quot;&gt;GitHub repository&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;R script that outputs a Plotly graph comparing player&apos;s elo rating across time, using &lt;a href=&quot;https://aoe2.net&quot;&gt;aoe2.net&lt;/a&gt; API.&lt;/p&gt;
+&lt;p&gt;INPUT:&lt;br /&gt;
+&lt;img src=&quot;images/aoeelorating/input.jpg&quot; alt=&quot;Input&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;OUTPUT:&lt;br /&gt;
+&lt;img src=&quot;images/aoeelorating/output.jpg&quot; alt=&quot;Output&quot; /&gt;&lt;/p&gt;
+</content:encoded></item></channel></rss>
