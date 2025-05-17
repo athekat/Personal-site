@@ -1,7 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>.:: Alan Cortez</title><description>Personal Site</description><link>https://fuwari.vercel.app/</link><language>en</language><item><title>Age Of Empires II Webapp.</title><link>https://fuwari.vercel.app/posts/ageofempireswebapp/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/ageofempireswebapp/</guid><pubDate>Sat, 03 May 2025 03:56:54 GMT</pubDate><content:encoded>&lt;blockquote&gt;
-&lt;p&gt;Check out the &lt;a href=&quot;https://aoewebapp-production.up.railway.app&quot;&gt;website&lt;/a&gt;. Hosted with &lt;a href=&quot;https://railway.com/&quot;&gt;Railway&lt;/a&gt; for as long as the free trial plan lasts.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>.:: Alan Cortez</title><description>Personal Site</description><link>https://fuwari.vercel.app/</link><language>en</language><item><title>Age Of Empires II - Webapp.</title><link>https://fuwari.vercel.app/posts/ageofempireswebapp/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/ageofempireswebapp/</guid><pubDate>Sat, 03 May 2025 03:56:54 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://aoewebapp.alan.com.ar/&quot;&gt;website&lt;/a&gt;. Hosted with &lt;a href=&quot;https://railway.com/&quot;&gt;Railway&lt;/a&gt; for as long as the free trial plan lasts.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;This is a small web application written in Django, which retrieves information about both players of the current (or last) match after entering the Age Of Empires II profile Game ID. It also shows the civs information and bonuses, using data from &lt;a href=&quot;https://aoe2techtree.net/&quot;&gt;aoe2techtree&lt;/a&gt;.&lt;/p&gt;
+&lt;h4&gt;Requirements to run locally:&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Django==4.2&lt;br /&gt;
+requests&lt;br /&gt;
+gunicorn&lt;br /&gt;
+whitenoise&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Screenshot:
 &lt;img src=&quot;images/aoewebapp.png&quot; alt=&quot;Output&quot; /&gt;&lt;/p&gt;
 </content:encoded></item><item><title>Age of Empires II - Visual Mods and changing sprites.</title><link>https://fuwari.vercel.app/posts/aoevisualmods/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/aoevisualmods/</guid><pubDate>Sun, 19 Jan 2025 03:24:52 GMT</pubDate><content:encoded>&lt;p&gt;In this guide, I’ll walk you through the process of changing the sprites for &lt;em&gt;Age of Empires II: Definitive Edition&lt;/em&gt; (AoE2 DE). We’ll be using a few tools to extract, edit, and reimplement custom sprites into the game.&lt;/p&gt;
@@ -355,7 +362,7 @@ Line-based text data (6 lines)&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;As soon as we access there is a user.txt file containing the first flag.&lt;/p&gt;
 &lt;p&gt;Next flag to be continued...&lt;/p&gt;
-</content:encoded></item><item><title>Age Of Empires Clan Webpage.</title><link>https://fuwari.vercel.app/posts/ageofempiresclan/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/ageofempiresclan/</guid><pubDate>Fri, 11 Oct 2024 03:56:54 GMT</pubDate><content:encoded>&lt;p&gt;::github{repo=&quot;athekat/Aoe-SiemprePobresClan&quot;}&lt;/p&gt;
+</content:encoded></item><item><title>Age Of Empires II - Clan Webpage.</title><link>https://fuwari.vercel.app/posts/ageofempiresclan/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/ageofempiresclan/</guid><pubDate>Fri, 11 Oct 2024 03:56:54 GMT</pubDate><content:encoded>&lt;p&gt;::github{repo=&quot;athekat/Aoe-SiemprePobresClan&quot;}&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Check out the &lt;a href=&quot;https://github.com/athekat/Aoe-SiemprePobresClan/&quot;&gt;GitHub repository&lt;/a&gt; and the &lt;a href=&quot;https://siemprepobres.alan.com.ar/&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
