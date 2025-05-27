@@ -2,7 +2,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;Check out the &lt;a href=&quot;https://aoewebapp.alan.com.ar/&quot;&gt;website&lt;/a&gt;. Hosted with &lt;a href=&quot;https://railway.com/&quot;&gt;Railway&lt;/a&gt; for as long as the free trial plan lasts.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Web application made with :heart: and Django. The user inputs an Age of Empires II player&apos;s ID and the application retrieves information about the current (or last) match. It shows the player&apos;s name, elo, color, map, civs chosen and their information and bonuses, using data from &lt;a href=&quot;https://aoe2techtree.net/&quot;&gt;aoe2techtree&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Web application made with 💙 and Django. The user inputs an Age of Empires II player&apos;s ID and the application retrieves information about the current (or last) match. It shows the player&apos;s name, elo, color, map, civs chosen and their information and bonuses, using data from &lt;a href=&quot;https://aoe2techtree.net/&quot;&gt;aoe2techtree&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;To run locally&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;Install requirements.txt&lt;/li&gt;
