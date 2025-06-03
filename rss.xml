@@ -163,12 +163,38 @@ print(&quot;Finished&quot;)
 &lt;pre&gt;&lt;code&gt;┌──(kali㉿kali)-[~/Documents]
 └─$gobuster dir --url http://10.10.91.79:80/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Results:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;|Results:|
-|--|--|--|--|
-|/gallery|              (Status: 301)| [Size: 312] |[--&amp;gt; http://10.10.91.79/gallery/]|
-|/static |             (Status: 301) |[Size: 311] |[--&amp;gt; http://10.10.91.79/static/]|
-|/pricing|              (Status: 301)| [Size: 312] |[--&amp;gt; http://10.10.91.79/pricing/]|&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;/gallery&lt;/td&gt;
+&lt;td&gt;(Status: 301)&lt;/td&gt;
+&lt;td&gt;[Size: 312]&lt;/td&gt;
+&lt;td&gt;[--&amp;gt; http://10.10.91.79/gallery/]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/static&lt;/td&gt;
+&lt;td&gt;(Status: 301)&lt;/td&gt;
+&lt;td&gt;[Size: 311]&lt;/td&gt;
+&lt;td&gt;[--&amp;gt; http://10.10.91.79/static/]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/pricing&lt;/td&gt;
+&lt;td&gt;(Status: 301)&lt;/td&gt;
+&lt;td&gt;[Size: 312]&lt;/td&gt;
+&lt;td&gt;[--&amp;gt; http://10.10.91.79/pricing/]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;/static --&amp;gt; we can&apos;t see any file there.&lt;/p&gt;
 &lt;p&gt;/pricing --&amp;gt; a note.txt file and the html file.&lt;/p&gt;
@@ -327,25 +353,121 @@ print(&quot;Finished&quot;)
 └─$ ftp 10.10.91.79 -P 37370  
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;There we found some pcapng files.&lt;/p&gt;
+&lt;p&gt;Results:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;|Results|
-|--|--|--|--|--|--|
-|-rw-rw-r--|   1 1000|     1000|         7272| Mar 06  2023| siemFTP.pcapng|
-|-rw-rw-r--|   1 1000|     1000|      1978716| Mar 06  2023| siemHTTP1.pcapng|
-|-rw-rw-r--|   1 1000|     1000|      1972448| Mar 06  2023| siemHTTP2.pcapng|&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;-rw-rw-r--&lt;/td&gt;
+&lt;td&gt;1 1000&lt;/td&gt;
+&lt;td&gt;1000&lt;/td&gt;
+&lt;td&gt;7272&lt;/td&gt;
+&lt;td&gt;Mar 06  2023&lt;/td&gt;
+&lt;td&gt;siemFTP.pcapng&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-rw-rw-r--&lt;/td&gt;
+&lt;td&gt;1 1000&lt;/td&gt;
+&lt;td&gt;1000&lt;/td&gt;
+&lt;td&gt;1978716&lt;/td&gt;
+&lt;td&gt;Mar 06  2023&lt;/td&gt;
+&lt;td&gt;siemHTTP1.pcapng&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-rw-rw-r--&lt;/td&gt;
+&lt;td&gt;1 1000&lt;/td&gt;
+&lt;td&gt;1000&lt;/td&gt;
+&lt;td&gt;1972448&lt;/td&gt;
+&lt;td&gt;Mar 06  2023&lt;/td&gt;
+&lt;td&gt;siemHTTP2.pcapng&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;We open them with Wireshark:&lt;/p&gt;
 &lt;p&gt;In siemFTP.pcanpng we found the existencie of some files which may or may not be relevant:
-Line-based text data (6 lines)&lt;/p&gt;
+Line-based text data (6 lines).&lt;/p&gt;
+&lt;p&gt;siemFTP.pcanpng&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;|siemFTP.pcanpng|
-|--|--|--|--|--|--|--|
-|-rw-r--r--|    1| 0|        0|               0| Mar 06 13:27| AnnualReport.txt\r\n|
-|-rw-r--r--|    1| 0|        0|               0| Mar 06 13:27| BusinessReport.t|xt\r\n|
-|-rw-r--r--|    1| 0|        0|               0| Mar 06 13:27| CISOReport.txt\r\n|
-|-rw-r--r--|    1| 0|        0|               0| Mar 06 13:27| HrReport.txt\r\n|
-|-rw-r--r--|    1| 0|        0|               0| Mar 06 13:27| ItReport.txt\r\n|
-|-rw-r--r--|    1| 0|        0|               0| Mar 06 13:27| SecurityReport.txt\r\n|&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;-rw-r--r--&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;Mar 06 13:27&lt;/td&gt;
+&lt;td&gt;AnnualReport.txt\r\n&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-rw-r--r--&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;Mar 06 13:27&lt;/td&gt;
+&lt;td&gt;BusinessReport.t&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-rw-r--r--&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;Mar 06 13:27&lt;/td&gt;
+&lt;td&gt;CISOReport.txt\r\n&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-rw-r--r--&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;Mar 06 13:27&lt;/td&gt;
+&lt;td&gt;HrReport.txt\r\n&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-rw-r--r--&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;Mar 06 13:27&lt;/td&gt;
+&lt;td&gt;ItReport.txt\r\n&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-rw-r--r--&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;Mar 06 13:27&lt;/td&gt;
+&lt;td&gt;SecurityReport.txt\r\n&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;In siemHTTP.pcanpg we found nothing. Everything&apos;s encrypted.&lt;/p&gt;
 &lt;p&gt;In siemHTTP2.pcanpg we found a package with the following information:&lt;/p&gt;
