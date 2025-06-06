@@ -1,4 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>.:: Alan Cortez</title><description>Personal Site</description><link>https://fuwari.vercel.app/</link><language>en</language><item><title>Age Of Empires II - Webapp.</title><link>https://fuwari.vercel.app/posts/ageofempireswebapp/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/ageofempireswebapp/</guid><pubDate>Sat, 03 May 2025 03:56:54 GMT</pubDate><content:encoded>&lt;p&gt;::github{repo=&quot;athekat/aoewebapp&quot;}&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>.:: Alan Cortez</title><description>Personal Site</description><link>https://fuwari.vercel.app/</link><language>en</language><item><title>Age Of Empires II - Idle TC Alert.</title><link>https://fuwari.vercel.app/posts/aoeidletcalert/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/aoeidletcalert/</guid><pubDate>Thu, 05 Jun 2025 03:56:54 GMT</pubDate><content:encoded>&lt;p&gt;::github{repo=&quot;athekat/aoe-idletc.py&quot;}&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://github.com/athekat/aoe-idletc.py/&quot;&gt;GitHub repository&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Small python script that every 3 seconds screenshots the unit production part of the screen and checks if a vil is being created. If not, it sounds an alert.&lt;/p&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;pyautogui&lt;/li&gt;
+&lt;li&gt;playsound==1.2.2&lt;/li&gt;
+&lt;li&gt;opencv-python&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;https://github.com/user-attachments/assets/60a7ab70-ac00-4738-8aeb-8733d6116bf2&quot; alt=&quot;output&quot; /&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Age Of Empires II - Webapp.</title><link>https://fuwari.vercel.app/posts/ageofempireswebapp/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/ageofempireswebapp/</guid><pubDate>Sat, 03 May 2025 03:56:54 GMT</pubDate><content:encoded>&lt;p&gt;::github{repo=&quot;athekat/aoewebapp&quot;}&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Check out the &lt;a href=&quot;https://aoewebapp.alan.com.ar/&quot;&gt;website&lt;/a&gt;. Hosted with &lt;a href=&quot;https://railway.com/&quot;&gt;Railway&lt;/a&gt; for as long as the free trial plan lasts.&lt;/p&gt;
 &lt;/blockquote&gt;
