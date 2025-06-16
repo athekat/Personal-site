@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fuwari.vercel.app/sitemap-index.xml
+Sitemap: https://alan.com.ar/sitemap-index.xml
