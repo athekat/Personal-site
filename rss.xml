@@ -1,4 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>.:: Alan Cortez</title><description>Personal Site</description><link>https://alan.com.ar/</link><language>en</language><item><title>Age Of Empires II - Idle TC Alert (Python Script).</title><link>https://alan.com.ar/posts/aoeidletcalert/</link><guid isPermaLink="true">https://alan.com.ar/posts/aoeidletcalert/</guid><pubDate>Thu, 05 Jun 2025 03:56:54 GMT</pubDate><content:encoded>&lt;p&gt;::github{repo=&quot;athekat/aoe-idletc.py&quot;}&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>.:: Alan Cortez</title><description>Personal Site</description><link>https://alan.com.ar/</link><language>en</language><item><title>Age Of Empires Bluesky and Telegram bots (Python script).</title><link>https://alan.com.ar/posts/aoebots/</link><guid isPermaLink="true">https://alan.com.ar/posts/aoebots/</guid><pubDate>Fri, 20 Jun 2025 03:56:54 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;Check out the GitHub repositories:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;::github{repo=&quot;athekat/aoetelegrambot&quot;}
+::github{repo=&quot;athekat/aoebskybot&quot;}&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;And the &lt;a href=&quot;https://bsky.app/profile/aoeboto.bsky.social/&quot;&gt;bsky profile&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;These Python scripts gets a list of players to monitor and send a message (via a Telegram Bot or a Bluesky account) when one of those players are either playing or stopped playing.&lt;/p&gt;
+&lt;p&gt;This scripts are run by &lt;a href=&quot;https://github.com/features/actions&quot;&gt;Github Actions&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Telegram bot is made using &lt;a href=&quot;https://core.telegram.org/bots/tutorial&quot;&gt;BotFather&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;atproto (For Bsky usage)&lt;/li&gt;
+&lt;li&gt;telegram&lt;/li&gt;
+&lt;li&gt;pytz (For time conversion)&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded></item><item><title>Age Of Empires II - Idle TC Alert (Python Script).</title><link>https://alan.com.ar/posts/aoeidletcalert/</link><guid isPermaLink="true">https://alan.com.ar/posts/aoeidletcalert/</guid><pubDate>Thu, 05 Jun 2025 03:56:54 GMT</pubDate><content:encoded>&lt;p&gt;::github{repo=&quot;athekat/aoe-idletc.py&quot;}&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Check out the &lt;a href=&quot;https://github.com/athekat/aoe-idletc.py/&quot;&gt;GitHub repository&lt;/a&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
