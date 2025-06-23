@@ -19,7 +19,17 @@
 &lt;blockquote&gt;
 &lt;p&gt;Check out the &lt;a href=&quot;https://github.com/athekat/aoe-idletc.py/&quot;&gt;GitHub repository&lt;/a&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Small python script that every 3 seconds screenshots the unit production part of the screen and checks if a vil is being created. If not, it sounds an alert.&lt;/p&gt;
+&lt;h2&gt;Context&lt;/h2&gt;
+&lt;p&gt;In Age of Empires II, it is essential to maintain a steady production of villagers (workers who gather resources to boost your economy and produce other units). Even though there&apos;s a production line at the top of the screen, in the heat of battles one can neglect that aspect and forget to keep producing villagers.
+In this sense I came up with the idea of creating a python script that, using pyautogui, checks if there are villagers being created in the production queue, and if not, plays a sound alert.&lt;/p&gt;
+&lt;p&gt;The idea then was for the script to have the villager icon and look for that image in the production queue.
+The first problem I faced is that the villagers can be male or female. I decided to solve this by modifying the female villager icon inside the game, so that it also uses the image of the male villager.&lt;/p&gt;
+&lt;p&gt;For it I modified the file at&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;\AoE2DE\widgetui\icons.json
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and in the Units entry I assigned the same value to the units 015 and 016.&lt;/p&gt;
+&lt;p&gt;This solved the first problem, but a second one arises: in the production queue there is a progress bar over the icon of the unit being created. This prevented pyautogui from recognizing the icon correctly. This could be solved by decreasing the CONFIDENCE_LEVEL to 0.6.&lt;/p&gt;
+&lt;p&gt;Then I just set the script to be on a loop and check every 3 seconds.&lt;/p&gt;
 &lt;h2&gt;Requirements&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;pyautogui&lt;/li&gt;
