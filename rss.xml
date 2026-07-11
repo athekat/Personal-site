@@ -1,4 +1,169 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>.:: Alan Cortez</title><description>Personal Site</description><link>https://alan.com.ar/</link><language>en</language><item><title>Skills Assessment - Cross-Site Scripting - HackTheBox.</title><link>https://alan.com.ar/posts/cross-site-scripting-htb/</link><guid isPermaLink="true">https://alan.com.ar/posts/cross-site-scripting-htb/</guid><pubDate>Sun, 16 Nov 2025 03:24:52 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>.:: Alan Cortez</title><description>Personal Site</description><link>https://alan.com.ar/</link><language>en</language><item><title>Uncovering a Race Condition in the Transfer of Memberships.</title><link>https://alan.com.ar/posts/transferring-membership-race-condition/</link><guid isPermaLink="true">https://alan.com.ar/posts/transferring-membership-race-condition/</guid><pubDate>Tue, 07 Jul 2026 03:56:54 GMT</pubDate><content:encoded>&lt;p&gt;From payment processing to membership transfers: How I uncovered another systemic concurrency issue.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Introduction&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;A &lt;a href=&quot;/posts/payment-race-condition/&quot;&gt;few days ago I wrote&lt;/a&gt; about a race condition discovery in a payment processing flow. Still in the same target, in noticed something interesting in the public repo:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# TODO: █████████ small potential for exploit if someone can make █████████████████.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So, they clearly knew about it, but the impact I found was much bigger than they anticipated.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Architecture Problem&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Here&apos;s what was happening under the hood (without exposing implementation specifics):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;User initiates transfer → INSERT to destination account → UPDATE source account
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;But neither operation was wrapped in a database transaction. Each executed independently with autocommit enabled, creating a window for exploitation.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Exploit Scenario&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;To demonstrate the vulnerability without causing real damage, I set up four test accounts:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Account&lt;/th&gt;
+&lt;th&gt;Initial State&lt;/th&gt;
+&lt;th&gt;Final State&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Account_A&lt;/td&gt;
+&lt;td&gt;1 membership (paid)&lt;/td&gt;
+&lt;td&gt;0 memberships&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Account_B&lt;/td&gt;
+&lt;td&gt;0 memberships&lt;/td&gt;
+&lt;td&gt;2 memberships (unpaid)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Account_C&lt;/td&gt;
+&lt;td&gt;0 memberships&lt;/td&gt;
+&lt;td&gt;2 memberships (unpaid)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Account_D&lt;/td&gt;
+&lt;td&gt;0 memberships&lt;/td&gt;
+&lt;td&gt;2 memberships (unpaid)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;One payment, six memberships generated.
+This gave an attacker the possibility of buying one membership, send/multiply that membership into several accounts, and sell those accounts at a reduced price.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Technical Details&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Three structural weaknesses created this vulnerability:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;No Explicit Transactions&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Each database operation ran as its own atomic unit under autocommit. Without START TRANSACTION / COMMIT wrapping, there was no guarantee that related operations would execute together.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Missing Unique Constraints&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The memberships table lacked a unique constraint preventing duplicate records. The auto-increment primary key silently accepted every insert, regardless of logical duplicates.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;No Pessimistic Locking&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Without SELECT ... FOR UPDATE, there was no mechanism to block concurrent reads. Multiple requests could simultaneously read the same source membership and all attempt to transfer it.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Aftermatch&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The team quickly patched the vulnerability and asked me to test it, as well as helping them to check whether it had been exploited by anyone else. Fortunately, my test accounts were the only ones that had taken advantage of the vulnerability.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Lessons Learned&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Concurrency bugs cluster together. Once you find one race condition in a system, look for others. They tend to hide in the same architectural weak points.&lt;/p&gt;
+&lt;p&gt;Developer comments can be breadcrumbs. Public TODO notes acknowledging vulnerabilities are essentially invitations to investigate. Treat them as signposts pointing to suspicious code.&lt;/p&gt;
+&lt;p&gt;Post-disclosure engagement pays dividends. After my first bounty, I stayed engaged with the team. When I found the second issue, they responded faster because trust was already established.&lt;/p&gt;
+&lt;p&gt;Cleanup goodwill matters. Offering to help clean up test data signals you&apos;re a partner, not an adversary. Those gestures build relationships that last beyond individual bounties.&lt;/p&gt;
+</content:encoded></item><item><title>Uncovering a Race Condition in Payment Processing</title><link>https://alan.com.ar/posts/payment-race-condition/</link><guid isPermaLink="true">https://alan.com.ar/posts/payment-race-condition/</guid><pubDate>Sun, 28 Jun 2026 03:56:54 GMT</pubDate><content:encoded>&lt;p&gt;How I earned $2,000 discovering a time-of-check to time-of-use vulnerability&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Introduction&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Sometimes the most rewarding discoveries aren&apos;t about finding complex zero-days, but rather catching fundamental flaws in how systems handle concurrency. Recently, I submitted a vulnerability report that resulted in a $2,000 payout – my largest to date. It wasn&apos;t advanced cryptography or chain exploits. It was a classic race condition in a payment processing flow.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Flow&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;User Donates → Webhook Confirms Payment → User Refreshes Page → System Grants Membership
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Simple enough. But the problem emerged in how the system checked the donation status before granting membership access.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Why the Race Works&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The root of the issue comes down to MariaDB’s default &lt;strong&gt;&lt;code&gt;REPEATABLE-READ&lt;/code&gt;&lt;/strong&gt; isolation level. Under this setting, a transaction locks in a snapshot of the database the moment it executes its first read.&lt;/p&gt;
+&lt;p&gt;Here is exactly how the collision happens:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;The donation page starts a transaction and runs &lt;code&gt;SELECT donation&lt;/code&gt;, which pulls a snapshot showing &lt;code&gt;status=0&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Even if the webhook finishes processing and commits &lt;code&gt;status=1&lt;/code&gt; a millisecond later, the donation page is still looking at its original snapshot where &lt;code&gt;status=0&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Because both connections see &lt;code&gt;status=0&lt;/code&gt;, they both think they need to create a membership. They both run &lt;code&gt;INSERT&lt;/code&gt;, and both successfully &lt;code&gt;COMMIT&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;With proper timing and concurrent requests, one payment could unlock multiple memberships.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Steps to Reproduce&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;What You Need&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A test account on the site.&lt;/li&gt;
+&lt;li&gt;A small amount of money to pay for the membership.&lt;/li&gt;
+&lt;li&gt;A tool capable of sending multiple concurrent HTTP requests. I used Burp Suite with Turbo Intruder extension.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Procedure&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Create a test account and log in.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Initiate a donation and note the &lt;code&gt;&amp;lt;donationId&amp;gt;&lt;/code&gt; from the URL.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Send the money and close the donation page.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If the donation was using cryptocurrency, wait for blockchain confirmations.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Prepare Burp Suite for the race&lt;/p&gt;
+&lt;p&gt;a. Find any GET request to the site that includes the account cookie&lt;br /&gt;
+b. Right-click → Send to Turbo Intruder&lt;br /&gt;
+c. Modify the request in Turbo Intruder with the donation ID and the account cookie&lt;br /&gt;
+d. I used this Turbo Intruder script to run the requests simultaneously:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;def queueRequests(target, wordlists):  
+engine = RequestEngine(  
+endpoint=target.endpoint,  
+concurrentConnections=8, # 8 concurrent connections  
+engine=Engine.BURP2  
+)
+
+# Send 8 requests simultaneously
+for i in range(8):
+    engine.queue(target.req, gate=&apos;race&apos;)
+
+# Release all at once (last-byte sync)
+engine.openGate(&apos;race&apos;)
+def handleResponse(req, interesting):  
+
+table.add(req)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Execute the race&lt;br /&gt;
+a. When you estimate the blockchain transaction should be confirmed, click &lt;strong&gt;Attack&lt;/strong&gt; in Turbo Intruder.&lt;br /&gt;
+b. In this particular script, all 8 requests fire simultaneously.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Repeat if needed&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Remediation Recommendation&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Based on standard industry practices for this vulnerability class, here&apos;s what typically resolves race conditions in payment systems:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Database-level locking
+    Implement row-level locks on initial reads
+    Use SELECT ... FOR UPDATE where appropriate
+
+Unique constraints
+    Add database constraints preventing duplicate records
+    Enforce one-membership-per-payment relationship at the schema level
+
+Idempotency checks
+    Ensure processing the same event multiple times has no effect
+    Track which payments have already been converted to memberships
+
+Serialized processing
+    Consider queue-based processing instead of direct request handling
+    Use distributed locks for shared resources
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Aftermatch&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The program&apos;s responsiveness impressed me throughout the process. In less than 24 hours they validated the issue, fixed it, sent me the bounty and asked me to test it again.&lt;/p&gt;
+</content:encoded></item><item><title>Skills Assessment - Cross-Site Scripting - HackTheBox.</title><link>https://alan.com.ar/posts/cross-site-scripting-htb/</link><guid isPermaLink="true">https://alan.com.ar/posts/cross-site-scripting-htb/</guid><pubDate>Sun, 16 Nov 2025 03:24:52 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;This module will teach you how to identify XSS vulnerabilities and exploit them.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
