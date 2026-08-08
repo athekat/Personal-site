@@ -1,4 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>.:: Alan Cortez</title><description>Personal Site</description><link>https://alan.com.ar/</link><language>en</language><item><title>Uncovering a Race Condition in the Transfer of Memberships.</title><link>https://alan.com.ar/posts/transferring-membership-race-condition/</link><guid isPermaLink="true">https://alan.com.ar/posts/transferring-membership-race-condition/</guid><pubDate>Tue, 07 Jul 2026 03:56:54 GMT</pubDate><content:encoded>&lt;p&gt;How I earned $1,500: Another race condition discovery in the same target.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>.:: Alan Cortez</title><description>Personal Site</description><link>https://alan.com.ar/</link><language>en</language><item><title>Skills Assessment - SQLMap Essentials - HackTheBox.</title><link>https://alan.com.ar/posts/assessment-sqlmap/</link><guid isPermaLink="true">https://alan.com.ar/posts/assessment-sqlmap/</guid><pubDate>Sat, 08 Aug 2026 03:24:52 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;The SQLMap Essentials module teaches the basics of using SQLMap to discover various types of SQL Injection vulnerabilities, all the way to the advanced enumeration of databases to retrieve all data of interest.s.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://academy.hackthebox.com/app/module/58&quot;&gt;Link to the module&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;SQLMap Essentials -  Skills Assessment&lt;/h2&gt;
+&lt;p&gt;You are given access to a web application with basic protection mechanisms. Use the skills learned in this module to find the SQLi vulnerability with SQLMap and exploit it accordingly. To complete this module, find the flag and submit it here.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;What&apos;s the contents of table final_flag?
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Walkthrough&lt;/h2&gt;
+&lt;p&gt;I first started exploring the website using BurpSuite in order to find potential attack vectors.&lt;/p&gt;
+&lt;p&gt;At some point a found a POST request that have an ID in the body, so I saved that one in order to try it.&lt;/p&gt;
+&lt;p&gt;I went with:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sqlmap -r ../req.txt --batch --dump&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Which was able to obtain the database and table&apos;s names but not their contents.&lt;/p&gt;
+&lt;p&gt;So I switched to:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;qlmap -r ../req.txt --dump -D production -T final_flag --tamper=between&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;to get the contents. This worked fine so I was able to get the flag.&lt;/p&gt;
+</content:encoded></item><item><title>Uncovering a Race Condition in the Transfer of Memberships.</title><link>https://alan.com.ar/posts/transferring-membership-race-condition/</link><guid isPermaLink="true">https://alan.com.ar/posts/transferring-membership-race-condition/</guid><pubDate>Tue, 07 Jul 2026 03:56:54 GMT</pubDate><content:encoded>&lt;p&gt;How I earned $1,500: Another race condition discovery in the same target.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Introduction&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;A &lt;a href=&quot;/posts/payment-race-condition/&quot;&gt;few days ago I wrote&lt;/a&gt; about a race condition discovery in a payment processing flow. Still in the same target, in noticed something interesting in the public repo:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# TODO: █████████ small potential for exploit if someone can make █████████████████.
