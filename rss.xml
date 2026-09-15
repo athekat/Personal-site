@@ -36,7 +36,7 @@ Before writing code, inspect the decompiled source in `Pikachu-volleyball` to co
 &lt;li&gt;Second Result: Game working. Graphics were ok. Some details: clouds seem to show outside the screen, some issue between the game&apos;s canvas size/viewport dimensions and how off-screen assets or scrolling offsets are handled. And sometimes pressing buttons didn&apos;t work.&lt;/li&gt;
 &lt;li&gt;Third result. Game working fine, no issues at all.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Imagen.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;images/Pikachu-Volleyball-PSP-Port/pikavolley.jpg&quot; alt=&quot;Output&quot; /&gt;&lt;/p&gt;
 </content:encoded></item><item><title>Skills Assessment - SQLMap Essentials - HackTheBox.</title><link>https://alan.com.ar/posts/assessment-sqlmap/</link><guid isPermaLink="true">https://alan.com.ar/posts/assessment-sqlmap/</guid><pubDate>Sat, 08 Aug 2026 03:24:52 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;The SQLMap Essentials module teaches the basics of using SQLMap to discover various types of SQL Injection vulnerabilities, all the way to the advanced enumeration of databases to retrieve all data of interest.s.&lt;/p&gt;
 &lt;/blockquote&gt;
