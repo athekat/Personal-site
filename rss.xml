@@ -1,4 +1,43 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>.:: Alan Cortez</title><description>Personal Site</description><link>https://alan.com.ar/</link><language>en</language><item><title>Skills Assessment - SQLMap Essentials - HackTheBox.</title><link>https://alan.com.ar/posts/assessment-sqlmap/</link><guid isPermaLink="true">https://alan.com.ar/posts/assessment-sqlmap/</guid><pubDate>Sat, 08 Aug 2026 03:24:52 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>.:: Alan Cortez</title><description>Personal Site</description><link>https://alan.com.ar/</link><language>en</language><item><title>Pikachu Volleyball PSP port: Hermes Agent vs. VS Code</title><link>https://alan.com.ar/posts/pikachu-volleyball-psp-port/</link><guid isPermaLink="true">https://alan.com.ar/posts/pikachu-volleyball-psp-port/</guid><pubDate>Fri, 11 Sep 2026 03:56:54 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;You can check the Github repository here: https://github.com/athekat/Pikachu-Volleyball-PSP&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Project&lt;/h2&gt;
+&lt;p&gt;So, the idea behind this project was to set the same task to two agents using the same LLM to see who could complete it first.&lt;/p&gt;
+&lt;p&gt;The agents used were the Hermes Agent and the Visual Studio Code chatbot, both of which used the DeepSeek V4 Pro Max LLM.&lt;/p&gt;
+&lt;p&gt;The task was to create a PSP port of the 1997 Pikachu Volleyball game. The source code was already available in a &lt;a href=&quot;https://github.com/gorisanson/pikachu-volleyball&quot;&gt;Github repo by Kyutae Lee&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The prompt for both agents was:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;You are an embedded systems engineer experienced in PSP homebrew development using the PSPSDK (C/C++, GU graphics library, PSP-specific audio and input APIs).
+
+Port Pikachu Volleyball to run natively on the PSP, targeting compatibility with 6.60 PRO-C custom firmware. I have a dir at /Projects/Volleyball-Pikachu/ with two folders:
+
+- `pikachu-volleyball`: contains the decompiled source of the original game (review this to extract game logic, physics, state machine, sprite/asset references, and rules — this is the authoritative reference for behavior, not code to copy verbatim unless the language/structure is directly portable).
+- `PSP-PORT`: currently empty. Build the full PSP homebrew project here.
+
+Constraints:
+- Target PSP hardware/firmware constraints for 6.60 PRO-C: build using PSPSDK toolchain conventions (`EBOOT.PBP` output, proper `PARAM.SFO`, correct module/threading setup) so the resulting homebrew loads and runs correctly on real hardware or PPSSPP under that firmware.
+- Reimplement the core game logic (physics, ball/player movement, scoring, AI opponent behavior, match/set rules) faithfully based on what&apos;s in `Pikachu-volleyball`, adapted to C/C++ and PSP APIs rather than the original&apos;s language/runtime.
+- Use PSP&apos;s GU library for rendering and native PSP input (D-pad/analog stick, buttons) for controls, mapping the original&apos;s control scheme sensibly to the PSP controller.
+- Convert or repackage original game assets (sprites, sound effects, music) into formats usable on PSP, preserving visual/audio fidelity as closely as the hardware allows.
+- Structure the `PSP-PORT` folder as a buildable PSPSDK project: source files, Makefile, asset directory, and any necessary conversion scripts, so it can be compiled with `psp-gcc`/`make` into a working EBOOT.
+
+Before writing code, inspect the decompiled source in `Pikachu-volleyball` to confirm the game&apos;s structure (language, entry points, asset formats, core loop) and account for that in how you organize and implement the port. Flag any part of the original logic that can&apos;t be directly ported due to PSP hardware/API limitations, and propose a working alternative rather than skipping it silently.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;h3&gt;Agent 1: Visual Stuido Code.&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;72.953.000 tokens.&lt;/li&gt;
+&lt;li&gt;First Result: Game opened. Black screen, glitched audio.&lt;/li&gt;
+&lt;li&gt;Second one: The game worked, but didn&apos;t render the graphics properly. Like half of the tokens usage was iterations trying to fix that without being able to do it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Agent 2: Hermes Agent.&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;26.986.000 tokens.&lt;/li&gt;
+&lt;li&gt;First Result: Game opened. Same graphic glitches as VSCode 2nd attempt. Game didn&apos;t get past the intro logo screen.&lt;/li&gt;
+&lt;li&gt;Second Result: Game working. Graphics were ok. Some details: clouds seem to show outside the screen, some issue between the game&apos;s canvas size/viewport dimensions and how off-screen assets or scrolling offsets are handled. And sometimes pressing buttons didn&apos;t work.&lt;/li&gt;
+&lt;li&gt;Third result. Game working fine, no issues at all.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Imagen.&lt;/p&gt;
+</content:encoded></item><item><title>Skills Assessment - SQLMap Essentials - HackTheBox.</title><link>https://alan.com.ar/posts/assessment-sqlmap/</link><guid isPermaLink="true">https://alan.com.ar/posts/assessment-sqlmap/</guid><pubDate>Sat, 08 Aug 2026 03:24:52 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;The SQLMap Essentials module teaches the basics of using SQLMap to discover various types of SQL Injection vulnerabilities, all the way to the advanced enumeration of databases to retrieve all data of interest.s.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
